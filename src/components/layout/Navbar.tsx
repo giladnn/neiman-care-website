@@ -4,10 +4,14 @@ import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import LanguageSelector from './LanguageSelector';
+import { useLanguage } from '@/context/LanguageContext';
+import { translate } from '@/translations';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { language } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,11 +29,11 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Services', href: '/services' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Contact', href: '/contact' },
+    { name: translate('home', language), href: '/' },
+    { name: translate('about', language), href: '/about' },
+    { name: translate('services', language), href: '/services' },
+    { name: translate('blog', language), href: '/blog' },
+    { name: translate('contact', language), href: '/contact' },
   ];
 
   return (
@@ -55,15 +59,19 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
-          <Button asChild>
-            <Link to="/appointment" className="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-md transition-colors">
-              Book Appointment
-            </Link>
-          </Button>
+          <div className="flex items-center gap-2">
+            <LanguageSelector />
+            <Button asChild>
+              <Link to="/appointment" className="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-md transition-colors">
+                {translate('bookAppointment', language)}
+              </Link>
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Navigation Toggle */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center gap-2">
+          <LanguageSelector />
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="text-gray-700 p-2"
@@ -97,7 +105,7 @@ const Navbar = () => {
                 className="bg-primary hover:bg-primary-dark text-white text-center py-3 rounded-md transition-colors w-full"
                 onClick={() => setIsOpen(false)}
               >
-                Book Appointment
+                {translate('bookAppointment', language)}
               </Link>
             </Button>
           </div>
