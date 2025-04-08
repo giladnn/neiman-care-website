@@ -53,7 +53,7 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                className="text-gray-700 hover:text-primary font-medium transition-colors"
+                className="text-gray-900 hover:text-primary font-medium transition-colors"
               >
                 {link.name}
               </Link>
@@ -93,7 +93,7 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                className="text-gray-700 hover:text-primary font-medium py-2 transition-colors"
+                className="text-gray-900 hover:text-primary font-medium py-2 transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}
