@@ -109,6 +109,12 @@ export const he = {
   saturday: 'שבת',
   sunday: 'ראשון',
   closed: 'סגור',
+  officeHoursSchedule: 'שני-חמישי: 9:00-17:00, שישי: 9:00-14:00',
+  
+  // Form placeholders
+  namePlaceholder: 'ישראל ישראלי',
+  emailPlaceholder: 'your@email.com',
+  phonePlaceholder: '+972 50 123 4567',
   
   // Appointment Reasons
   initialConsultation: 'ייעוץ ראשוני',

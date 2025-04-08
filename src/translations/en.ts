@@ -109,6 +109,12 @@ export const en = {
   saturday: 'Saturday',
   sunday: 'Sunday',
   closed: 'Closed',
+  officeHoursSchedule: 'Mon-Thu: 9am-5pm, Fri: 9am-2pm',
+  
+  // Form placeholders
+  namePlaceholder: 'John Doe',
+  emailPlaceholder: 'your@email.com',
+  phonePlaceholder: '+972 50 123 4567',
   
   // Appointment Reasons
   initialConsultation: 'Initial Consultation',
@@ -118,4 +124,3 @@ export const en = {
   testResultsReview: 'Test Results Review',
   other: 'Other',
 };
-

@@ -100,7 +100,7 @@ const AppointmentForm = () => {
               <FormItem>
                 <FormLabel>{translate('fullName', language)}</FormLabel>
                 <FormControl>
-                  <Input placeholder="John Doe" {...field} />
+                  <Input placeholder={translate('namePlaceholder', language)} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -114,7 +114,7 @@ const AppointmentForm = () => {
               <FormItem>
                 <FormLabel>{translate('email', language)}</FormLabel>
                 <FormControl>
-                  <Input placeholder="your@email.com" {...field} />
+                  <Input placeholder={translate('emailPlaceholder', language)} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -129,7 +129,7 @@ const AppointmentForm = () => {
             <FormItem>
               <FormLabel>{translate('phoneNumber', language)}</FormLabel>
               <FormControl>
-                <Input placeholder="+972 50 123 4567" {...field} />
+                <Input placeholder={translate('phonePlaceholder', language)} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

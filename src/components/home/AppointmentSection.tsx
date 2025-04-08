@@ -54,7 +54,7 @@ const AppointmentSection = () => {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-800">{translate('officeHours', language)}</h3>
-                    <p className="text-gray-600">Mon-Thu: 9am-5pm, Fri: 9am-2pm</p>
+                    <p className="text-gray-600">{translate('officeHoursSchedule', language)}</p>
                   </div>
                 </CardContent>
               </Card>
