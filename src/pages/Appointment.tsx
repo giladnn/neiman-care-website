@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import emailjs from '@emailjs/browser';
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -16,6 +17,7 @@ import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
 import { AppointmentForm as AppointmentFormType } from '@/types';
+import { v4 as uuidv4 } from 'uuid';
 
 // Define the form schema using zod
 const formSchema = z.object({
@@ -77,17 +79,19 @@ const Appointment = () => {
     setIsSubmitting(true);
     console.log("Form submitted:", data);
     
-    // Store appointment data in localStorage
     try {
-      // Create appointment object
+      // Create appointment object with unique ID and timestamp
       const appointment: AppointmentFormType = {
+        id: uuidv4(),
         name: data.name,
         email: data.email,
         phone: data.phone,
-        date: data.date.toISOString().split('T')[0],
+        date: data.date instanceof Date ? data.date.toISOString().split('T')[0] : data.date,
         time: data.time,
         reason: data.reason,
-        message: data.message
+        message: data.message,
+        status: 'pending',
+        createdAt: new Date().toISOString()
       };
       
       // Get existing appointments or initialize empty array
@@ -102,10 +106,14 @@ const Appointment = () => {
       localStorage.setItem('appointments', JSON.stringify(existingAppointments));
       
       // Send email notification
-      await sendEmailNotification(appointment);
+      const emailSent = await sendEmailNotification(appointment);
       
-      toast.success('Appointment request submitted successfully! We will contact you shortly to confirm.');
-      form.reset();
+      if (emailSent) {
+        toast.success('Appointment request submitted successfully! We will contact you shortly to confirm.');
+        form.reset();
+      } else {
+        toast.warning('Appointment saved but email notification could not be sent. We will still process your request.');
+      }
     } catch (error) {
       console.error("Error saving appointment:", error);
       toast.error('There was a problem submitting your appointment. Please try again.');
@@ -114,41 +122,44 @@ const Appointment = () => {
     }
   };
   
-  // Send email notification using Email.js or similar service
+  // Send email notification using EmailJS
   const sendEmailNotification = async (appointment: AppointmentFormType) => {
     try {
-      // This would typically use a service like EmailJS, Sendgrid, or a custom API
-      // For this example, we'll simulate the email sending with a fetch request
-      // that would be replaced with actual email service integration
-      
-      const emailBody = `
-        New Appointment Request:
-        
-        Name: ${appointment.name}
-        Email: ${appointment.email}
-        Phone: ${appointment.phone}
-        Date: ${appointment.date}
-        Time: ${appointment.time}
-        Reason: ${appointment.reason}
-        Message: ${appointment.message || 'No additional message'}
-      `;
+      // Prepare email template parameters
+      const templateParams = {
+        to_email: 'gilad.neiman@gmail.com',
+        from_name: appointment.name,
+        subject: `New Appointment Request: ${appointment.name} - ${appointment.date}`,
+        message: `
+          New Appointment Request:
+          
+          ID: ${appointment.id}
+          Name: ${appointment.name}
+          Email: ${appointment.email}
+          Phone: ${appointment.phone}
+          Date: ${appointment.date}
+          Time: ${appointment.time}
+          Reason: ${appointment.reason}
+          Message: ${appointment.message || 'No additional message'}
+          Status: ${appointment.status}
+          Created: ${appointment.createdAt}
+        `,
+        reply_to: appointment.email
+      };
       
       console.log("Sending email notification to gilad.neiman@gmail.com");
-      console.log(emailBody);
+      console.log(templateParams);
       
-      // In a real implementation, you would use an email service API here
-      // For now, we'll just simulate this step
-      // await fetch('https://your-email-api.com/send', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({
-      //     to: 'gilad.neiman@gmail.com',
-      //     subject: `New Appointment: ${appointment.name} - ${appointment.date}`,
-      //     body: emailBody
-      //   })
-      // });
+      // Send email using EmailJS
+      // Note: Replace these with your actual EmailJS service, template, and user IDs
+      const response = await emailjs.send(
+        'service_appointment',  // Your EmailJS service ID
+        'template_appointment', // Your EmailJS template ID
+        templateParams,
+        'your_emailjs_public_key' // Your EmailJS public key
+      );
       
-      // For this demo, we just log to console that we would send an email
+      console.log('Email successfully sent!', response);
       return true;
     } catch (error) {
       console.error("Error sending email notification:", error);

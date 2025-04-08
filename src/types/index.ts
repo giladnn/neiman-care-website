@@ -1,4 +1,3 @@
-
 export interface BlogPost {
   id: string;
   title: string;
@@ -38,6 +37,7 @@ export interface Service {
 }
 
 export interface AppointmentForm {
+  id?: string;
   name: string;
   email: string;
   phone: string;
@@ -45,6 +45,8 @@ export interface AppointmentForm {
   time: string;
   reason: string;
   message?: string;
+  status?: 'pending' | 'confirmed' | 'cancelled';
+  createdAt?: string;
 }
 
 export interface UserData {
