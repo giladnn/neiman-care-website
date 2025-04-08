@@ -86,7 +86,7 @@ const Dashboard = () => {
                 {[
                   { name: 'Sarah Cohen', date: '2024-04-10', time: '10:00 AM', type: 'Follow-up' },
                   { name: 'David Levy', date: '2024-04-10', time: '2:30 PM', type: 'Initial Consultation' },
-                  { name: 'Rachel Goldstein', date: '2024-04-11', time: '9:15 AM', type: 'Treatment Discussion' },
+                  { name: 'Rachel Goldstein', date: '2024-04-11', time: '9:15 AM', type: 'Treatment Discussion' }
                 ].map((appointment, i) => (
                   <div key={i} className="flex items-center justify-between p-4 border rounded-md">
                     <div>
@@ -112,7 +112,7 @@ const Dashboard = () => {
                 {[
                   { name: 'Michael Berkovich', time: '2 hours ago', preview: 'I'd like to discuss the test results...' },
                   { name: 'Anna Shapiro', time: '5 hours ago', preview: 'Thank you for the appointment yesterday...' },
-                  { name: 'Yael Stein', time: '1 day ago', preview: 'I have a question about my medication...' },
+                  { name: 'Yael Stein', time: '1 day ago', preview: 'I have a question about my medication...' }
                 ].map((message, i) => (
                   <div key={i} className="flex flex-col p-4 border rounded-md">
                     <div className="flex items-center justify-between mb-2">
