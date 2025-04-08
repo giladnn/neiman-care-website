@@ -6,11 +6,11 @@ import { useLanguage } from '@/context/LanguageContext';
 import { translate } from '@/translations';
 
 const ServicesCTA = () => {
-  const { language } = useLanguage();
+  const { language, direction } = useLanguage();
   
   return (
     <section className="py-16 bg-primary text-white">
-      <div className="container mx-auto text-center">
+      <div className={`container mx-auto text-center ${direction === 'rtl' ? 'rtl' : ''}`}>
         <h2 className="text-3xl font-bold mb-4 font-serif">{translate('readyForNextStep', language)}</h2>
         <p className="max-w-2xl mx-auto mb-8 text-lg">
           {translate('scheduleCTA', language)}

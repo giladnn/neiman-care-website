@@ -5,7 +5,7 @@ import { useLanguage } from '@/context/LanguageContext';
 import { translate } from '@/translations';
 
 const HeroSection = () => {
-  const { language } = useLanguage();
+  const { language, direction } = useLanguage();
 
   return (
     <section className="relative bg-gradient-to-r from-primary to-primary-light text-white min-h-[90vh] flex items-center">
@@ -17,8 +17,8 @@ const HeroSection = () => {
         style={{ backgroundImage: "url('/path-to-hero-image.jpg')" }}
       ></div> */}
       
-      <div className="container mx-auto relative z-10 py-20">
-        <div className="max-w-3xl">
+      <div className={`container mx-auto relative z-10 py-20 ${direction === 'rtl' ? 'rtl' : ''}`}>
+        <div className={`max-w-3xl ${direction === 'rtl' ? 'mr-0 ml-auto text-right' : ''}`}>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-serif">
             {translate('heroTitle', language)}
           </h1>

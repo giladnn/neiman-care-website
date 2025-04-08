@@ -116,3 +116,43 @@
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
+
+/* RTL Support */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl .text-left {
+  text-align: right;
+}
+
+.rtl .text-right {
+  text-align: left;
+}
+
+/* Adjust flexbox direction in RTL mode */
+.rtl .flex-row {
+  flex-direction: row-reverse;
+}
+
+/* Adjust margins in RTL mode */
+.rtl .ml-auto {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.rtl .mr-auto {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.rtl .ml-2, .rtl .ml-3, .rtl .ml-4 {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+.rtl .mr-2, .rtl .mr-3, .rtl .mr-4 {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
