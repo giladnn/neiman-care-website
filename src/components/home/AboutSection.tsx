@@ -1,8 +1,12 @@
 
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/context/LanguageContext';
+import { translate } from '@/translations';
 
 const AboutSection = () => {
+  const { language } = useLanguage();
+  
   return (
     <section className="section-padding bg-gray-50">
       <div className="container mx-auto">
@@ -16,32 +20,32 @@ const AboutSection = () => {
               />
             </div>
             <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-lg hidden md:block">
-              <p className="text-primary font-serif text-lg">15+ Years Experience</p>
+              <p className="text-primary font-serif text-lg">{translate('yearsExperience', language)}</p>
             </div>
           </div>
           
           <div className="space-y-6">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 font-serif">
-              Dr. Victoria Neiman
+              {translate('aboutSectionTitle', language)}
             </h2>
             <div className="w-20 h-1 bg-secondary"></div>
             <h3 className="text-xl text-primary font-medium">
-              Leading Oncologist Specializing in Personalized Cancer Care
+              {translate('aboutSectionSubtitle', language)}
             </h3>
             <div className="text-gray-600 space-y-4">
               <p>
-                Dr. Victoria Neiman is a distinguished oncologist with over 15 years of experience in diagnosing and treating various types of cancer. Her expertise spans medical oncology with a special focus on breast cancer, lung cancer, and gastrointestinal tumors.
+                {translate('aboutSectionText1', language)}
               </p>
               <p>
-                After completing her medical training at the Hadassah Medical Center in Jerusalem, Dr. Neiman pursued specialized oncology training in leading institutions across Europe and the United States. She holds multiple board certifications and is actively involved in clinical research to advance cancer treatment protocols.
+                {translate('aboutSectionText2', language)}
               </p>
               <p>
-                Dr. Neiman's approach combines cutting-edge medical expertise with compassionate care, ensuring that each patient receives personalized treatment tailored to their specific needs and condition.
+                {translate('aboutSectionText3', language)}
               </p>
             </div>
             <div className="pt-4">
               <Button asChild className="bg-primary hover:bg-primary-dark text-white">
-                <Link to="/about">Read Full Biography</Link>
+                <Link to="/about">{translate('readFullBio', language)}</Link>
               </Button>
             </div>
           </div>

@@ -1,9 +1,12 @@
 
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
+import { translate } from '@/translations';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { language } = useLanguage();
 
   return (
     <footer className="bg-gray-900 text-white">
@@ -33,19 +36,19 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-serif mb-4">Quick Links</h3>
+            <h3 className="text-xl font-serif mb-4">{translate('quickLinks', language)}</h3>
             <ul className="space-y-2">
-              <li><Link to="/" className="text-gray-300 hover:text-secondary transition-colors">Home</Link></li>
-              <li><Link to="/about" className="text-gray-300 hover:text-secondary transition-colors">About</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-secondary transition-colors">Services</Link></li>
-              <li><Link to="/blog" className="text-gray-300 hover:text-secondary transition-colors">Blog</Link></li>
-              <li><Link to="/contact" className="text-gray-300 hover:text-secondary transition-colors">Contact</Link></li>
+              <li><Link to="/" className="text-gray-300 hover:text-secondary transition-colors">{translate('home', language)}</Link></li>
+              <li><Link to="/about" className="text-gray-300 hover:text-secondary transition-colors">{translate('about', language)}</Link></li>
+              <li><Link to="/services" className="text-gray-300 hover:text-secondary transition-colors">{translate('services', language)}</Link></li>
+              <li><Link to="/blog" className="text-gray-300 hover:text-secondary transition-colors">{translate('blog', language)}</Link></li>
+              <li><Link to="/contact" className="text-gray-300 hover:text-secondary transition-colors">{translate('contact', language)}</Link></li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-xl font-serif mb-4">Contact Info</h3>
+            <h3 className="text-xl font-serif mb-4">{translate('contactInfo', language)}</h3>
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <MapPin size={20} className="mt-1 flex-shrink-0 text-secondary" />
@@ -64,7 +67,7 @@ const Footer = () => {
 
           {/* Office Hours */}
           <div>
-            <h3 className="text-xl font-serif mb-4">Office Hours</h3>
+            <h3 className="text-xl font-serif mb-4">{translate('officeHoursFooter', language)}</h3>
             <ul className="space-y-2">
               <li className="flex items-center space-x-3">
                 <Clock size={18} className="flex-shrink-0 text-secondary" />
@@ -93,11 +96,11 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 mb-4 md:mb-0">© {currentYear} Dr. Victoria Neiman. All rights reserved.</p>
+            <p className="text-gray-400 mb-4 md:mb-0">© {currentYear} Dr. Victoria Neiman. {translate('rights', language)}.</p>
             <div className="flex space-x-6">
-              <Link to="/privacy-policy" className="text-gray-400 hover:text-secondary transition-colors">Privacy Policy</Link>
-              <Link to="/terms" className="text-gray-400 hover:text-secondary transition-colors">Terms of Service</Link>
-              <Link to="/admin" className="text-gray-400 hover:text-secondary transition-colors">Admin Login</Link>
+              <Link to="/privacy-policy" className="text-gray-400 hover:text-secondary transition-colors">{translate('privacyPolicy', language)}</Link>
+              <Link to="/terms" className="text-gray-400 hover:text-secondary transition-colors">{translate('termsOfService', language)}</Link>
+              <Link to="/admin" className="text-gray-400 hover:text-secondary transition-colors">{translate('adminLogin', language)}</Link>
             </div>
           </div>
         </div>

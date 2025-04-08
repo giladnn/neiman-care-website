@@ -3,6 +3,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/context/LanguageContext';
+import { translate } from '@/translations';
 
 interface FAQItem {
   question: string;
@@ -33,16 +35,18 @@ const faqItems: FAQItem[] = [
 ];
 
 const ServicesFAQ = () => {
+  const { language } = useLanguage();
+  
   return (
     <section className="py-16">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-gray-800 mb-4 font-serif">
-            Frequently Asked Questions
+            {translate('frequentlyAskedQuestions', language)}
           </h2>
           <div className="w-20 h-1 bg-secondary mx-auto mb-6"></div>
           <p className="max-w-2xl mx-auto text-gray-600 text-lg">
-            Find answers to common questions about our oncology services
+            {translate('faqSubtitle', language)}
           </p>
         </div>
 
@@ -59,10 +63,10 @@ const ServicesFAQ = () => {
 
         <div className="text-center mt-12">
           <p className="text-gray-600 mb-4">
-            Don't see your question here? Feel free to reach out to us directly.
+            {translate('dontSeeQuestion', language)}
           </p>
           <Button asChild className="bg-primary hover:bg-primary-dark text-white">
-            <Link to="/contact">Contact Us</Link>
+            <Link to="/contact">{translate('contactUs', language)}</Link>
           </Button>
         </div>
       </div>

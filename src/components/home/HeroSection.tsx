@@ -1,8 +1,12 @@
 
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/context/LanguageContext';
+import { translate } from '@/translations';
 
 const HeroSection = () => {
+  const { language } = useLanguage();
+
   return (
     <section className="relative bg-gradient-to-r from-primary to-primary-light text-white min-h-[90vh] flex items-center">
       <div className="absolute inset-0 bg-black/40 z-0"></div>
@@ -16,17 +20,17 @@ const HeroSection = () => {
       <div className="container mx-auto relative z-10 py-20">
         <div className="max-w-3xl">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-serif">
-            Specialized Oncology Care with Dr. Victoria Neiman
+            {translate('heroTitle', language)}
           </h1>
           <p className="text-xl md:text-2xl mb-8 font-light">
-            Leading oncologist dedicated to providing personalized cancer treatment through cutting-edge medical expertise and compassionate care.
+            {translate('heroSubtitle', language)}
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button asChild size="lg" className="bg-secondary hover:bg-secondary-dark text-white">
-              <Link to="/appointment">Book an Appointment</Link>
+              <Link to="/appointment">{translate('bookAppointment', language)}</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white/10">
-              <Link to="/about">Learn More</Link>
+              <Link to="/about">{translate('learnMore', language)}</Link>
             </Button>
           </div>
         </div>

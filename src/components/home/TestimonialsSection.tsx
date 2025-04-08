@@ -4,6 +4,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Star } from 'lucide-react';
 import { Testimonial } from '@/types';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/context/LanguageContext';
+import { translate } from '@/translations';
 
 const testimonials: Testimonial[] = [
   {
@@ -38,6 +40,7 @@ const testimonials: Testimonial[] = [
 
 const TestimonialsSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { language } = useLanguage();
   
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -52,11 +55,11 @@ const TestimonialsSection = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4 font-serif">
-            Patient Testimonials
+            {translate('patientTestimonials', language)}
           </h2>
           <div className="w-20 h-1 bg-secondary mx-auto mb-6"></div>
           <p className="max-w-2xl mx-auto text-gray-600 text-lg">
-            Read what our patients have to say about their experience with Dr. Victoria Neiman.
+            {translate('testimonialsSubtitle', language)}
           </p>
         </div>
 

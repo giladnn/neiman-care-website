@@ -2,6 +2,8 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { NewsArticle } from '@/types';
 import { ArrowUpRight } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
+import { translate } from '@/translations';
 
 // Sample news articles
 const newsArticles: NewsArticle[] = [
@@ -40,16 +42,18 @@ const newsArticles: NewsArticle[] = [
 ];
 
 const NewsSection = () => {
+  const { language } = useLanguage();
+  
   return (
     <section className="section-padding">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4 font-serif">
-            In The News
+            {translate('inTheNews', language)}
           </h2>
           <div className="w-20 h-1 bg-secondary mx-auto mb-6"></div>
           <p className="max-w-2xl mx-auto text-gray-600 text-lg">
-            Dr. Victoria Neiman's contributions to oncology research and patient care featured in medical publications and news outlets.
+            {translate('newsSubtitle', language)}
           </p>
         </div>
 
@@ -77,7 +81,7 @@ const NewsSection = () => {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-primary font-medium hover:underline mt-2"
                   >
-                    Read original article <ArrowUpRight size={16} />
+                    {translate('readOriginal', language)} <ArrowUpRight size={16} />
                   </a>
                 </div>
               </CardContent>

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/context/LanguageContext';
+import { translate } from '@/translations';
 
 const services = [
   {
@@ -44,16 +46,18 @@ const services = [
 ];
 
 const ServicesSection = () => {
+  const { language } = useLanguage();
+
   return (
     <section className="section-padding">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4 font-serif">
-            Our Services
+            {translate('ourServices', language)}
           </h2>
           <div className="w-20 h-1 bg-secondary mx-auto mb-6"></div>
           <p className="max-w-2xl mx-auto text-gray-600 text-lg">
-            Dr. Neiman offers a comprehensive range of oncology services, from diagnosis to treatment and long-term care planning.
+            {translate('servicesSubtitle', language)}
           </p>
         </div>
 
@@ -68,7 +72,7 @@ const ServicesSection = () => {
                   to={`/services#${service.id}`} 
                   className="text-primary font-medium flex items-center gap-2 hover:gap-3 transition-all"
                 >
-                  Learn more <ArrowRight size={16} />
+                  {translate('learnMore', language)} <ArrowRight size={16} />
                 </Link>
               </CardContent>
             </Card>
@@ -77,7 +81,7 @@ const ServicesSection = () => {
 
         <div className="text-center">
           <Button asChild className="bg-primary hover:bg-primary-dark text-white">
-            <Link to="/services">View All Services</Link>
+            <Link to="/services">{translate('viewAllServices', language)}</Link>
           </Button>
         </div>
       </div>

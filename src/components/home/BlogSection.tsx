@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { BlogPost } from '@/types';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/context/LanguageContext';
+import { translate } from '@/translations';
 
 // Sample blog posts
 const blogPosts: BlogPost[] = [
@@ -36,16 +38,18 @@ const blogPosts: BlogPost[] = [
 ];
 
 const BlogSection = () => {
+  const { language } = useLanguage();
+  
   return (
     <section className="section-padding bg-gray-50">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4 font-serif">
-            Latest Articles
+            {translate('latestArticles', language)}
           </h2>
           <div className="w-20 h-1 bg-secondary mx-auto mb-6"></div>
           <p className="max-w-2xl mx-auto text-gray-600 text-lg">
-            Stay informed with the latest research, treatment options, and healthcare insights from Dr. Victoria Neiman.
+            {translate('blogSubtitle', language)}
           </p>
         </div>
 
@@ -81,7 +85,7 @@ const BlogSection = () => {
                   to={`/blog/${post.id}`}
                   className="text-primary font-medium hover:underline"
                 >
-                  Read more
+                  {translate('readMore', language)}
                 </Link>
               </CardContent>
             </Card>
@@ -90,7 +94,7 @@ const BlogSection = () => {
 
         <div className="text-center">
           <Button asChild className="bg-primary hover:bg-primary-dark text-white">
-            <Link to="/blog">View All Articles</Link>
+            <Link to="/blog">{translate('viewAllArticles', language)}</Link>
           </Button>
         </div>
       </div>
