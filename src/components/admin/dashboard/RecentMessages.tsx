@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const RecentMessages = () => {
   const messages = [
-    { name: 'Michael Berkovich', time: '2 hours ago', preview: 'I'd like to discuss the test results...' },
+    { name: 'Michael Berkovich', time: '2 hours ago', preview: 'I\'d like to discuss the test results...' },
     { name: 'Anna Shapiro', time: '5 hours ago', preview: 'Thank you for the appointment yesterday...' },
     { name: 'Yael Stein', time: '1 day ago', preview: 'I have a question about my medication...' }
   ];

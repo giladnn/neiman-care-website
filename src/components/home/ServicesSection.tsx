@@ -32,7 +32,7 @@ const services = [
   {
     id: '5',
     title: 'Targeted Therapy',
-    description: 'Precision medicine approaches that target specific genetic mutations or proteins involved in your cancer's growth and spread.',
+    description: 'Precision medicine approaches that target specific genetic mutations or proteins involved in your cancer\'s growth and spread.',
     icon: '🎯',
   },
   {
