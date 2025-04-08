@@ -41,7 +41,7 @@ export interface AppointmentForm {
   name: string;
   email: string;
   phone: string;
-  date: string;
+  date: string | Date;
   time: string;
   reason: string;
   message?: string;

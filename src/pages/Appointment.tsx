@@ -15,6 +15,7 @@ import { CalendarIcon, ChevronRight } from 'lucide-react';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
+import { AppointmentForm as AppointmentFormType } from '@/types';
 
 // Define the form schema using zod
 const formSchema = z.object({
@@ -57,6 +58,7 @@ const appointmentReasons = [
 
 const Appointment = () => {
   const [isDateOpen, setIsDateOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Initialize form
   const form = useForm<z.infer<typeof formSchema>>({
@@ -71,10 +73,87 @@ const Appointment = () => {
   });
 
   // Submit handler
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    setIsSubmitting(true);
     console.log("Form submitted:", data);
-    toast.success('Appointment request submitted successfully! We will contact you shortly to confirm.');
-    form.reset();
+    
+    // Store appointment data in localStorage
+    try {
+      // Create appointment object
+      const appointment: AppointmentFormType = {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        date: data.date.toISOString().split('T')[0],
+        time: data.time,
+        reason: data.reason,
+        message: data.message
+      };
+      
+      // Get existing appointments or initialize empty array
+      const existingAppointments = localStorage.getItem('appointments') 
+        ? JSON.parse(localStorage.getItem('appointments') || '[]') 
+        : [];
+      
+      // Add new appointment
+      existingAppointments.push(appointment);
+      
+      // Save back to localStorage
+      localStorage.setItem('appointments', JSON.stringify(existingAppointments));
+      
+      // Send email notification
+      await sendEmailNotification(appointment);
+      
+      toast.success('Appointment request submitted successfully! We will contact you shortly to confirm.');
+      form.reset();
+    } catch (error) {
+      console.error("Error saving appointment:", error);
+      toast.error('There was a problem submitting your appointment. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+  
+  // Send email notification using Email.js or similar service
+  const sendEmailNotification = async (appointment: AppointmentFormType) => {
+    try {
+      // This would typically use a service like EmailJS, Sendgrid, or a custom API
+      // For this example, we'll simulate the email sending with a fetch request
+      // that would be replaced with actual email service integration
+      
+      const emailBody = `
+        New Appointment Request:
+        
+        Name: ${appointment.name}
+        Email: ${appointment.email}
+        Phone: ${appointment.phone}
+        Date: ${appointment.date}
+        Time: ${appointment.time}
+        Reason: ${appointment.reason}
+        Message: ${appointment.message || 'No additional message'}
+      `;
+      
+      console.log("Sending email notification to gilad.neiman@gmail.com");
+      console.log(emailBody);
+      
+      // In a real implementation, you would use an email service API here
+      // For now, we'll just simulate this step
+      // await fetch('https://your-email-api.com/send', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({
+      //     to: 'gilad.neiman@gmail.com',
+      //     subject: `New Appointment: ${appointment.name} - ${appointment.date}`,
+      //     body: emailBody
+      //   })
+      // });
+      
+      // For this demo, we just log to console that we would send an email
+      return true;
+    } catch (error) {
+      console.error("Error sending email notification:", error);
+      return false;
+    }
   };
 
   return (
@@ -259,8 +338,13 @@ const Appointment = () => {
                   />
                   
                   <div className="pt-4">
-                    <Button type="submit" className="w-full bg-primary hover:bg-primary-dark">
-                      Submit Request <ChevronRight size={16} className="ml-2" />
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-primary hover:bg-primary-dark"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? 'Submitting...' : 'Submit Request'} 
+                      {!isSubmitting && <ChevronRight size={16} className="ml-2" />}
                     </Button>
                   </div>
                 </form>
