@@ -118,4 +118,3 @@ export const he = {
   testResultsReview: 'סקירת תוצאות בדיקות',
   other: 'אחר',
 };
-
