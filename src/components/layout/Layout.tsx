@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { useLanguage } from '@/context/LanguageContext';
+import { usePageTracking } from '@/hooks/usePageTracking';
 
 interface LayoutProps {
   children: ReactNode;
@@ -10,6 +11,7 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   const { direction } = useLanguage();
+  usePageTracking(); // Track page views
   
   return (
     <div 
