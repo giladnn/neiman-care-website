@@ -15,6 +15,8 @@ import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { AppointmentForm as AppointmentFormType } from '@/types';
 import { submitAppointment } from '@/lib/appointment-service';
+import { useLanguage } from '@/context/LanguageContext';
+import { translate } from '@/translations';
 
 // Define the form schema using zod
 const formSchema = z.object({
@@ -46,18 +48,20 @@ const timeSlots = [
   "4:00 PM", "4:30 PM"
 ];
 
-const appointmentReasons = [
-  "Initial Consultation",
-  "Follow-up Appointment",
-  "Treatment Discussion",
-  "Second Opinion",
-  "Test Results Review",
-  "Other"
-];
-
 const AppointmentForm = () => {
   const [isDateOpen, setIsDateOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { language } = useLanguage();
+
+  // Get translated appointment reasons
+  const appointmentReasons = [
+    {key: "initialConsultation", value: translate('initialConsultation', language)},
+    {key: "followUp", value: translate('followUp', language)},
+    {key: "treatmentDiscussion", value: translate('treatmentDiscussion', language)},
+    {key: "secondOpinion", value: translate('secondOpinion', language)},
+    {key: "testResultsReview", value: translate('testResultsReview', language)},
+    {key: "other", value: translate('other', language)}
+  ];
 
   // Initialize form
   const form = useForm<z.infer<typeof formSchema>>({
@@ -94,7 +98,7 @@ const AppointmentForm = () => {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Full Name</FormLabel>
+                <FormLabel>{translate('fullName', language)}</FormLabel>
                 <FormControl>
                   <Input placeholder="John Doe" {...field} />
                 </FormControl>
@@ -108,7 +112,7 @@ const AppointmentForm = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>{translate('email', language)}</FormLabel>
                 <FormControl>
                   <Input placeholder="your@email.com" {...field} />
                 </FormControl>
@@ -123,7 +127,7 @@ const AppointmentForm = () => {
           name="phone"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Phone Number</FormLabel>
+              <FormLabel>{translate('phoneNumber', language)}</FormLabel>
               <FormControl>
                 <Input placeholder="+972 50 123 4567" {...field} />
               </FormControl>
@@ -138,7 +142,7 @@ const AppointmentForm = () => {
             name="date"
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <FormLabel>Date</FormLabel>
+                <FormLabel>{translate('date', language)}</FormLabel>
                 <Popover open={isDateOpen} onOpenChange={setIsDateOpen}>
                   <PopoverTrigger asChild>
                     <FormControl>
@@ -152,7 +156,7 @@ const AppointmentForm = () => {
                         {field.value ? (
                           format(field.value, "PPP")
                         ) : (
-                          <span>Select date</span>
+                          <span>{translate('selectDate', language)}</span>
                         )}
                         <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                       </Button>
@@ -186,11 +190,11 @@ const AppointmentForm = () => {
             name="time"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Time</FormLabel>
+                <FormLabel>{translate('time', language)}</FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select a time" />
+                      <SelectValue placeholder={translate('selectTime', language)} />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -212,17 +216,17 @@ const AppointmentForm = () => {
           name="reason"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Reason for Visit</FormLabel>
+              <FormLabel>{translate('reasonForVisit', language)}</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select a reason" />
+                    <SelectValue placeholder={translate('selectReason', language)} />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
                   {appointmentReasons.map((reason) => (
-                    <SelectItem key={reason} value={reason}>
-                      {reason}
+                    <SelectItem key={reason.key} value={reason.key}>
+                      {reason.value}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -237,10 +241,10 @@ const AppointmentForm = () => {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Additional Information (Optional)</FormLabel>
+              <FormLabel>{translate('additionalInformation', language)}</FormLabel>
               <FormControl>
                 <Textarea 
-                  placeholder="Please share any additional information about your condition or specific concerns."
+                  placeholder={translate('additionalInfoPlaceholder', language)}
                   className="resize-none"
                   {...field}
                 />
@@ -256,7 +260,7 @@ const AppointmentForm = () => {
             className="w-full bg-primary hover:bg-primary-dark"
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Submitting...' : 'Submit Request'} 
+            {isSubmitting ? translate('submitting', language) : translate('submitRequest', language)} 
             {!isSubmitting && <ChevronRight size={16} className="ml-2" />}
           </Button>
         </div>

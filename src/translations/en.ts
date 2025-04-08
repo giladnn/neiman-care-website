@@ -79,4 +79,43 @@ export const en = {
   faqSubtitle: 'Find answers to common questions about our oncology services',
   dontSeeQuestion: 'Don\'t see your question here? Feel free to reach out to us directly.',
   contactUs: 'Contact Us',
+  
+  // Appointment Page
+  scheduleAnAppointment: 'Schedule an Appointment',
+  appointmentDescription: 'Request an appointment with Dr. Victoria Neiman. We will contact you shortly to confirm your appointment time.',
+  requestAnAppointment: 'Request an Appointment',
+  
+  // Appointment Form
+  fullName: 'Full Name',
+  email: 'Email',
+  phoneNumber: 'Phone Number',
+  date: 'Date',
+  time: 'Time',
+  selectDate: 'Select date',
+  selectTime: 'Select a time',
+  reasonForVisit: 'Reason for Visit',
+  selectReason: 'Select a reason',
+  additionalInformation: 'Additional Information (Optional)',
+  additionalInfoPlaceholder: 'Please share any additional information about your condition or specific concerns.',
+  submitRequest: 'Submit Request',
+  submitting: 'Submitting...',
+  
+  // Office Hours and Contact Info
+  contactInformation: 'Contact Information',
+  phone: 'Phone',
+  address: 'Address',
+  mondayThursday: 'Monday - Thursday',
+  friday: 'Friday',
+  saturday: 'Saturday',
+  sunday: 'Sunday',
+  closed: 'Closed',
+  
+  // Appointment Reasons
+  initialConsultation: 'Initial Consultation',
+  followUp: 'Follow-up Appointment',
+  treatmentDiscussion: 'Treatment Discussion',
+  secondOpinion: 'Second Opinion',
+  testResultsReview: 'Test Results Review',
+  other: 'Other',
 };
+

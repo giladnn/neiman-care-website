@@ -79,4 +79,43 @@ export const he = {
   faqSubtitle: 'מצא תשובות לשאלות נפוצות על השירותים האונקולוגיים שלנו',
   dontSeeQuestion: 'לא רואה את השאלה שלך כאן? אל תהסס לפנות אלינו ישירות.',
   contactUs: 'צור קשר',
+
+  // Appointment Page
+  scheduleAnAppointment: 'קביעת תור',
+  appointmentDescription: 'בקש תור עם ד״ר ויקטוריה ניימן. אנו ניצור איתך קשר בהקדם כדי לאשר את מועד הפגישה.',
+  requestAnAppointment: 'בקשת תור',
+  
+  // Appointment Form
+  fullName: 'שם מלא',
+  email: 'אימייל',
+  phoneNumber: 'מספר טלפון',
+  date: 'תאריך',
+  time: 'שעה',
+  selectDate: 'בחר תאריך',
+  selectTime: 'בחר שעה',
+  reasonForVisit: 'סיבת הביקור',
+  selectReason: 'בחר סיבה',
+  additionalInformation: 'מידע נוסף (אופציונלי)',
+  additionalInfoPlaceholder: 'אנא שתף כל מידע נוסף על מצבך או חששות ספציפיות.',
+  submitRequest: 'שלח בקשה',
+  submitting: 'שולח...',
+  
+  // Office Hours and Contact Info
+  contactInformation: 'פרטי קשר',
+  phone: 'טלפון',
+  address: 'כתובת',
+  mondayThursday: 'שני - חמישי',
+  friday: 'שישי',
+  saturday: 'שבת',
+  sunday: 'ראשון',
+  closed: 'סגור',
+  
+  // Appointment Reasons
+  initialConsultation: 'ייעוץ ראשוני',
+  followUp: 'ביקור מעקב',
+  treatmentDiscussion: 'דיון בטיפול',
+  secondOpinion: 'חוות דעת שנייה',
+  testResultsReview: 'סקירת תוצאות בדיקות',
+  other: 'אחר',
 };
+
