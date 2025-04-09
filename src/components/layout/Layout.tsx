@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { useLanguage } from '@/context/LanguageContext';
 import { usePageTracking } from '@/hooks/usePageTracking';
+import SkipToContent from '@/components/accessibility/SkipToContent';
 
 interface LayoutProps {
   children: ReactNode;
@@ -19,14 +20,17 @@ const Layout = ({ children }: LayoutProps) => {
       dir={direction}
       lang={direction === 'rtl' ? 'he' : 'en'}
     >
-      <a 
-        href="#main-content" 
-        className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:p-4 focus:bg-primary focus:text-white focus:z-50"
-      >
-        Skip to main content
-      </a>
+      <SkipToContent />
       <Navbar />
-      <main id="main-content" className="flex-grow" tabIndex={-1}>{children}</main>
+      <main 
+        id="main-content" 
+        className="flex-grow" 
+        tabIndex={-1}
+        role="main" 
+        aria-label="Main content"
+      >
+        {children}
+      </main>
       <Footer />
     </div>
   );

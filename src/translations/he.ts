@@ -1,4 +1,3 @@
-
 export const he = {
   // Navbar
   home: 'דף הבית',
@@ -123,4 +122,11 @@ export const he = {
   secondOpinion: 'חוות דעת שנייה',
   testResultsReview: 'סקירת תוצאות בדיקות',
   other: 'אחר',
+  
+  // Blog Section
+  skipToContent: "דלג לתוכן העיקרי",
+  blogSectionTitle: "תובנות רפואיות אחרונות",
+  blogSectionSubtitle: "הישארו מעודכנים עם ההתפתחויות והידע האחרונים בטיפול אונקולוגי",
+  readMore: "קרא עוד",
+  viewAllPosts: "צפה בכל הפוסטים",
 };

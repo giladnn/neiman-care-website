@@ -8,6 +8,7 @@ import { AuthProvider } from "@/context/AuthContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { VideosProvider } from "@/context/VideosContext";
 import { BlogProvider } from "@/context/BlogContext";
+import { Helmet } from "react-helmet";
 
 // Pages
 import Index from "./pages/Index";
@@ -34,6 +35,12 @@ const App = () => (
         <VideosProvider>
           <BlogProvider>
             <TooltipProvider>
+              <Helmet>
+                <html lang="en" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta name="description" content="Dr. Victoria Neiman - Leading Oncologist in Israel. Book an appointment today for personalized cancer care and treatment." />
+                <meta name="theme-color" content="#1a1a1a" />
+              </Helmet>
               <Toaster />
               <Sonner />
               <BrowserRouter>

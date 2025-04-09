@@ -18,10 +18,13 @@ const BlogSection = () => {
     .slice(0, 3);
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-gray-50" aria-labelledby="blog-section-title">
       <div className="container mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold font-serif text-gray-900">
+          <h2 
+            id="blog-section-title" 
+            className="text-3xl font-bold font-serif text-gray-900"
+          >
             {translate("blogSectionTitle", language)}
           </h2>
           <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
@@ -29,9 +32,13 @@ const BlogSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" role="list">
           {latestPosts.map((post) => (
-            <Card key={post.id} className="overflow-hidden border-none shadow-md transition-shadow hover:shadow-lg">
+            <Card 
+              key={post.id} 
+              className="overflow-hidden border-none shadow-md transition-shadow hover:shadow-lg"
+              role="listitem"
+            >
               <CardHeader className="pb-2">
                 <div className="flex justify-between items-center mb-2">
                   <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
@@ -61,7 +68,12 @@ const BlogSection = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/5">
+          <Button 
+            asChild 
+            variant="outline" 
+            className="border-primary text-primary hover:bg-primary/5"
+            aria-label={translate("viewAllPosts", language)}
+          >
             <Link to="/blog">{translate("viewAllPosts", language)}</Link>
           </Button>
         </div>
