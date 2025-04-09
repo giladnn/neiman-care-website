@@ -10,7 +10,7 @@ export const ruTranslations: Record<TranslationKey, string> = {
   bookAppointment: 'Записаться',
   learnMore: 'Узнать больше',
   readFullBio: 'Читать полную биографию',
-  yearsExperience: 'лет опыта',
+  yearsExperience: '30+ лет опыта',
   aboutSectionTitle: 'Обо мне',
   aboutSectionSubtitle: 'Ведущий онколог в Израиле',
   aboutSectionText1: 'Доктор Виктория Нейман - ведущий онколог в Израиле, специализирующийся на самых современных методах лечения рака.',

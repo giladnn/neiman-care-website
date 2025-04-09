@@ -14,7 +14,7 @@ export const enTranslations = {
   aboutSectionText1: "Dr. Victoria Neiman is a leading oncologist in Israel, specializing in personalized and comprehensive cancer care. With years of experience, she is dedicated to providing the highest quality treatment to her patients.",
   aboutSectionText2: "Her approach combines the latest advancements in medical science with a compassionate understanding of each patient's unique needs. She believes in empowering her patients with knowledge and support, ensuring they are active participants in their care.",
   aboutSectionText3: "From diagnosis to recovery, Dr. Neiman is committed to guiding you through every step of your journey. Her expertise, combined with a warm and caring environment, makes her a trusted partner in your fight against cancer.",
-  yearsExperience: "15+ Years Experience",
+  yearsExperience: "30+ Years Experience",
   readFullBio: "Read Full Bio",
   blogSectionTitle: "Latest Medical Insights",
   blogSectionSubtitle: "Stay informed with the latest developments and knowledge in oncology care",
