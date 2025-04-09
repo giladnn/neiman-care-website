@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { useLanguage } from '@/context/LanguageContext';
+import { useVideos } from '@/context/VideosContext';
 import { Youtube, Facebook } from 'lucide-react';
 
 export type VideoSource = 'youtube' | 'facebook';
@@ -21,6 +22,7 @@ export interface Video {
   thumbnail?: string;
 }
 
+// Default videos if none are in context
 export const videos: Video[] = [
   {
     id: "1",
@@ -62,6 +64,10 @@ export const videos: Video[] = [
 
 const VideoCarousel = () => {
   const { direction } = useLanguage();
+  const { videos: contextVideos } = useVideos();
+  
+  // Use context videos if available, otherwise use default videos
+  const displayVideos = contextVideos.length > 0 ? contextVideos : videos;
   
   return (
     <Carousel
@@ -72,7 +78,7 @@ const VideoCarousel = () => {
       }}
     >
       <CarouselContent>
-        {videos.map((video) => (
+        {displayVideos.map((video) => (
           <CarouselItem key={video.id} className="md:basis-2/3 lg:basis-3/5">
             <Card className="bg-white shadow-lg border-none">
               <CardContent className="p-0 aspect-video overflow-hidden">

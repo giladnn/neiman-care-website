@@ -1,100 +1,68 @@
 
-import { Link } from 'react-router-dom';
-import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { BlogPost } from '@/types';
-import { Button } from '@/components/ui/button';
-import { useLanguage } from '@/context/LanguageContext';
-import { translate } from '@/translations';
-
-// Sample blog posts
-const blogPosts: BlogPost[] = [
-  {
-    id: '1',
-    title: 'Advances in Immunotherapy for Cancer Treatment',
-    date: '2024-03-15',
-    excerpt: 'Exploring the latest developments in cancer immunotherapy and how they are transforming treatment outcomes for patients.',
-    content: '',
-    author: 'Dr. Victoria Neiman',
-    category: 'Treatment',
-  },
-  {
-    id: '2',
-    title: 'Understanding Genetic Testing in Cancer Diagnosis',
-    date: '2024-03-01',
-    excerpt: 'How genetic testing is revolutionizing our approach to cancer diagnosis and enabling more targeted treatment strategies.',
-    content: '',
-    author: 'Dr. Victoria Neiman',
-    category: 'Diagnosis',
-  },
-  {
-    id: '3',
-    title: 'Nutrition and Wellness During Cancer Treatment',
-    date: '2024-02-15',
-    excerpt: 'Practical advice on maintaining nutrition and overall wellness while undergoing cancer treatment.',
-    content: '',
-    author: 'Dr. Victoria Neiman',
-    category: 'Wellness',
-  },
-];
+import { Link } from "react-router-dom";
+import { useBlog } from "@/context/BlogContext";
+import { useLanguage } from "@/context/LanguageContext";
+import { translate } from "@/translations";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { format } from "date-fns";
 
 const BlogSection = () => {
   const { language } = useLanguage();
+  const { blogPosts } = useBlog();
   
+  // Show only the latest 3 blog posts
+  const latestPosts = [...blogPosts]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 3);
+
   return (
-    <section className="section-padding bg-gray-50">
+    <section className="py-16 bg-gray-50">
       <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4 font-serif">
-            {translate('latestArticles', language)}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold font-serif text-gray-900">
+            {translate("blogSectionTitle", language)}
           </h2>
-          <div className="w-20 h-1 bg-secondary mx-auto mb-6"></div>
-          <p className="max-w-2xl mx-auto text-gray-600 text-lg">
-            {translate('blogSubtitle', language)}
+          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            {translate("blogSectionSubtitle", language)}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {blogPosts.map((post) => (
-            <Card key={post.id} className="overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow">
-              <div className="h-48 bg-gray-200">
-                {post.imageUrl ? (
-                  <img 
-                    src={post.imageUrl}
-                    alt={post.title}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-primary/10 text-primary">
-                    <span className="text-4xl">📚</span>
-                  </div>
-                )}
-              </div>
-              <CardContent className="p-6">
-                <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
-                  <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
-                  <span>•</span>
-                  <span>{post.category}</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {latestPosts.map((post) => (
+            <Card key={post.id} className="overflow-hidden border-none shadow-md transition-shadow hover:shadow-lg">
+              <CardHeader className="pb-2">
+                <div className="flex justify-between items-center mb-2">
+                  <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
+                    {post.category}
+                  </Badge>
+                  <span className="text-sm text-gray-500">
+                    {format(new Date(post.date), 'MMM d, yyyy')}
+                  </span>
                 </div>
-                <h3 className="text-xl font-bold mb-2 line-clamp-2 hover:text-primary transition-colors">
-                  <Link to={`/blog/${post.id}`}>{post.title}</Link>
-                </h3>
-                <p className="text-gray-600 line-clamp-3 mb-4">
+                <CardTitle className="text-xl font-semibold line-clamp-2">{post.title}</CardTitle>
+              </CardHeader>
+              <CardContent className="pb-2">
+                <CardDescription className="text-gray-600 line-clamp-3">
                   {post.excerpt}
-                </p>
-                <Link
-                  to={`/blog/${post.id}`}
-                  className="text-primary font-medium hover:underline"
-                >
-                  {translate('readMore', language)}
-                </Link>
+                </CardDescription>
               </CardContent>
+              <CardFooter className="flex justify-between items-center pt-2">
+                <span className="text-sm text-gray-500">{post.author}</span>
+                <Button variant="link" asChild className="p-0 h-auto">
+                  <Link to="/blog">
+                    {translate("readMore", language)} →
+                  </Link>
+                </Button>
+              </CardFooter>
             </Card>
           ))}
         </div>
 
-        <div className="text-center">
-          <Button asChild className="bg-primary hover:bg-primary-dark text-white">
-            <Link to="/blog">{translate('viewAllArticles', language)}</Link>
+        <div className="mt-12 text-center">
+          <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/5">
+            <Link to="/blog">{translate("viewAllPosts", language)}</Link>
           </Button>
         </div>
       </div>

@@ -1,5 +1,4 @@
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -11,40 +10,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Plus, Pencil, Trash2 } from 'lucide-react';
 import { toast } from 'sonner';
 import { BlogPost } from '@/types';
-
-// Sample blog posts for demo
-const initialBlogPosts: BlogPost[] = [
-  {
-    id: '1',
-    title: 'Advances in Immunotherapy for Cancer Treatment',
-    date: '2024-03-15',
-    excerpt: 'Exploring the latest developments in cancer immunotherapy and how they are transforming treatment outcomes for patients.',
-    content: 'Full content goes here...',
-    author: 'Dr. Victoria Neiman',
-    category: 'Treatment'
-  },
-  {
-    id: '2',
-    title: 'Understanding Genetic Testing in Cancer Diagnosis',
-    date: '2024-03-01',
-    excerpt: 'How genetic testing is revolutionizing our approach to cancer diagnosis and enabling more targeted treatment strategies.',
-    content: 'Full content goes here...',
-    author: 'Dr. Victoria Neiman',
-    category: 'Diagnosis'
-  },
-  {
-    id: '3',
-    title: 'Nutrition and Wellness During Cancer Treatment',
-    date: '2024-02-15',
-    excerpt: 'Practical advice on maintaining nutrition and overall wellness while undergoing cancer treatment.',
-    content: 'Full content goes here...',
-    author: 'Dr. Victoria Neiman',
-    category: 'Wellness'
-  },
-];
+import { useBlog } from '@/context/BlogContext';
 
 const BlogManagement = () => {
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>(initialBlogPosts);
+  const { blogPosts, setBlogPosts } = useBlog();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const [currentPost, setCurrentPost] = useState<BlogPost | null>(null);

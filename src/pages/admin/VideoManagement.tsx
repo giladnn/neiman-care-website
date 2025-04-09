@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
@@ -38,10 +38,11 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { videos as initialVideos, Video, VideoSource } from '@/components/videos/VideoCarousel';
+import { useVideos } from '@/context/VideosContext';
 import { Youtube, Facebook, Plus, Edit, Trash } from 'lucide-react';
 
 const VideoManagement = () => {
-  const [videos, setVideos] = useState<Video[]>(initialVideos);
+  const { videos, setVideos } = useVideos();
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [currentVideo, setCurrentVideo] = useState<Video | null>(null);
@@ -51,6 +52,13 @@ const VideoManagement = () => {
     source: 'youtube' as VideoSource,
     url: '',
   });
+
+  // Initialize with default videos if context is empty
+  useEffect(() => {
+    if (videos.length === 0) {
+      setVideos(initialVideos);
+    }
+  }, [videos.length, setVideos]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
