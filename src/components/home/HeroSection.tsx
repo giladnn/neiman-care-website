@@ -17,15 +17,15 @@ const HeroSection = () => {
         style={{ backgroundImage: "url('/path-to-hero-image.jpg')" }}
       ></div> */}
       
-      <div className={`container mx-auto relative z-10 py-20 ${direction === 'rtl' ? 'rtl' : ''}`}>
+      <div className="container mx-auto relative z-10 py-20">
         <div className={`max-w-3xl ${direction === 'rtl' ? 'mr-0 ml-auto text-right' : ''}`}>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-serif">
+          <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-serif ${direction === 'rtl' ? 'text-right' : ''}`}>
             {translate('heroTitle', language)}
           </h1>
-          <p className="text-xl md:text-2xl mb-8 font-light">
+          <p className={`text-xl md:text-2xl mb-8 font-light ${direction === 'rtl' ? 'text-right' : ''}`}>
             {translate('heroSubtitle', language)}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className={`flex flex-col sm:flex-row gap-4 ${direction === 'rtl' ? 'justify-start sm:justify-end' : ''}`}>
             <Button asChild size="lg" className="bg-secondary hover:bg-secondary-dark text-white">
               <Link to="/appointment">{translate('bookAppointment', language)}</Link>
             </Button>
