@@ -1,3 +1,4 @@
+
 import { TranslationKey } from '.';
 
 export const heTranslations: Record<TranslationKey, string> = {
@@ -169,5 +170,21 @@ export const heTranslations: Record<TranslationKey, string> = {
   off: "כבוי",
   resetAll: "איפוס הכל",
   adjustFontSize: "התאמת גודל גופן",
-  adjustBrightness: "התאמת בהירות מסך"
+  adjustBrightness: "התאמת בהירות מסך",
+  
+  // Treatment Process Section
+  treatmentProcessTitle: "תהליך הטיפול שלנו",
+  treatmentProcessSubtitle: "ד״ר ניימן עוקבת אחר גישה מובנית כדי להבטיח טיפול מקיף לכל מטופל",
+  initialConsultationStep: "ייעוץ ראשוני",
+  initialConsultationDesc: "סקירה מקיפה של ההיסטוריה הרפואית שלך, התסמינים והחששות כדי לבסס הבנה בסיסית של מצבך.",
+  comprehensiveDiagnosisStep: "אבחון מקיף",
+  comprehensiveDiagnosisDesc: "הליכי אבחון מתקדמים כולל הדמיה, בדיקות מעבדה וביופסיות לזיהוי מדויק של סוג ושלב הסרטן.",
+  personalizedTreatmentPlanningStep: "תכנון טיפול מותאם אישית",
+  personalizedTreatmentPlanningDesc: "פיתוח אסטרטגיית טיפול מותאמת אישית שמתחשבת בפרופיל הסרטן הספציפי שלך, בבריאות הכללית ובהעדפות האישיות שלך.",
+  treatmentImplementationStep: "יישום הטיפול",
+  treatmentImplementationDesc: "מתן זהיר של הטיפולים שנבחרו עם ניטור קבוע והתאמות לפי הצורך.",
+  followUpCareStep: "טיפול מעקב",
+  followUpCareDesc: "הערכות מתמשכות למעקב אחר התקדמותך, ניהול תופעות לוואי וביצוע שינויים הכרחיים בתוכנית הטיפול שלך.",
+  survivorshipPlanningStep: "תכנון הישרדות",
+  survivorshipPlanningDesc: "תכנון טיפול לטווח ארוך המתמקד במניעת הישנות, ניטור השפעות מאוחרות של הטיפול ותמיכה בחזרה לרווחה שלך."
 };

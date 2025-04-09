@@ -1,5 +1,7 @@
 
 import React from 'react';
+import { useLanguage } from '@/context/LanguageContext';
+import { translate } from '@/translations';
 
 interface TreatmentStep {
   step: string;
@@ -7,50 +9,53 @@ interface TreatmentStep {
   description: string;
 }
 
-const treatmentSteps: TreatmentStep[] = [
-  {
-    step: "1",
-    title: "Initial Consultation",
-    description: "A thorough review of your medical history, symptoms, and concerns to establish a baseline understanding of your condition."
-  },
-  {
-    step: "2",
-    title: "Comprehensive Diagnosis",
-    description: "State-of-the-art diagnostic procedures including imaging, laboratory tests, and biopsies to accurately identify the type and stage of cancer."
-  },
-  {
-    step: "3",
-    title: "Personalized Treatment Planning",
-    description: "Development of a tailored treatment strategy that considers your specific cancer profile, overall health, and personal preferences."
-  },
-  {
-    step: "4",
-    title: "Treatment Implementation",
-    description: "Careful administration of the selected treatments with regular monitoring and adjustments as needed."
-  },
-  {
-    step: "5",
-    title: "Follow-up Care",
-    description: "Ongoing assessments to track your progress, manage side effects, and make any necessary modifications to your treatment plan."
-  },
-  {
-    step: "6",
-    title: "Survivorship Planning",
-    description: "Long-term care planning focused on preventing recurrence, monitoring for late effects of treatment, and supporting your return to wellness."
-  }
-];
-
 const TreatmentProcess = () => {
+  const { language } = useLanguage();
+
+  // Using translation keys instead of hardcoded text
+  const treatmentSteps: TreatmentStep[] = [
+    {
+      step: "1",
+      title: translate("initialConsultationStep", language),
+      description: translate("initialConsultationDesc", language)
+    },
+    {
+      step: "2",
+      title: translate("comprehensiveDiagnosisStep", language),
+      description: translate("comprehensiveDiagnosisDesc", language)
+    },
+    {
+      step: "3",
+      title: translate("personalizedTreatmentPlanningStep", language),
+      description: translate("personalizedTreatmentPlanningDesc", language)
+    },
+    {
+      step: "4",
+      title: translate("treatmentImplementationStep", language),
+      description: translate("treatmentImplementationDesc", language)
+    },
+    {
+      step: "5",
+      title: translate("followUpCareStep", language),
+      description: translate("followUpCareDesc", language)
+    },
+    {
+      step: "6",
+      title: translate("survivorshipPlanningStep", language),
+      description: translate("survivorshipPlanningDesc", language)
+    }
+  ];
+
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-gray-800 mb-4 font-serif">
-            Our Treatment Process
+            {translate("treatmentProcessTitle", language)}
           </h2>
           <div className="w-20 h-1 bg-secondary mx-auto mb-6"></div>
           <p className="max-w-2xl mx-auto text-gray-600 text-lg">
-            Dr. Neiman follows a structured approach to ensure comprehensive care for each patient
+            {translate("treatmentProcessSubtitle", language)}
           </p>
         </div>
 

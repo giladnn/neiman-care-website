@@ -1,3 +1,4 @@
+
 export const enTranslations = {
   home: "Home",
   about: "About",
@@ -131,5 +132,21 @@ export const enTranslations = {
   off: "Off",
   resetAll: "Reset All",
   adjustFontSize: "Adjust font size",
-  adjustBrightness: "Adjust screen brightness"
+  adjustBrightness: "Adjust screen brightness",
+  
+  // Treatment Process section
+  treatmentProcessTitle: "Our Treatment Process",
+  treatmentProcessSubtitle: "Dr. Neiman follows a structured approach to ensure comprehensive care for each patient",
+  initialConsultationStep: "Initial Consultation",
+  initialConsultationDesc: "A thorough review of your medical history, symptoms, and concerns to establish a baseline understanding of your condition.",
+  comprehensiveDiagnosisStep: "Comprehensive Diagnosis",
+  comprehensiveDiagnosisDesc: "State-of-the-art diagnostic procedures including imaging, laboratory tests, and biopsies to accurately identify the type and stage of cancer.",
+  personalizedTreatmentPlanningStep: "Personalized Treatment Planning",
+  personalizedTreatmentPlanningDesc: "Development of a tailored treatment strategy that considers your specific cancer profile, overall health, and personal preferences.",
+  treatmentImplementationStep: "Treatment Implementation",
+  treatmentImplementationDesc: "Careful administration of the selected treatments with regular monitoring and adjustments as needed.",
+  followUpCareStep: "Follow-up Care",
+  followUpCareDesc: "Ongoing assessments to track your progress, manage side effects, and make any necessary modifications to your treatment plan.",
+  survivorshipPlanningStep: "Survivorship Planning",
+  survivorshipPlanningDesc: "Long-term care planning focused on preventing recurrence, monitoring for late effects of treatment, and supporting your return to wellness."
 };
