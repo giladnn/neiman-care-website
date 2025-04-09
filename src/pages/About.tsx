@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import VideoCarousel from '@/components/videos/VideoCarousel';
 
 const About = () => {
   return (
@@ -129,8 +130,24 @@ const About = () => {
         </div>
       </section>
 
-      {/* Research & Publications */}
+      {/* Video Carousel Section */}
       <section className="py-16">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-800 mb-4 font-serif">
+              Media Appearances
+            </h2>
+            <div className="w-20 h-1 bg-secondary mx-auto mb-6"></div>
+            <p className="max-w-2xl mx-auto text-gray-600">
+              Watch Dr. Victoria Neiman's interviews and educational videos on various oncology topics.
+            </p>
+          </div>
+          <VideoCarousel />
+        </div>
+      </section>
+
+      {/* Research & Publications */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-800 mb-4 font-serif">
@@ -148,11 +165,11 @@ const About = () => {
                 <h3 className="text-xl font-bold mb-2">Selected Publications</h3>
                 <ul className="space-y-4 mt-4">
                   {[
-                    "Neiman V, et al. (2023) \"Personalized Immunotherapy Approaches in Advanced Breast Cancer Patients.\" Journal of Clinical Oncology.",
-                    "Cohen R, Neiman V, et al. (2022) \"Long-term Outcomes of Targeted Therapy in BRCA-mutated Ovarian Cancer.\" Nature Medicine.",
-                    "Neiman V, et al. (2021) \"Quality of Life Assessment in Elderly Patients Undergoing Immunotherapy.\" The Oncologist.",
-                    "Berkovich M, Neiman V, et al. (2020) \"Novel Biomarkers for Predicting Response to Checkpoint Inhibitors in Non-Small Cell Lung Cancer.\" Cancer Research.",
-                    "Neiman V, et al. (2019) \"Comparative Analysis of Treatment Protocols for Metastatic Colorectal Cancer.\" European Journal of Cancer."
+                    "Neiman V, et al. (2022) \"Efficacy and toxicity of hypofractionated radiotherapy in patients with breast cancer.\" Current Problems in Cancer.",
+                    "Neiman V, et al. (2022) \"Real-world experience of using dose-dense or dose-intense anthracyclines and taxanes-based treatments for patients with triple-negative breast cancer.\" Current Problems in Cancer.",
+                    "Neiman V, et al. (2021) \"Outcome of Patients with Triple-Negative Breast Cancer Treated with Palliative Bevacizumab.\" The Oncologist.",
+                    "Neiman V, et al. (2020) \"Efficacy and Toxicity of Dose-dense Doxorubicin and Cyclophosphamide (ddAC) in Patients with Breast Cancer: A Single-Center Experience.\" Clinical Breast Cancer.",
+                    "Neiman V, et al. (2019) \"The efficacy and toxicity of angiotensin II receptor blocker in the adjuvant setting for patients with breast cancer: A systematic review.\" Journal of Clinical Oncology."
                   ].map((publication, index) => (
                     <li key={index} className="border-l-4 border-primary pl-4 py-2 bg-primary/5">
                       {publication}
