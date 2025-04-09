@@ -68,10 +68,10 @@ const ServicesSection = () => {
               <CardContent className="p-6">
                 <div className="text-4xl mb-4">{service.icon}</div>
                 <h3 className="text-xl font-bold mb-2 text-gray-800">
-                  {translate(service.titleKey, language)}
+                  {translate(service.titleKey as any, language)}
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  {translate(service.descriptionKey, language)}
+                  {translate(service.descriptionKey as any, language)}
                 </p>
                 <Link 
                   to={`/services#${service.id}`} 

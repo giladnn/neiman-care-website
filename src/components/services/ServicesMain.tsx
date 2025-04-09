@@ -76,10 +76,10 @@ const ServicesMain = () => {
                 <div className="flex flex-col h-full">
                   <div className="text-4xl mb-4">{service.icon}</div>
                   <h3 className="text-xl font-bold mb-3 text-gray-800">
-                    {translate(service.titleKey, language)}
+                    {translate(service.titleKey as any, language)}
                   </h3>
                   <p className="text-gray-600 flex-grow mb-4">
-                    {translate(service.descriptionKey, language)}
+                    {translate(service.descriptionKey as any, language)}
                   </p>
                   <Button variant="outline" className="w-full text-primary border-primary hover:bg-primary hover:text-white">
                     {translate('learnMore', language)}
