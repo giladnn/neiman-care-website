@@ -11,6 +11,7 @@ import {
   Settings, 
   LogOut,
   LayoutDashboard,
+  Video,
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -31,6 +32,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
   const navItems = [
     { name: 'Dashboard', icon: <LayoutDashboard size={20} />, path: '/admin/dashboard' },
     { name: 'Blog Posts', icon: <FileText size={20} />, path: '/admin/blog' },
+    { name: 'Videos', icon: <Video size={20} />, path: '/admin/videos' },
     { name: 'Appointments', icon: <Calendar size={20} />, path: '/admin/appointments' },
     { name: 'Messages', icon: <MessageSquare size={20} />, path: '/admin/messages' },
     { name: 'Settings', icon: <Settings size={20} />, path: '/admin/settings' }

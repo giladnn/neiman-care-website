@@ -20,6 +20,7 @@ import NotFound from "./pages/NotFound";
 import Login from "./pages/admin/Login";
 import Dashboard from "./pages/admin/Dashboard";
 import BlogManagement from "./pages/admin/BlogManagement";
+import VideoManagement from "./pages/admin/VideoManagement";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -45,6 +46,7 @@ const App = () => (
               <Route path="/admin/login" element={<Login />} />
               <Route path="/admin/dashboard" element={<Dashboard />} />
               <Route path="/admin/blog" element={<BlogManagement />} />
+              <Route path="/admin/videos" element={<VideoManagement />} />
               
               {/* 404 Route */}
               <Route path="*" element={<NotFound />} />

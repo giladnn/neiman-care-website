@@ -11,9 +11,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useLanguage } from '@/context/LanguageContext';
 import { Youtube, Facebook } from 'lucide-react';
 
-type VideoSource = 'youtube' | 'facebook';
+export type VideoSource = 'youtube' | 'facebook';
 
-interface Video {
+export interface Video {
   id: string;
   title: string;
   source: VideoSource;
@@ -21,7 +21,7 @@ interface Video {
   thumbnail?: string;
 }
 
-const videos: Video[] = [
+export const videos: Video[] = [
   {
     id: "1",
     title: "Victoria Neiman - Breast Cancer Early Detection",
@@ -51,6 +51,12 @@ const videos: Video[] = [
     title: "כל התשובות לשאלות על סרטן הכליה",
     source: "facebook",
     url: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fkeshet.mako%2Fvideos%2F390481672578057%2F",
+  },
+  {
+    id: "6",
+    title: "Victoria Neiman - Cancer Research Updates",
+    source: "youtube",
+    url: "https://www.youtube.com/embed/Lh4fAoKg5uI",
   }
 ];
 
