@@ -100,7 +100,7 @@ const Footer = () => {
             <div className="flex space-x-6">
               <Link to="/privacy-policy" className="text-gray-400 hover:text-secondary transition-colors">{translate('privacyPolicy', language)}</Link>
               <Link to="/terms" className="text-gray-400 hover:text-secondary transition-colors">{translate('termsOfService', language)}</Link>
-              <Link to="/admin" className="text-gray-400 hover:text-secondary transition-colors">{translate('adminLogin', language)}</Link>
+              {/* Admin Login link removed */}
             </div>
           </div>
         </div>

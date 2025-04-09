@@ -12,8 +12,8 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('en');
-  const [direction, setDirection] = useState<'ltr' | 'rtl'>('ltr');
+  const [language, setLanguage] = useState<Language>('he');
+  const [direction, setDirection] = useState<'ltr' | 'rtl'>('rtl');
 
   // Update direction when language changes
   useEffect(() => {
