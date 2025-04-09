@@ -1,4 +1,3 @@
-
 export const enTranslations = {
   home: "Home",
   about: "About",
@@ -23,7 +22,6 @@ export const enTranslations = {
   viewAllPosts: "View all posts",
   skipToContent: "Skip to main content",
   
-  // Additional translations
   patientTestimonials: "Patient Testimonials",
   testimonialsSubtitle: "Read what our patients say about their experience with Dr. Victoria Neiman",
   ourServices: "Our Services",
@@ -91,7 +89,6 @@ export const enTranslations = {
   contactInfo: "Contact Info",
   officeHoursFooter: "Office Hours",
   
-  // Service titles and descriptions
   cancerDiagnosis: "Cancer Diagnosis",
   cancerDiagnosisDesc: "Comprehensive diagnostic services including advanced imaging, biopsies, and genetic testing to determine the precise nature and stage of your cancer.",
   personalizedTreatment: "Personalized Treatment Plans",
@@ -105,7 +102,6 @@ export const enTranslations = {
   survivorshipCare: "Survivorship Care",
   survivorshipCareDesc: "Long-term follow-up care and wellness planning for cancer survivors, addressing both physical and psychological aspects of post-cancer life.",
   
-  // Research Section
   selectedPublications: "Selected Publications",
   researchInterests: "Research Interests",
   publication1: "Neiman V, et al. (2022) \"Efficacy and toxicity of hypofractionated radiotherapy in patients with breast cancer.\" Current Problems in Cancer.",
@@ -123,7 +119,6 @@ export const enTranslations = {
   combinationTherapy: "Combination Therapy Protocols",
   combinationTherapyDesc: "Investigating synergistic effects of combining different treatment modalities for improved outcomes.",
   
-  // Accessibility Widget
   accessibilityOptions: "Accessibility Options",
   fontSize: "Font Size",
   brightness: "Brightness",
@@ -134,7 +129,6 @@ export const enTranslations = {
   adjustFontSize: "Adjust font size",
   adjustBrightness: "Adjust screen brightness",
   
-  // Treatment Process section
   treatmentProcessTitle: "Our Treatment Process",
   treatmentProcessSubtitle: "Dr. Neiman follows a structured approach to ensure comprehensive care for each patient",
   initialConsultationStep: "Initial Consultation",
@@ -150,7 +144,6 @@ export const enTranslations = {
   survivorshipPlanningStep: "Survivorship Planning",
   survivorshipPlanningDesc: "Long-term care planning focused on preventing recurrence, monitoring for late effects of treatment, and supporting your return to wellness.",
   
-  // FAQ questions and answers
   faqCancerTypes: "What types of cancer does Dr. Neiman specialize in treating?",
   faqCancerTypesAnswer: "Dr. Neiman specializes in treating a wide range of cancers, with particular expertise in breast cancer, lung cancer, gastrointestinal cancers, and lymphomas.",
   faqTreatmentTime: "How long does a typical treatment process take?",
@@ -160,5 +153,24 @@ export const enTranslations = {
   faqFirstAppointment: "What should I bring to my first appointment?",
   faqFirstAppointmentAnswer: "Please bring your medical records, including any previous test results, imaging studies, and pathology reports. Also bring a list of current medications, your insurance information, and a list of questions you may have.",
   faqTelemedicine: "Are telemedicine consultations available?",
-  faqTelemedicineAnswer: "Yes, Dr. Neiman offers telemedicine appointments for appropriate situations, such as follow-up consultations and certain types of treatment discussions."
+  faqTelemedicineAnswer: "Yes, Dr. Neiman offers telemedicine appointments for appropriate situations, such as follow-up consultations and certain types of treatment discussions.",
+  
+  patientStoriesTitle: "Patient Stories",
+  patientStoriesDescription: "Discover the experiences of patients who have received care from Dr. Victoria Neiman. These personal accounts offer insights into Dr. Neiman's approach to treatment and patient care.",
+  featuredStories: "Featured Stories",
+  featuredStoriesDescription: "Read these highlighted stories of courage and recovery from patients who have generously shared their experiences.",
+  allStories: "All Stories",
+  breastCancer: "Breast Cancer",
+  lungCancer: "Lung Cancer",
+  gastrointestinal: "Gastrointestinal",
+  lymphoma: "Lymphoma",
+  videoTestimonials: "Video Testimonials",
+  videoTestimonialsDescription: "Watch video testimonials from patients sharing their experiences of treatment and recovery with Dr. Neiman.",
+  readFullStory: "Read Full Story",
+  fullStory: "Full Story",
+  diagnosis: "Diagnosis",
+  treatment: "Treatment",
+  videoTestimonial: "Video Testimonial",
+  backToVideos: "Back to Videos",
+  noStoriesFound: "No stories found for this category."
 };

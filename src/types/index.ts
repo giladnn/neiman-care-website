@@ -1,3 +1,4 @@
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -16,6 +17,14 @@ export interface Testimonial {
   content: string;
   rating: number;
   imageUrl?: string;
+}
+
+export interface PatientStory extends Testimonial {
+  fullStory: string;
+  diagnosis?: string;
+  treatmentJourney?: string;
+  videoUrl?: string;
+  featured: boolean;
 }
 
 export interface NewsArticle {
