@@ -5,34 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/context/LanguageContext';
 import { translate } from '@/translations';
-
-interface FAQItem {
-  question: string;
-  answer: string;
-}
-
-const faqItems: FAQItem[] = [
-  {
-    question: "What types of cancer does Dr. Neiman specialize in treating?",
-    answer: "Dr. Neiman specializes in treating a wide range of cancers, with particular expertise in breast cancer, lung cancer, gastrointestinal cancers, and lymphomas."
-  },
-  {
-    question: "How long does a typical treatment process take?",
-    answer: "The duration of cancer treatment varies significantly depending on the type and stage of cancer, as well as the specific treatment approach. During your consultation, Dr. Neiman will provide a detailed timeline based on your individual case."
-  },
-  {
-    question: "Does Dr. Neiman work with a multidisciplinary team?",
-    answer: "Yes, Dr. Neiman collaborates with a comprehensive team of healthcare professionals including surgeons, radiation oncologists, pathologists, nurses, nutritionists, and mental health specialists to ensure holistic care."
-  },
-  {
-    question: "What should I bring to my first appointment?",
-    answer: "Please bring your medical records, including any previous test results, imaging studies, and pathology reports. Also bring a list of current medications, your insurance information, and a list of questions you may have."
-  },
-  {
-    question: "Are telemedicine consultations available?",
-    answer: "Yes, Dr. Neiman offers telemedicine appointments for appropriate situations, such as follow-up consultations and certain types of treatment discussions."
-  }
-];
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const ServicesFAQ = () => {
   const { language } = useLanguage();
@@ -50,15 +23,53 @@ const ServicesFAQ = () => {
           </p>
         </div>
 
-        <div className="max-w-3xl mx-auto grid gap-6">
-          {faqItems.map((item, index) => (
-            <Card key={index}>
-              <CardContent className="p-6">
-                <h3 className="text-lg font-bold mb-2">{item.question}</h3>
-                <p className="text-gray-600">{item.answer}</p>
-              </CardContent>
-            </Card>
-          ))}
+        <div className="max-w-3xl mx-auto">
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="item-1">
+              <AccordionTrigger className="text-left font-medium">
+                {translate('faqCancerTypes', language)}
+              </AccordionTrigger>
+              <AccordionContent className="text-gray-600">
+                {translate('faqCancerTypesAnswer', language)}
+              </AccordionContent>
+            </AccordionItem>
+            
+            <AccordionItem value="item-2">
+              <AccordionTrigger className="text-left font-medium">
+                {translate('faqTreatmentTime', language)}
+              </AccordionTrigger>
+              <AccordionContent className="text-gray-600">
+                {translate('faqTreatmentTimeAnswer', language)}
+              </AccordionContent>
+            </AccordionItem>
+            
+            <AccordionItem value="item-3">
+              <AccordionTrigger className="text-left font-medium">
+                {translate('faqTeam', language)}
+              </AccordionTrigger>
+              <AccordionContent className="text-gray-600">
+                {translate('faqTeamAnswer', language)}
+              </AccordionContent>
+            </AccordionItem>
+            
+            <AccordionItem value="item-4">
+              <AccordionTrigger className="text-left font-medium">
+                {translate('faqFirstAppointment', language)}
+              </AccordionTrigger>
+              <AccordionContent className="text-gray-600">
+                {translate('faqFirstAppointmentAnswer', language)}
+              </AccordionContent>
+            </AccordionItem>
+            
+            <AccordionItem value="item-5">
+              <AccordionTrigger className="text-left font-medium">
+                {translate('faqTelemedicine', language)}
+              </AccordionTrigger>
+              <AccordionContent className="text-gray-600">
+                {translate('faqTelemedicineAnswer', language)}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
 
         <div className="text-center mt-12">

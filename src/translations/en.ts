@@ -148,5 +148,17 @@ export const enTranslations = {
   followUpCareStep: "Follow-up Care",
   followUpCareDesc: "Ongoing assessments to track your progress, manage side effects, and make any necessary modifications to your treatment plan.",
   survivorshipPlanningStep: "Survivorship Planning",
-  survivorshipPlanningDesc: "Long-term care planning focused on preventing recurrence, monitoring for late effects of treatment, and supporting your return to wellness."
+  survivorshipPlanningDesc: "Long-term care planning focused on preventing recurrence, monitoring for late effects of treatment, and supporting your return to wellness.",
+  
+  // FAQ questions and answers
+  faqCancerTypes: "What types of cancer does Dr. Neiman specialize in treating?",
+  faqCancerTypesAnswer: "Dr. Neiman specializes in treating a wide range of cancers, with particular expertise in breast cancer, lung cancer, gastrointestinal cancers, and lymphomas.",
+  faqTreatmentTime: "How long does a typical treatment process take?",
+  faqTreatmentTimeAnswer: "The duration of cancer treatment varies significantly depending on the type and stage of cancer, as well as the specific treatment approach. During your consultation, Dr. Neiman will provide a detailed timeline based on your individual case.",
+  faqTeam: "Does Dr. Neiman work with a multidisciplinary team?",
+  faqTeamAnswer: "Yes, Dr. Neiman collaborates with a comprehensive team of healthcare professionals including surgeons, radiation oncologists, pathologists, nurses, nutritionists, and mental health specialists to ensure holistic care.",
+  faqFirstAppointment: "What should I bring to my first appointment?",
+  faqFirstAppointmentAnswer: "Please bring your medical records, including any previous test results, imaging studies, and pathology reports. Also bring a list of current medications, your insurance information, and a list of questions you may have.",
+  faqTelemedicine: "Are telemedicine consultations available?",
+  faqTelemedicineAnswer: "Yes, Dr. Neiman offers telemedicine appointments for appropriate situations, such as follow-up consultations and certain types of treatment discussions."
 };
