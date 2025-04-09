@@ -1,8 +1,12 @@
 
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
+import { useLanguage } from '@/context/LanguageContext';
+import { translate } from '@/translations';
 
 const ResearchSection = () => {
+  const { language } = useLanguage();
+  
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto">
@@ -19,14 +23,14 @@ const ResearchSection = () => {
         <div className="space-y-8">
           <Card>
             <CardContent className="p-6">
-              <h3 className="text-xl font-bold mb-2">Selected Publications</h3>
+              <h3 className="text-xl font-bold mb-2">{translate('selectedPublications', language)}</h3>
               <ul className="space-y-4 mt-4">
                 {[
-                  "Neiman V, et al. (2022) \"Efficacy and toxicity of hypofractionated radiotherapy in patients with breast cancer.\" Current Problems in Cancer.",
-                  "Neiman V, et al. (2022) \"Real-world experience of using dose-dense or dose-intense anthracyclines and taxanes-based treatments for patients with triple-negative breast cancer.\" Current Problems in Cancer.",
-                  "Neiman V, et al. (2021) \"Outcome of Patients with Triple-Negative Breast Cancer Treated with Palliative Bevacizumab.\" The Oncologist.",
-                  "Neiman V, et al. (2020) \"Efficacy and Toxicity of Dose-dense Doxorubicin and Cyclophosphamide (ddAC) in Patients with Breast Cancer: A Single-Center Experience.\" Clinical Breast Cancer.",
-                  "Neiman V, et al. (2019) \"The efficacy and toxicity of angiotensin II receptor blocker in the adjuvant setting for patients with breast cancer: A systematic review.\" Journal of Clinical Oncology."
+                  translate('publication1', language),
+                  translate('publication2', language),
+                  translate('publication3', language),
+                  translate('publication4', language),
+                  translate('publication5', language),
                 ].map((publication, index) => (
                   <li key={index} className="border-l-4 border-primary pl-4 py-2 bg-primary/5">
                     {publication}
@@ -38,24 +42,24 @@ const ResearchSection = () => {
           
           <Card>
             <CardContent className="p-6">
-              <h3 className="text-xl font-bold mb-2">Research Interests</h3>
+              <h3 className="text-xl font-bold mb-2">{translate('researchInterests', language)}</h3>
               <div className="grid md:grid-cols-2 gap-4 mt-4">
                 {[
                   {
-                    title: "Personalized Cancer Treatment",
-                    description: "Development of individualized treatment approaches based on genetic and molecular profiling of tumors."
+                    title: translate('personalizedCancer', language),
+                    description: translate('personalizedCancerDesc', language)
                   },
                   {
-                    title: "Immunotherapy Optimization",
-                    description: "Enhancing efficacy and reducing adverse effects of immunotherapy in various cancer types."
+                    title: translate('immunotherapyOptimization', language),
+                    description: translate('immunotherapyOptimizationDesc', language)
                   },
                   {
-                    title: "Cancer in Elderly Patients",
-                    description: "Specialized approaches to cancer treatment in geriatric patients, balancing efficacy and quality of life."
+                    title: translate('cancerInElderly', language),
+                    description: translate('cancerInElderlyDesc', language)
                   },
                   {
-                    title: "Combination Therapy Protocols",
-                    description: "Investigating synergistic effects of combining different treatment modalities for improved outcomes."
+                    title: translate('combinationTherapy', language),
+                    description: translate('combinationTherapyDesc', language)
                   }
                 ].map((item, index) => (
                   <div key={index} className="bg-gray-50 p-4 rounded-lg">
@@ -73,3 +77,4 @@ const ResearchSection = () => {
 };
 
 export default ResearchSection;
+

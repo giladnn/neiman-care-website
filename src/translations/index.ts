@@ -18,3 +18,4 @@ const translations: Record<Language, Translation> = {
 export function translate(key: TranslationKey, language: Language): string {
   return translations[language][key] || translations.en[key] || key;
 }
+

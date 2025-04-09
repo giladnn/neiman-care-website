@@ -1,4 +1,3 @@
-
 export const enTranslations = {
   home: "Home",
   about: "About",
@@ -103,5 +102,23 @@ export const enTranslations = {
   targetedTherapy: "Targeted Therapy",
   targetedTherapyDesc: "Precision medicine approaches that target specific genetic mutations or proteins involved in your cancer's growth and spread.",
   survivorshipCare: "Survivorship Care",
-  survivorshipCareDesc: "Long-term follow-up care and wellness planning for cancer survivors, addressing both physical and psychological aspects of post-cancer life."
+  survivorshipCareDesc: "Long-term follow-up care and wellness planning for cancer survivors, addressing both physical and psychological aspects of post-cancer life.",
+  
+  // Research Section
+  selectedPublications: "Selected Publications",
+  researchInterests: "Research Interests",
+  publication1: "Neiman V, et al. (2022) \"Efficacy and toxicity of hypofractionated radiotherapy in patients with breast cancer.\" Current Problems in Cancer.",
+  publication2: "Neiman V, et al. (2022) \"Real-world experience of using dose-dense or dose-intense anthracyclines and taxanes-based treatments for patients with triple-negative breast cancer.\" Current Problems in Cancer.",
+  publication3: "Neiman V, et al. (2021) \"Outcome of Patients with Triple-Negative Breast Cancer Treated with Palliative Bevacizumab.\" The Oncologist.",
+  publication4: "Neiman V, et al. (2020) \"Efficacy and Toxicity of Dose-dense Doxorubicin and Cyclophosphamide (ddAC) in Patients with Breast Cancer: A Single-Center Experience.\" Clinical Breast Cancer.",
+  publication5: "Neiman V, et al. (2019) \"The efficacy and toxicity of angiotensin II receptor blocker in the adjuvant setting for patients with breast cancer: A systematic review.\" Journal of Clinical Oncology.",
+  
+  personalizedCancer: "Personalized Cancer Treatment",
+  personalizedCancerDesc: "Development of individualized treatment approaches based on genetic and molecular profiling of tumors.",
+  immunotherapyOptimization: "Immunotherapy Optimization",
+  immunotherapyOptimizationDesc: "Enhancing efficacy and reducing adverse effects of immunotherapy in various cancer types.",
+  cancerInElderly: "Cancer in Elderly Patients",
+  cancerInElderlyDesc: "Specialized approaches to cancer treatment in geriatric patients, balancing efficacy and quality of life.",
+  combinationTherapy: "Combination Therapy Protocols",
+  combinationTherapyDesc: "Investigating synergistic effects of combining different treatment modalities for improved outcomes."
 };
