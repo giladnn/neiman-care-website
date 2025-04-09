@@ -1,7 +1,7 @@
 
-import { Translation } from '.';
+import { TranslationKey } from '.';
 
-export const ru: Translation = {
+export const ruTranslations: Record<TranslationKey, string> = {
   home: 'Главная',
   about: 'О нас',
   services: 'Услуги',
@@ -91,4 +91,5 @@ export const ru: Translation = {
   quickLinks: 'Быстрые ссылки',
   contactInfo: 'Контактная информация',
   officeHoursFooter: 'Часы работы',
+  email: 'Электронная почта',
 };

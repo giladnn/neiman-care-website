@@ -1,7 +1,7 @@
 
-import { Translation } from '.';
+import { TranslationKey } from '.';
 
-export const he: Translation = {
+export const heTranslations: Record<TranslationKey, string> = {
   // Navbar
   home: 'דף הבית',
   about: 'אודות',
@@ -52,7 +52,6 @@ export const he: Translation = {
   easyAccess: 'גישה נוחה',
   
   // Blog Section
-  latestArticles: 'מאמרים אחרונים',
   blogSectionTitle: 'תובנות רפואיות אחרונות',
   blogSectionSubtitle: 'הישאר מעודכן עם המחקרים, אפשרויות הטיפול ותובנות בריאותיות עדכניות מד״ר ויקטוריה ניימן.',
   viewAllPosts: 'צפה בכל המאמרים',

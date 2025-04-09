@@ -1,7 +1,5 @@
 
-import { Translation } from '.';
-
-export const en: Translation = {
+export const enTranslations = {
   home: "Home",
   about: "About",
   services: "Services",
