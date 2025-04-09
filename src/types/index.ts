@@ -25,6 +25,7 @@ export interface PatientStory extends Testimonial {
   treatmentJourney?: string;
   videoUrl?: string;
   featured: boolean;
+  category?: string; // Adding category field
 }
 
 export interface NewsArticle {
