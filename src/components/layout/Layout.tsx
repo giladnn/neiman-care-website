@@ -5,6 +5,7 @@ import Footer from './Footer';
 import { useLanguage } from '@/context/LanguageContext';
 import { usePageTracking } from '@/hooks/usePageTracking';
 import SkipToContent from '@/components/accessibility/SkipToContent';
+import AccessibilityWidget from '@/components/accessibility/AccessibilityWidget';
 
 interface LayoutProps {
   children: ReactNode;
@@ -33,6 +34,7 @@ const Layout = ({ children }: LayoutProps) => {
       lang={language}
     >
       <SkipToContent />
+      <AccessibilityWidget />
       <Navbar />
       <main 
         id="main-content" 

@@ -19,3 +19,7 @@ export function translate(key: TranslationKey, language: Language): string {
   return translations[language][key] || translations.en[key] || key;
 }
 
+// Helper function to get direction based on language
+export function getDirection(language: Language): 'ltr' | 'rtl' {
+  return language === 'he' ? 'rtl' : 'ltr';
+}
