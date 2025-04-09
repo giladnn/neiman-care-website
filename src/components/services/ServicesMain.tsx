@@ -2,7 +2,6 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Service } from '@/types';
 import { useLanguage } from '@/context/LanguageContext';
 import { translate } from '@/translations';
 
