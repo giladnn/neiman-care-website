@@ -75,7 +75,7 @@ const VideoCarousel = () => {
       opts={{
         align: "center",
         loop: true,
-        rtl: direction === 'rtl',
+        direction: direction === 'rtl' ? 'rtl' : 'ltr'
       }}
     >
       <CarouselContent>
