@@ -56,7 +56,7 @@ export const sendEmailNotification = async (appointment: AppointmentForm) => {
   try {
     // Prepare email template parameters
     const templateParams = {
-      to_email: 'gilad.neiman@gmail.com',
+      to_email: 'clinic@example.com', // Replace with your clinic's email
       from_name: appointment.name,
       subject: `New Appointment Request: ${appointment.name} - ${appointment.date}`,
       message: `
@@ -76,16 +76,16 @@ export const sendEmailNotification = async (appointment: AppointmentForm) => {
       reply_to: appointment.email
     };
     
-    console.log("Sending email notification to gilad.neiman@gmail.com");
-    console.log(templateParams);
+    console.log("Sending email notification");
     
     // Send email using EmailJS
-    // Note: Replace these with your actual EmailJS service, template, and user IDs
+    // You must set up these values in the EmailJS dashboard (https://www.emailjs.com/)
+    // and use them here
     const response = await emailjs.send(
-      'service_appointment',  // Your EmailJS service ID
-      'template_appointment', // Your EmailJS template ID
+      'YOUR_SERVICE_ID',  // Your EmailJS service ID
+      'YOUR_TEMPLATE_ID', // Your EmailJS template ID
       templateParams,
-      'your_emailjs_public_key' // Your EmailJS public key
+      'YOUR_PUBLIC_KEY'   // Your EmailJS public key
     );
     
     console.log('Email successfully sent!', response);
