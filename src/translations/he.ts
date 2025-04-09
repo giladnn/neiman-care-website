@@ -1,3 +1,4 @@
+
 import { TranslationKey } from '.';
 
 export const heTranslations: Record<TranslationKey, string> = {
@@ -193,4 +194,24 @@ export const heTranslations: Record<TranslationKey, string> = {
   faqTreatmentTime: "כמה זמן אורך תהליך טיפול טיפוסי?",
   faqTreatmentTimeAnswer: "משך הטיפול בסרטן משתנה באופן משמעותי בהתאם לסוג ושלב הסרטן, וכן לגישת הטיפול הספציפית. במהלך הייעוץ שלך, ד״ר ניימן תספק לך לוח זמנים מפורט המבוסס על המקרה האישי שלך.",
   faqTeam: "האם ד״ר ניימן עובדת עם צוות רב-תחומי?",
-  faqTeamAnswer: "כן, ד״ר ניימן משתפת פעולה עם צוות מקיף של אנשי מקצוע בתחום הבריאות הכולל מנתחים, אונקולוגים מומחי הקרנות, פתולוגים, אחיות, תזונאים ו
+  faqTeamAnswer: "כן, ד״ר ניימן משתפת פעולה עם צוות מקיף של אנשי מקצוע בתחום הבריאות הכולל מנתחים, אונקולוגים מומחי הקרנות, פתולוגים, אחיות, תזונאים ואנשי מקצוע בתחום בריאות הנפש כדי להבטיח טיפול הוליסטי עבור כל מטופל.",
+  
+  // Patient Stories
+  patientStoriesTitle: "סיפורי מטופלים",
+  patientStoriesDescription: "מטופלים משתפים את החוויות והמסעות שלהם עם ד״ר ניימן והטיפולים שקיבלו.",
+  allStories: "כל הסיפורים",
+  breastCancer: "סרטן השד",
+  lungCancer: "סרטן הריאות",
+  gastrointestinal: "מערכת העיכול",
+  lymphoma: "לימפומה",
+  videoTestimonials: "עדויות וידאו",
+  featuredStories: "סיפורים מובחרים",
+  featuredStoriesDescription: "סיפורים מיוחדים המדגישים את הגישה המקיפה והאישית של ד״ר ניימן לטיפול בסרטן.",
+  readFullStory: "קרא את הסיפור המלא",
+  noStoriesFound: "לא נמצאו סיפורים בקטגוריה זו.",
+  watchVideo: "צפה בוידאו",
+  diagnosis: "אבחנה",
+  treatmentJourney: "מסע הטיפול",
+  patientStory: "סיפור המטופל",
+  shareStory: "שתף סיפור"
+};
