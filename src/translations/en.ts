@@ -90,4 +90,18 @@ export const enTranslations = {
   quickLinks: "Quick Links",
   contactInfo: "Contact Info",
   officeHoursFooter: "Office Hours",
+  
+  // Service titles and descriptions
+  cancerDiagnosis: "Cancer Diagnosis",
+  cancerDiagnosisDesc: "Comprehensive diagnostic services including advanced imaging, biopsies, and genetic testing to determine the precise nature and stage of your cancer.",
+  personalizedTreatment: "Personalized Treatment Plans",
+  personalizedTreatmentDesc: "Individualized treatment strategies created specifically for your condition, considering your cancer type, stage, genetic profile, and personal health factors.",
+  chemotherapy: "Chemotherapy",
+  chemotherapyDesc: "Administration and management of chemotherapy protocols with close monitoring and supportive care to minimize side effects and maximize efficacy.",
+  immunotherapy: "Immunotherapy",
+  immunotherapyDesc: "Cutting-edge immunotherapy treatments that harness your immune system to fight cancer, with specialized expertise in the latest protocols.",
+  targetedTherapy: "Targeted Therapy",
+  targetedTherapyDesc: "Precision medicine approaches that target specific genetic mutations or proteins involved in your cancer's growth and spread.",
+  survivorshipCare: "Survivorship Care",
+  survivorshipCareDesc: "Long-term follow-up care and wellness planning for cancer survivors, addressing both physical and psychological aspects of post-cancer life."
 };
