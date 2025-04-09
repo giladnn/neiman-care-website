@@ -7,7 +7,7 @@ import { useLanguage } from '@/context/LanguageContext';
 import { translate } from '@/translations';
 
 const AppointmentSection = () => {
-  const { language } = useLanguage();
+  const { language, direction } = useLanguage();
   
   return (
     <section className="section-padding">
@@ -28,7 +28,7 @@ const AppointmentSection = () => {
                   <div className="bg-primary/10 p-3 rounded-full">
                     <Phone className="text-primary" size={24} />
                   </div>
-                  <div>
+                  <div className={direction === 'rtl' ? 'text-right' : ''}>
                     <h3 className="font-bold text-gray-800">{translate('callUs', language)}</h3>
                     <p className="text-gray-600">+972 3 123 4567</p>
                   </div>
@@ -40,7 +40,7 @@ const AppointmentSection = () => {
                   <div className="bg-primary/10 p-3 rounded-full">
                     <Mail className="text-primary" size={24} />
                   </div>
-                  <div>
+                  <div className={direction === 'rtl' ? 'text-right' : ''}>
                     <h3 className="font-bold text-gray-800">{translate('emailUs', language)}</h3>
                     <p className="text-gray-600">contact@neiman-care.com</p>
                   </div>
@@ -52,7 +52,7 @@ const AppointmentSection = () => {
                   <div className="bg-primary/10 p-3 rounded-full">
                     <Clock className="text-primary" size={24} />
                   </div>
-                  <div>
+                  <div className={direction === 'rtl' ? 'text-right' : ''}>
                     <h3 className="font-bold text-gray-800">{translate('officeHours', language)}</h3>
                     <p className="text-gray-600">{translate('officeHoursSchedule', language)}</p>
                   </div>
@@ -60,7 +60,7 @@ const AppointmentSection = () => {
               </Card>
             </div>
             
-            <div className="pt-4">
+            <div className={`pt-4 ${direction === 'rtl' ? 'text-right' : ''}`}>
               <Button asChild className="bg-primary hover:bg-primary-dark text-white">
                 <Link to="/appointment">{translate('bookOnline', language)}</Link>
               </Button>
@@ -73,7 +73,7 @@ const AppointmentSection = () => {
               className="w-full h-[500px] bg-gray-200 rounded-lg shadow-lg flex items-center justify-center"
             >
               {/* This will be replaced with an actual map component */}
-              <div className="text-center p-8">
+              <div className={`text-center p-8 ${direction === 'rtl' ? 'text-right' : ''}`}>
                 <Calendar size={48} className="mx-auto mb-4 text-primary" />
                 <h3 className="text-xl font-bold mb-2">{translate('clinicLocation', language)}</h3>
                 <p className="text-gray-600">

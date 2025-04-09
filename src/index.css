@@ -156,3 +156,20 @@
   margin-right: 0;
   margin-left: 0.5rem;
 }
+
+/* Fix form elements in RTL mode */
+[dir="rtl"] .form-label, 
+[dir="rtl"] .form-control, 
+[dir="rtl"] input, 
+[dir="rtl"] textarea, 
+[dir="rtl"] select,
+[dir="rtl"] .form-message {
+  text-align: right;
+}
+
+/* Fix button alignment in RTL */
+[dir="rtl"] button > *,
+[dir="rtl"] .button > * {
+  margin-left: 0;
+  margin-right: auto;
+}
