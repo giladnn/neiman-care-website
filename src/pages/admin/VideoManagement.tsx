@@ -7,51 +7,27 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { 
-  Table, 
-  TableBody, 
-  TableCell, 
-  TableHead, 
-  TableHeader, 
-  TableRow 
-} from '@/components/ui/table';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
-import { videos as initialVideos, Video, VideoSource } from '@/components/videos/VideoCarousel';
+import { Plus } from 'lucide-react';
+import { videos as initialVideos, Video } from '@/components/videos/VideoCarousel';
 import { useVideos } from '@/context/VideosContext';
-import { Youtube, Facebook, Plus, Edit, Trash } from 'lucide-react';
+import VideoList from '@/components/admin/videos/VideoList';
+import VideoFormDialog from '@/components/admin/videos/VideoFormDialog';
+import { 
+  VideoFormData, 
+  processVideoUrl, 
+  validateVideoForm, 
+  defaultFormData 
+} from '@/components/admin/videos/videoUtils';
 
 const VideoManagement = () => {
   const { videos, setVideos } = useVideos();
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [currentVideo, setCurrentVideo] = useState<Video | null>(null);
-  const [formData, setFormData] = useState({
-    id: '',
-    title: '',
-    source: 'youtube' as VideoSource,
-    url: '',
-  });
+  const [formData, setFormData] = useState<VideoFormData>(defaultFormData);
 
   // Initialize with default videos if context is empty
   useEffect(() => {
@@ -66,16 +42,11 @@ const VideoManagement = () => {
   };
 
   const handleSelectChange = (value: string) => {
-    setFormData({ ...formData, source: value as VideoSource });
+    setFormData({ ...formData, source: value as Video['source'] });
   };
 
   const resetForm = () => {
-    setFormData({
-      id: '',
-      title: '',
-      source: 'youtube',
-      url: '',
-    });
+    setFormData(defaultFormData);
     setCurrentVideo(null);
   };
 
@@ -97,22 +68,12 @@ const VideoManagement = () => {
 
   const handleAddVideo = () => {
     // Validate form
-    if (!formData.title || !formData.url) {
+    if (!validateVideoForm(formData)) {
       toast.error('Please fill in all required fields');
       return;
     }
 
-    // Process URL for embedding if needed
-    let processedUrl = formData.url;
-    
-    if (formData.source === 'youtube' && !processedUrl.includes('embed')) {
-      // Convert YouTube watch URL to embed URL
-      const youtubeRegex = /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&]+)/;
-      const match = processedUrl.match(youtubeRegex);
-      if (match && match[1]) {
-        processedUrl = `https://www.youtube.com/embed/${match[1]}`;
-      }
-    }
+    const processedUrl = processVideoUrl(formData.url, formData.source);
 
     const newVideo: Video = {
       id: Date.now().toString(),
@@ -131,22 +92,12 @@ const VideoManagement = () => {
     if (!currentVideo) return;
 
     // Validate form
-    if (!formData.title || !formData.url) {
+    if (!validateVideoForm(formData)) {
       toast.error('Please fill in all required fields');
       return;
     }
 
-    // Process URL for embedding if needed
-    let processedUrl = formData.url;
-    
-    if (formData.source === 'youtube' && !processedUrl.includes('embed')) {
-      // Convert YouTube watch URL to embed URL
-      const youtubeRegex = /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&]+)/;
-      const match = processedUrl.match(youtubeRegex);
-      if (match && match[1]) {
-        processedUrl = `https://www.youtube.com/embed/${match[1]}`;
-      }
-    }
+    const processedUrl = processVideoUrl(formData.url, formData.source);
 
     const updatedVideos = videos.map(video => {
       if (video.id === currentVideo.id) {
@@ -193,189 +144,40 @@ const VideoManagement = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Source</TableHead>
-                  <TableHead>Title</TableHead>
-                  <TableHead>URL</TableHead>
-                  <TableHead className="w-24">Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {videos.map((video) => (
-                  <TableRow key={video.id}>
-                    <TableCell>
-                      <span className="flex items-center gap-1">
-                        {video.source === 'youtube' ? (
-                          <>
-                            <Youtube className="h-4 w-4 text-red-600" />
-                            <span>YouTube</span>
-                          </>
-                        ) : (
-                          <>
-                            <Facebook className="h-4 w-4 text-blue-600" />
-                            <span>Facebook</span>
-                          </>
-                        )}
-                      </span>
-                    </TableCell>
-                    <TableCell className="font-medium">{video.title}</TableCell>
-                    <TableCell className="max-w-[200px] truncate">{video.url}</TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-2">
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => openEditDialog(video)}
-                        >
-                          <Edit className="h-4 w-4" />
-                          <span className="sr-only">Edit</span>
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => handleDeleteVideo(video.id)}
-                        >
-                          <Trash className="h-4 w-4" />
-                          <span className="sr-only">Delete</span>
-                        </Button>
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+            <VideoList 
+              videos={videos}
+              onEdit={openEditDialog}
+              onDelete={handleDeleteVideo}
+            />
           </CardContent>
         </Card>
       </div>
 
       {/* Add Video Dialog */}
-      <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
-        <DialogContent className="sm:max-w-[525px]">
-          <DialogHeader>
-            <DialogTitle>Add Video</DialogTitle>
-            <DialogDescription>
-              Add a new video to the media appearances section.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="title" className="text-right">
-                Title
-              </Label>
-              <Input
-                id="title"
-                name="title"
-                value={formData.title}
-                onChange={handleInputChange}
-                className="col-span-3"
-                placeholder="Video title"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="source" className="text-right">
-                Source
-              </Label>
-              <Select
-                value={formData.source}
-                onValueChange={handleSelectChange}
-              >
-                <SelectTrigger className="col-span-3">
-                  <SelectValue placeholder="Select source" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="youtube">YouTube</SelectItem>
-                  <SelectItem value="facebook">Facebook</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="url" className="text-right">
-                URL
-              </Label>
-              <Input
-                id="url"
-                name="url"
-                value={formData.url}
-                onChange={handleInputChange}
-                className="col-span-3"
-                placeholder={formData.source === 'youtube' 
-                  ? 'https://www.youtube.com/watch?v=abcdef123456' 
-                  : 'https://www.facebook.com/page/videos/123456789/'
-                }
-              />
-            </div>
-          </div>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setIsAddDialogOpen(false)}>
-              Cancel
-            </Button>
-            <Button onClick={handleAddVideo}>Add Video</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <VideoFormDialog
+        isOpen={isAddDialogOpen}
+        onOpenChange={setIsAddDialogOpen}
+        title="Add Video"
+        description="Add a new video to the media appearances section."
+        formData={formData}
+        onInputChange={handleInputChange}
+        onSelectChange={handleSelectChange}
+        onSubmit={handleAddVideo}
+        submitButtonText="Add Video"
+      />
 
       {/* Edit Video Dialog */}
-      <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
-        <DialogContent className="sm:max-w-[525px]">
-          <DialogHeader>
-            <DialogTitle>Edit Video</DialogTitle>
-            <DialogDescription>
-              Update the video details.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="edit-title" className="text-right">
-                Title
-              </Label>
-              <Input
-                id="edit-title"
-                name="title"
-                value={formData.title}
-                onChange={handleInputChange}
-                className="col-span-3"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="edit-source" className="text-right">
-                Source
-              </Label>
-              <Select
-                value={formData.source}
-                onValueChange={handleSelectChange}
-              >
-                <SelectTrigger className="col-span-3">
-                  <SelectValue placeholder="Select source" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="youtube">YouTube</SelectItem>
-                  <SelectItem value="facebook">Facebook</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="edit-url" className="text-right">
-                URL
-              </Label>
-              <Input
-                id="edit-url"
-                name="url"
-                value={formData.url}
-                onChange={handleInputChange}
-                className="col-span-3"
-              />
-            </div>
-          </div>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setIsEditDialogOpen(false)}>
-              Cancel
-            </Button>
-            <Button onClick={handleEditVideo}>Update Video</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <VideoFormDialog
+        isOpen={isEditDialogOpen}
+        onOpenChange={setIsEditDialogOpen}
+        title="Edit Video"
+        description="Update the video details."
+        formData={formData}
+        onInputChange={handleInputChange}
+        onSelectChange={handleSelectChange}
+        onSubmit={handleEditVideo}
+        submitButtonText="Update Video"
+      />
     </AdminLayout>
   );
 };
