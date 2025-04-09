@@ -58,21 +58,21 @@ const AccessibilityWidget = () => {
           variant="outline" 
           size="icon"
           className="fixed bottom-6 right-6 z-50 bg-primary text-white rounded-full p-3 shadow-lg hover:bg-primary-dark focus:ring-2 focus:ring-primary focus:ring-offset-2"
-          aria-label="Accessibility options"
+          aria-label={translate('accessibilityOptions', language)}
         >
           <AccessibilityIcon className="h-5 w-5" />
         </Button>
       </SheetTrigger>
       <SheetContent className="w-[300px] sm:w-[400px]">
         <SheetHeader>
-          <SheetTitle>Accessibility Options</SheetTitle>
+          <SheetTitle>{translate('accessibilityOptions', language)}</SheetTitle>
         </SheetHeader>
         <div className="py-6 space-y-6">
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Type className="h-4 w-4" />
-                <span>Font Size</span>
+                <span>{translate('fontSize', language)}</span>
               </div>
               <span>{fontSize}%</span>
             </div>
@@ -82,7 +82,7 @@ const AccessibilityWidget = () => {
               max={150}
               step={10}
               onValueChange={handleFontSizeChange}
-              aria-label="Adjust font size"
+              aria-label={translate('adjustFontSize', language)}
             />
           </div>
           
@@ -90,7 +90,7 @@ const AccessibilityWidget = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Sun className="h-4 w-4" />
-                <span>Brightness</span>
+                <span>{translate('brightness', language)}</span>
               </div>
               <span>{brightness}%</span>
             </div>
@@ -100,7 +100,7 @@ const AccessibilityWidget = () => {
               max={130}
               step={5}
               onValueChange={handleBrightnessChange}
-              aria-label="Adjust screen brightness"
+              aria-label={translate('adjustBrightness', language)}
             />
           </div>
           
@@ -113,9 +113,9 @@ const AccessibilityWidget = () => {
             >
               <div className="flex items-center gap-2">
                 <Contrast className="h-4 w-4" />
-                <span>High Contrast</span>
+                <span>{translate('highContrast', language)}</span>
               </div>
-              <span>{contrast ? "On" : "Off"}</span>
+              <span>{contrast ? translate('on', language) : translate('off', language)}</span>
             </Button>
           </div>
           
@@ -124,7 +124,7 @@ const AccessibilityWidget = () => {
             className="w-full"
             onClick={resetAll}
           >
-            Reset All
+            {translate('resetAll', language)}
           </Button>
         </div>
       </SheetContent>

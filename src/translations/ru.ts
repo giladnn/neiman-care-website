@@ -1,4 +1,3 @@
-
 import { TranslationKey } from '.';
 
 export const ruTranslations: Record<TranslationKey, string> = {
@@ -123,5 +122,16 @@ export const ruTranslations: Record<TranslationKey, string> = {
   cancerInElderly: 'Рак у пожилых пациентов',
   cancerInElderlyDesc: 'Специализированные подходы к лечению рака у гериатрических пациентов, балансирующие эффективность и качество жизни.',
   combinationTherapy: 'Протоколы комбинированной терапии',
-  combinationTherapyDesc: 'Исследование синергетических эффектов сочетания различных методов лечения для улучшения результатов.'
+  combinationTherapyDesc: 'Исследование синергетических эффектов сочетания различных методов лечения для улучшения результатов.',
+  
+  // Accessibility Widget
+  accessibilityOptions: "Настройки доступности",
+  fontSize: "Размер шрифта",
+  brightness: "Яркость",
+  highContrast: "Высокий контраст",
+  on: "Вкл",
+  off: "Выкл",
+  resetAll: "Сбросить все",
+  adjustFontSize: "Настройка размера шрифта",
+  adjustBrightness: "Настройка яркости экрана"
 };

@@ -130,7 +130,7 @@ export const heTranslations: Record<TranslationKey, string> = {
   
   // Service titles and descriptions
   cancerDiagnosis: "אבחון סרטן",
-  cancerDiagnosisDesc: "שירותי אבחון מקיפים הכוללים הדמיה מתקדמת, ביופסיות ובדיקות גנטיות לקביעת האופי המדויק והשלב של הסרטן שלך.",
+  cancerDiagnosisDesc: "שירותי אבחון מקיפים הכוללים הדמיה מתקדמת, ביופסיות ובדיקות גנטיות לקביעת האופי המדויק והשלב של סרטן שלך.",
   personalizedTreatment: "תוכניות טיפול מותאמות אישית",
   personalizedTreatmentDesc: "אסטרטגיות טיפול מותאמות אישית שנוצרו במיוחד עבור מצבך, בהתחשב בסוג הסרטן, בשלב, בפרופיל הגנטי ובגורמי הבריאות האישיים שלך.",
   chemotherapy: "כימותרפיה",
@@ -138,7 +138,7 @@ export const heTranslations: Record<TranslationKey, string> = {
   immunotherapy: "אימונותרפיה",
   immunotherapyDesc: "טיפולי אימונותרפיה מתקדמים המגייסים את מערכת החיסון שלך למלחמה בסרטן, עם מומחיות מיוחדת בפרוטוקולים העדכניים ביותר.",
   targetedTherapy: "טיפול ממוקד",
-  targetedTherapyDesc: "גישות רפואה מדויקות המתמקדות במוטציות גנטיות ספציפיות או חלבונים המעורבים בצמיחה והתפשטות של הסרטן שלך.",
+  targetedTherapyDesc: "גישות רפואה מדויקות המתמקדות במוטציות גנטיות ספציפיות או חלבונים המעורבים בצמיחה והתפשטות של סרטן שלך.",
   survivorshipCare: "טיפול בהישרדות",
   survivorshipCareDesc: "טיפול מעקב ארוך טווח ותכנון רווחה עבור שורדי סרטן, התייחסות להיבטים הפיזיים והפסיכולוגיים של החיים לאחר הסרטן.",
   
@@ -158,5 +158,16 @@ export const heTranslations: Record<TranslationKey, string> = {
   cancerInElderly: "סרטן בחולים מבוגרים",
   cancerInElderlyDesc: "גישות ייחודיות לטיפול בסרטן בחולים גריאטריים, תוך איזון בין יעילות ואיכות חיים.",
   combinationTherapy: "פרוטוקולי טיפול משולב",
-  combinationTherapyDesc: "חקר אפקטים סינרגטיים של שילוב שיטות טיפול שונות להשגת תוצאות משופרות."
+  combinationTherapyDesc: "חקר אפקטים סינרגטיים של שילוב שיטות טיפול שונות להשגת תוצאות משופרות.",
+  
+  // Accessibility Widget
+  accessibilityOptions: "אפשרויות נגישות",
+  fontSize: "גודל גופן",
+  brightness: "בהירות",
+  highContrast: "ניגודיות גבוהה",
+  on: "פעיל",
+  off: "כבוי",
+  resetAll: "איפוס הכל",
+  adjustFontSize: "התאמת גודל גופן",
+  adjustBrightness: "התאמת בהירות מסך"
 };

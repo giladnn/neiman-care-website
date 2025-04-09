@@ -120,5 +120,16 @@ export const enTranslations = {
   cancerInElderly: "Cancer in Elderly Patients",
   cancerInElderlyDesc: "Specialized approaches to cancer treatment in geriatric patients, balancing efficacy and quality of life.",
   combinationTherapy: "Combination Therapy Protocols",
-  combinationTherapyDesc: "Investigating synergistic effects of combining different treatment modalities for improved outcomes."
+  combinationTherapyDesc: "Investigating synergistic effects of combining different treatment modalities for improved outcomes.",
+  
+  // Accessibility Widget
+  accessibilityOptions: "Accessibility Options",
+  fontSize: "Font Size",
+  brightness: "Brightness",
+  highContrast: "High Contrast",
+  on: "On",
+  off: "Off",
+  resetAll: "Reset All",
+  adjustFontSize: "Adjust font size",
+  adjustBrightness: "Adjust screen brightness"
 };
