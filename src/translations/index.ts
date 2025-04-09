@@ -4,12 +4,14 @@ import { he } from './he';
 import { ru } from './ru';
 import { Language } from '../context/LanguageContext';
 
-const translations = {
+export type Translation = typeof en;
+
+const translations: Record<Language, Translation> = {
   en,
   he,
   ru,
 };
 
-export function translate(key: keyof typeof en, language: Language): string {
-  return translations[language][key] || translations.en[key] || key;
+export function translate(key: keyof Translation, language: Language): string {
+  return translations[language][key as keyof Translation] || translations.en[key as keyof Translation] || key;
 }

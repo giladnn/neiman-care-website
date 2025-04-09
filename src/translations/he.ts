@@ -1,4 +1,7 @@
-export const he = {
+
+import { Translation } from '.';
+
+export const he: Translation = {
   // Navbar
   home: 'דף הבית',
   about: 'אודות',
@@ -6,6 +9,7 @@ export const he = {
   blog: 'בלוג',
   contact: 'צור קשר',
   bookAppointment: 'קביעת תור',
+  appointment: 'תור',
   
   // Footer
   rights: 'כל הזכויות שמורות',
@@ -49,8 +53,9 @@ export const he = {
   
   // Blog Section
   latestArticles: 'מאמרים אחרונים',
-  blogSubtitle: 'הישאר מעודכן עם המחקרים, אפשרויות הטיפול ותובנות בריאותיות עדכניות מד״ר ויקטוריה ניימן.',
-  viewAllArticles: 'צפה בכל המאמרים',
+  blogSectionTitle: 'תובנות רפואיות אחרונות',
+  blogSectionSubtitle: 'הישאר מעודכן עם המחקרים, אפשרויות הטיפול ותובנות בריאותיות עדכניות מד״ר ויקטוריה ניימן.',
+  viewAllPosts: 'צפה בכל המאמרים',
   
   // News Section
   inTheNews: 'בחדשות',
@@ -123,10 +128,5 @@ export const he = {
   testResultsReview: 'סקירת תוצאות בדיקות',
   other: 'אחר',
   
-  // Blog Section
   skipToContent: "דלג לתוכן העיקרי",
-  blogSectionTitle: "תובנות רפואיות אחרונות",
-  blogSectionSubtitle: "הישארו מעודכנים עם ההתפתחויות והידע האחרונים בטיפול אונקולוגי",
-  readMore: "קרא עוד",
-  viewAllPosts: "צפה בכל הפוסטים",
 };
