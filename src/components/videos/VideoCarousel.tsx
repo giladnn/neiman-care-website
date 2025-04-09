@@ -70,50 +70,65 @@ const VideoCarousel = () => {
   const displayVideos = contextVideos.length > 0 ? contextVideos : videos;
   
   return (
-    <Carousel
-      className="mx-auto max-w-5xl"
-      opts={{
-        align: "center",
-        loop: true,
-        direction: direction === 'rtl' ? 'rtl' : 'ltr'
-      }}
-    >
-      <CarouselContent>
-        {displayVideos.map((video) => (
-          <CarouselItem key={video.id} className="md:basis-2/3 lg:basis-3/5">
-            <Card className="bg-white shadow-lg border-none">
-              <CardContent className="p-0 aspect-video overflow-hidden">
-                <div className="p-2">
-                  <div className="flex items-center gap-2 mb-2">
-                    {video.source === 'youtube' ? (
-                      <Youtube className="h-5 w-5 text-red-600" />
-                    ) : (
-                      <Facebook className="h-5 w-5 text-blue-600" />
-                    )}
-                    <h3 className={`text-lg font-medium ${direction === 'rtl' ? 'text-right' : 'text-left'}`}>
-                      {video.title}
-                    </h3>
+    <section aria-labelledby="video-carousel-heading">
+      <h2 id="video-carousel-heading" className="sr-only">Video Presentations</h2>
+      <Carousel
+        className="mx-auto max-w-5xl"
+        opts={{
+          align: "center",
+          loop: true,
+          direction: direction === 'rtl' ? 'rtl' : 'ltr'
+        }}
+        aria-roledescription="carousel"
+      >
+        <CarouselContent>
+          {displayVideos.map((video, index) => (
+            <CarouselItem 
+              key={video.id} 
+              className="md:basis-2/3 lg:basis-3/5"
+              aria-roledescription="slide"
+              aria-label={`Slide ${index + 1} of ${displayVideos.length}: ${video.title}`}
+            >
+              <Card className="bg-white shadow-lg border-none">
+                <CardContent className="p-0 aspect-video overflow-hidden">
+                  <div className="p-2">
+                    <div className="flex items-center gap-2 mb-2">
+                      {video.source === 'youtube' ? (
+                        <Youtube className="h-5 w-5 text-red-600" aria-hidden="true" />
+                      ) : (
+                        <Facebook className="h-5 w-5 text-blue-600" aria-hidden="true" />
+                      )}
+                      <h3 className={`text-lg font-medium ${direction === 'rtl' ? 'text-right' : 'text-left'}`}>
+                        {video.title}
+                      </h3>
+                    </div>
                   </div>
-                </div>
-                <div className="aspect-video">
-                  <iframe 
-                    className="w-full h-full"
-                    src={video.url} 
-                    title={video.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowFullScreen
-                  ></iframe>
-                </div>
-              </CardContent>
-            </Card>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <div className="mt-8 flex justify-center gap-2">
-        <CarouselPrevious className="relative static transform-none mx-2" />
-        <CarouselNext className="relative static transform-none mx-2" />
-      </div>
-    </Carousel>
+                  <div className="aspect-video">
+                    <iframe 
+                      className="w-full h-full"
+                      src={video.url} 
+                      title={video.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                </CardContent>
+              </Card>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <div className="mt-8 flex justify-center gap-2">
+          <CarouselPrevious 
+            className="relative static transform-none mx-2" 
+            aria-label={direction === 'rtl' ? "הבא" : "Previous slide"}
+          />
+          <CarouselNext 
+            className="relative static transform-none mx-2" 
+            aria-label={direction === 'rtl' ? "הקודם" : "Next slide"}
+          />
+        </div>
+      </Carousel>
+    </section>
   );
 };
 

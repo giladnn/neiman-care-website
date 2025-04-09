@@ -22,7 +22,21 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     
     // Apply direction to HTML document
     document.documentElement.dir = language === 'he' ? 'rtl' : 'ltr';
+    document.documentElement.lang = language;
     document.body.dir = language === 'he' ? 'rtl' : 'ltr';
+
+    // Announce language change to screen readers
+    const announcement = document.createElement('div');
+    announcement.setAttribute('aria-live', 'polite');
+    announcement.setAttribute('role', 'status');
+    announcement.classList.add('sr-only');
+    announcement.textContent = `Language changed to ${language === 'en' ? 'English' : language === 'he' ? 'Hebrew' : 'Russian'}`;
+    document.body.appendChild(announcement);
+    
+    // Remove after announcement
+    setTimeout(() => {
+      document.body.removeChild(announcement);
+    }, 1000);
   }, [language]);
 
   return (

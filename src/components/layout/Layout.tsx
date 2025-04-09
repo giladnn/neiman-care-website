@@ -1,5 +1,5 @@
 
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { useLanguage } from '@/context/LanguageContext';
@@ -11,14 +11,26 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  const { direction } = useLanguage();
+  const { language, direction } = useLanguage();
   usePageTracking(); // Track page views
+  
+  // Update document lang attribute when language changes
+  useEffect(() => {
+    document.documentElement.lang = language;
+    document.documentElement.dir = direction;
+    // Set page title based on current route for screen readers
+    const path = window.location.pathname;
+    const pageName = path === '/' 
+      ? 'Home' 
+      : path.split('/')[1].charAt(0).toUpperCase() + path.split('/')[1].slice(1);
+    document.title = `${pageName} - Dr. Victoria Neiman`;
+  }, [language, direction]);
   
   return (
     <div 
       className={`min-h-screen flex flex-col ${direction === 'rtl' ? 'text-right' : 'text-left'}`} 
       dir={direction}
-      lang={direction === 'rtl' ? 'he' : 'en'}
+      lang={language}
     >
       <SkipToContent />
       <Navbar />
