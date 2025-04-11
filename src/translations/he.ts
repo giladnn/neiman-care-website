@@ -1,4 +1,3 @@
-
 import { TranslationKey } from '.';
 
 export const heTranslations: Record<TranslationKey, string> = {
@@ -195,6 +194,10 @@ export const heTranslations: Record<TranslationKey, string> = {
   faqTreatmentTimeAnswer: "משך הטיפול בסרטן משתנה באופן משמעותי בהתאם לסוג ושלב הסרטן, וכן לגישת הטיפול הספציפית. במהלך הייעוץ שלך, ד״ר ניימן תספק לך לוח זמנים מפורט המבוסס על המקרה האישי שלך.",
   faqTeam: "האם ד״ר ניימן עובדת עם צוות רב-תחומי?",
   faqTeamAnswer: "כן, ד״ר ניימן משתפת פעולה עם צוות מקיף של אנשי מקצוע בתחום הבריאות הכולל מנתחים, אונקולוגים מומחי הקרנות, פתולוגים, אחיות, תזונאים ואנשי מקצוע בתחום בריאות הנפש כדי להבטיח טיפול הוליסטי עבור כל מטופל.",
+  faqFirstAppointment: "מה עלי להביא לפגישה הראשונה שלי?",
+  faqFirstAppointmentAnswer: "אנא הבא את התיקים הרפואיים שלך, כולל תוצאות בדיקות קודמות, סריקות ודוחות פתולוגיים. בנוסף, הבא רשימה של תרופות נוכחיות, מידע על הביטוח, וכל שאלה שעשויה להיות לך.",
+  faqTelemedicine: "האם זמינות התייעצויות רפואה מרחוק?",
+  faqTelemedicineAnswer: "כן, ד״ר ניימן מציעה פגישות רפואה מרחוק למצבים מתאימים כמו ביקורי מעקב וסוגים מסוימים של דיונים בטיפול.",
   
   // Patient Stories
   patientStoriesTitle: "סיפורי מטופלים",
@@ -205,13 +208,18 @@ export const heTranslations: Record<TranslationKey, string> = {
   gastrointestinal: "מערכת העיכול",
   lymphoma: "לימפומה",
   videoTestimonials: "עדויות וידאו",
+  videoTestimonialsDescription: "צפה בעדויות וידאו ממטופלים המשתפים את חוויותיהם עם ד״ר ניימן",
   featuredStories: "סיפורים מובחרים",
   featuredStoriesDescription: "סיפורים מיוחדים המדגישים את הגישה המקיפה והאישית של ד״ר ניימן לטיפול בסרטן.",
   readFullStory: "קרא את הסיפור המלא",
   noStoriesFound: "לא נמצאו סיפורים בקטגוריה זו.",
   watchVideo: "צפה בוידאו",
+  backToVideos: "חזרה לסרטונים",
   diagnosis: "אבחנה",
+  treatment: "טיפול",
   treatmentJourney: "מסע הטיפול",
   patientStory: "סיפור המטופל",
-  shareStory: "שתף סיפור"
+  shareStory: "שתף סיפור",
+  fullStory: "הסיפור המלא",
+  videoTestimonial: "עדות וידאו"
 };
