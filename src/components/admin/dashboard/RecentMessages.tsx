@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useState, useEffect } from 'react';
-import { supabase } from '@/lib/supabase';
+import { fetchMessages } from '@/lib/supabase';
 import { useQuery } from '@tanstack/react-query';
 
 interface Message {
@@ -10,21 +10,6 @@ interface Message {
   email: string;
   message: string;
   created_at: string;
-}
-
-async function fetchMessages() {
-  const { data, error } = await supabase
-    .from('messages')
-    .select('*')
-    .order('created_at', { ascending: false })
-    .limit(5);
-
-  if (error) {
-    console.error('Error fetching messages:', error);
-    return [];
-  }
-  
-  return data as Message[];
 }
 
 const RecentMessages = () => {

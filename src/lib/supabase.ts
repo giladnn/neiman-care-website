@@ -116,3 +116,19 @@ export async function fetchVideos() {
   
   return data as Video[];
 }
+
+// Messages related functions
+export async function fetchMessages() {
+  const { data, error } = await supabase
+    .from('messages')
+    .select('*')
+    .order('created_at', { ascending: false })
+    .limit(5);
+
+  if (error) {
+    console.error('Error fetching messages:', error);
+    return [];
+  }
+  
+  return data;
+}
