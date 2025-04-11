@@ -57,18 +57,20 @@ const defaultServices: Service[] = [
 export const ServicesProvider = ({ children }: { children: ReactNode }) => {
   const [services, setServices] = useState<Service[]>(defaultServices);
   
-  // Use React Query to fetch services
+  // Use React Query to fetch services with updated configuration
   const { isLoading, error, refetch } = useQuery({
     queryKey: ['services'],
     queryFn: fetchServices,
-    onSuccess: (data) => {
-      if (data && data.length > 0) {
-        setServices(data);
+    meta: {
+      onSuccess: (data) => {
+        if (data && data.length > 0) {
+          setServices(data);
+        }
+      },
+      onError: () => {
+        // If there's an error, use the default services
+        setServices(defaultServices);
       }
-    },
-    onError: () => {
-      // If there's an error, use the default services
-      setServices(defaultServices);
     }
   });
 

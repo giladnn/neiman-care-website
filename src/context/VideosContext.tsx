@@ -21,20 +21,22 @@ export const VideosProvider = ({ children }: { children: ReactNode }) => {
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['videos'],
     queryFn: fetchVideos,
-    onSuccess: (data: Video[]) => {
-      if (data && data.length > 0) {
-        setVideos(data);
-      }
-    },
-    onError: (error) => {
-      console.error('Error fetching videos:', error);
-      // If there's an error, try to load from localStorage as fallback
-      const storedVideos = localStorage.getItem('videos');
-      if (storedVideos) {
-        try {
-          setVideos(JSON.parse(storedVideos));
-        } catch (parseError) {
-          console.error('Failed to parse stored videos:', parseError);
+    meta: {
+      onSuccess: (data: Video[]) => {
+        if (data && data.length > 0) {
+          setVideos(data);
+        }
+      },
+      onError: (error) => {
+        console.error('Error fetching videos:', error);
+        // If there's an error, try to load from localStorage as fallback
+        const storedVideos = localStorage.getItem('videos');
+        if (storedVideos) {
+          try {
+            setVideos(JSON.parse(storedVideos));
+          } catch (parseError) {
+            console.error('Failed to parse stored videos:', parseError);
+          }
         }
       }
     }

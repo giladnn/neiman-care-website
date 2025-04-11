@@ -48,20 +48,22 @@ const initialBlogPosts: BlogPost[] = [
 export const BlogProvider = ({ children }: { children: ReactNode }) => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   
-  // Use React Query to fetch blog posts
+  // Use React Query to fetch blog posts with updated configuration
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['blogPosts'],
     queryFn: fetchBlogPosts,
-    onSuccess: (data) => {
-      if (data && data.length > 0) {
-        setBlogPosts(data);
-      } else {
+    meta: {
+      onSuccess: (data) => {
+        if (data && data.length > 0) {
+          setBlogPosts(data);
+        } else {
+          setBlogPosts(initialBlogPosts);
+        }
+      },
+      onError: () => {
+        // Use fallback data if there's an error
         setBlogPosts(initialBlogPosts);
       }
-    },
-    onError: () => {
-      // Use fallback data if there's an error
-      setBlogPosts(initialBlogPosts);
     }
   });
 
