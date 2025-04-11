@@ -61,13 +61,14 @@ export const ServicesProvider = ({ children }: { children: ReactNode }) => {
   const { isLoading, error, refetch } = useQuery({
     queryKey: ['services'],
     queryFn: fetchServices,
-    onSettled: (data, error) => {
-      if (error) {
-        // If there's an error, use the default services
-        setServices(defaultServices);
-      } else if (data && data.length > 0) {
+    onSuccess: (data) => {
+      if (data && data.length > 0) {
         setServices(data);
       }
+    },
+    onError: () => {
+      // If there's an error, use the default services
+      setServices(defaultServices);
     }
   });
 

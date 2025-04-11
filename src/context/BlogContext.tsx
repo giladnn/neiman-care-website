@@ -52,15 +52,16 @@ export const BlogProvider = ({ children }: { children: ReactNode }) => {
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['blogPosts'],
     queryFn: fetchBlogPosts,
-    onSettled: (data, error) => {
-      if (error) {
-        // Use fallback data if there's an error
-        setBlogPosts(initialBlogPosts);
-      } else if (data && data.length > 0) {
+    onSuccess: (data) => {
+      if (data && data.length > 0) {
         setBlogPosts(data);
       } else {
         setBlogPosts(initialBlogPosts);
       }
+    },
+    onError: () => {
+      // Use fallback data if there's an error
+      setBlogPosts(initialBlogPosts);
     }
   });
 
