@@ -58,13 +58,13 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
 
   const navItems = [
     { icon: <LayoutDashboard size={18} />, label: 'dashboard', path: '/admin/dashboard' },
-    { icon: <Calendar size={18} />, label: 'appointmentManagement', path: '/admin/appointments' },
-    { icon: <FileText size={18} />, label: 'blogManagement', path: '/admin/blog' },
-    { icon: <Film size={18} />, label: 'videoManagement', path: '/admin/videos' },
-    { icon: <Users size={18} />, label: 'patientStoryManagement', path: '/admin/patient-stories' },
-    { icon: <FileCheck size={18} />, label: 'serviceManagement', path: '/admin/services' },
-    { icon: <Newspaper size={18} />, label: 'newsManagement', path: '/admin/news' },
-    { icon: <MessageSquare size={18} />, label: 'contentManagement', path: '/admin/content' },
+    { icon: <Calendar size={18} />, label: 'ניהול פגישות', path: '/admin/appointments' },
+    { icon: <FileText size={18} />, label: 'ניהול בלוג', path: '/admin/blog' },
+    { icon: <Film size={18} />, label: 'ניהול וידיאו', path: '/admin/videos' },
+    { icon: <Users size={18} />, label: 'ניהול סיפורי לקוחות', path: '/admin/patient-stories' },
+    { icon: <FileCheck size={18} />, label: 'ניהול שירותים', path: '/admin/services' },
+    { icon: <Newspaper size={18} />, label: 'ניהול חדשות', path: '/admin/news' },
+    { icon: <MessageSquare size={18} />, label: 'ניהול הודעות', path: '/admin/content' },
     { icon: <Settings size={18} />, label: 'settings', path: '/admin/settings' }
   ];
 
