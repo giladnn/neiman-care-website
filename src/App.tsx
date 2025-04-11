@@ -1,5 +1,5 @@
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './context/LanguageContext';
 import { AuthProvider } from './context/AuthContext';
 import { BlogProvider } from './context/BlogContext';
@@ -20,31 +20,29 @@ import NotFound from './pages/NotFound';
 
 function App() {
   return (
-    <Router>
-      <LanguageProvider>
-        <AuthProvider>
-          <BlogProvider>
-            <VideosProvider>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/blog" element={<Blog />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/appointment" element={<Appointment />} />
-                <Route path="/patient-stories" element={<PatientStories />} />
-                <Route path="/admin/login" element={<Login />} />
-                <Route path="/admin/dashboard" element={<Dashboard />} />
-                <Route path="/admin/blog" element={<BlogManagement />} />
-                <Route path="/admin/videos" element={<VideoManagement />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-              <Toaster />
-            </VideosProvider>
-          </BlogProvider>
-        </AuthProvider>
-      </LanguageProvider>
-    </Router>
+    <LanguageProvider>
+      <AuthProvider>
+        <BlogProvider>
+          <VideosProvider>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/appointment" element={<Appointment />} />
+              <Route path="/patient-stories" element={<PatientStories />} />
+              <Route path="/admin/login" element={<Login />} />
+              <Route path="/admin/dashboard" element={<Dashboard />} />
+              <Route path="/admin/blog" element={<BlogManagement />} />
+              <Route path="/admin/videos" element={<VideoManagement />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <Toaster />
+          </VideosProvider>
+        </BlogProvider>
+      </AuthProvider>
+    </LanguageProvider>
   );
 }
 
