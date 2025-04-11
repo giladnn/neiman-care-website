@@ -2,10 +2,13 @@
 import { supabase } from '@/integrations/supabase/client';
 import { AppointmentForm, BlogPost, PatientStory, Service, Testimonial, NewsArticle, Video } from '@/types';
 
+// Type-casting the supabase client to avoid TypeScript errors
+const typedSupabase = supabase as any;
+
 // Appointments related functions
 export async function fetchAppointments() {
-  const { data, error } = await supabase
-    .from('appointments' as any)
+  const { data, error } = await typedSupabase
+    .from('appointments')
     .select('*')
     .order('date', { ascending: true });
 
@@ -18,9 +21,9 @@ export async function fetchAppointments() {
 }
 
 export async function createAppointment(appointment: AppointmentForm) {
-  const { data, error } = await supabase
-    .from('appointments' as any)
-    .insert([appointment] as any)
+  const { data, error } = await typedSupabase
+    .from('appointments')
+    .insert([appointment])
     .select();
 
   if (error) {
@@ -33,8 +36,8 @@ export async function createAppointment(appointment: AppointmentForm) {
 
 // Blog related functions
 export async function fetchBlogPosts() {
-  const { data, error } = await supabase
-    .from('blog_posts' as any)
+  const { data, error } = await typedSupabase
+    .from('blog_posts')
     .select('*')
     .order('date', { ascending: false });
 
@@ -48,8 +51,8 @@ export async function fetchBlogPosts() {
 
 // Patient stories related functions
 export async function fetchPatientStories() {
-  const { data, error } = await supabase
-    .from('patient_stories' as any)
+  const { data, error } = await typedSupabase
+    .from('patient_stories')
     .select('*');
 
   if (error) {
@@ -62,8 +65,8 @@ export async function fetchPatientStories() {
 
 // Services related functions
 export async function fetchServices() {
-  const { data, error } = await supabase
-    .from('services' as any)
+  const { data, error } = await typedSupabase
+    .from('services')
     .select('*');
 
   if (error) {
@@ -76,8 +79,8 @@ export async function fetchServices() {
 
 // Testimonials related functions
 export async function fetchTestimonials() {
-  const { data, error } = await supabase
-    .from('testimonials' as any)
+  const { data, error } = await typedSupabase
+    .from('testimonials')
     .select('*');
 
   if (error) {
@@ -90,8 +93,8 @@ export async function fetchTestimonials() {
 
 // News related functions
 export async function fetchNewsArticles() {
-  const { data, error } = await supabase
-    .from('news_articles' as any)
+  const { data, error } = await typedSupabase
+    .from('news_articles')
     .select('*')
     .order('date', { ascending: false });
 
@@ -105,8 +108,8 @@ export async function fetchNewsArticles() {
 
 // Videos related functions
 export async function fetchVideos() {
-  const { data, error } = await supabase
-    .from('videos' as any)
+  const { data, error } = await typedSupabase
+    .from('videos')
     .select('*');
 
   if (error) {
@@ -119,8 +122,8 @@ export async function fetchVideos() {
 
 // Messages related functions
 export async function fetchMessages() {
-  const { data, error } = await supabase
-    .from('messages' as any)
+  const { data, error } = await typedSupabase
+    .from('messages')
     .select('*')
     .order('created_at', { ascending: false })
     .limit(5);
