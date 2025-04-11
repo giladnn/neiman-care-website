@@ -1,6 +1,6 @@
 
 import { ReactNode } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/button';
 import { 
@@ -12,6 +12,9 @@ import {
   LogOut,
   LayoutDashboard,
   Video,
+  Users,
+  BookOpen,
+  Newspaper
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -22,6 +25,7 @@ interface AdminLayoutProps {
 const AdminLayout = ({ children }: AdminLayoutProps) => {
   const { logout, user } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = () => {
     logout();
@@ -33,10 +37,17 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
     { name: 'Dashboard', icon: <LayoutDashboard size={20} />, path: '/admin/dashboard' },
     { name: 'Blog Posts', icon: <FileText size={20} />, path: '/admin/blog' },
     { name: 'Videos', icon: <Video size={20} />, path: '/admin/videos' },
+    { name: 'Patient Stories', icon: <Users size={20} />, path: '/admin/patient-stories' },
+    { name: 'Services', icon: <BookOpen size={20} />, path: '/admin/services' },
+    { name: 'News', icon: <Newspaper size={20} />, path: '/admin/news' },
     { name: 'Appointments', icon: <Calendar size={20} />, path: '/admin/appointments' },
     { name: 'Messages', icon: <MessageSquare size={20} />, path: '/admin/messages' },
     { name: 'Settings', icon: <Settings size={20} />, path: '/admin/settings' }
   ];
+
+  const isActive = (path: string) => {
+    return location.pathname === path ? "bg-gray-100 text-primary" : "text-gray-600";
+  };
 
   return (
     <div className="flex min-h-screen bg-gray-100">
@@ -73,7 +84,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
               <Link
                 key={item.name}
                 to={item.path}
-                className="flex items-center gap-3 p-2 rounded-md text-gray-600 hover:bg-gray-100 transition-colors"
+                className={`flex items-center gap-3 p-2 rounded-md hover:bg-gray-100 transition-colors ${isActive(item.path)}`}
               >
                 {item.icon}
                 <span>{item.name}</span>

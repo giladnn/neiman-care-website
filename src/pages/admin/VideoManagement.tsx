@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
@@ -11,8 +11,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Plus } from 'lucide-react';
-import { videos as initialVideos, Video } from '@/components/videos/VideoCarousel';
-import { useVideos } from '@/context/VideosContext';
+import { Video } from '@/types';
 import VideoList from '@/components/admin/videos/VideoList';
 import VideoFormDialog from '@/components/admin/videos/VideoFormDialog';
 import { 
@@ -21,20 +20,62 @@ import {
   validateVideoForm, 
   defaultFormData 
 } from '@/components/admin/videos/videoUtils';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { fetchVideos, createVideo, updateVideo, deleteVideo } from '@/lib/supabase';
 
 const VideoManagement = () => {
-  const { videos, setVideos } = useVideos();
+  const queryClient = useQueryClient();
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [currentVideo, setCurrentVideo] = useState<Video | null>(null);
   const [formData, setFormData] = useState<VideoFormData>(defaultFormData);
 
-  // Initialize with default videos if context is empty
-  useEffect(() => {
-    if (videos.length === 0) {
-      setVideos(initialVideos);
+  // Fetch videos from Supabase
+  const { data: videos = [], isLoading } = useQuery({
+    queryKey: ['videos'],
+    queryFn: fetchVideos
+  });
+
+  // Create mutation
+  const createMutation = useMutation({
+    mutationFn: createVideo,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['videos'] });
+      toast.success('Video added successfully!');
+      setIsAddDialogOpen(false);
+      resetForm();
+    },
+    onError: (error) => {
+      toast.error(`Error creating video: ${error.message}`);
     }
-  }, [videos.length, setVideos]);
+  });
+
+  // Update mutation
+  const updateMutation = useMutation({
+    mutationFn: (data: { id: string, video: Partial<Video> }) => 
+      updateVideo(data.id, data.video),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['videos'] });
+      toast.success('Video updated successfully!');
+      setIsEditDialogOpen(false);
+      resetForm();
+    },
+    onError: (error) => {
+      toast.error(`Error updating video: ${error.message}`);
+    }
+  });
+
+  // Delete mutation
+  const deleteMutation = useMutation({
+    mutationFn: deleteVideo,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['videos'] });
+      toast.success('Video deleted successfully!');
+    },
+    onError: (error) => {
+      toast.error(`Error deleting video: ${error.message}`);
+    }
+  });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -76,16 +117,13 @@ const VideoManagement = () => {
     const processedUrl = processVideoUrl(formData.url, formData.source);
 
     const newVideo: Video = {
-      id: Date.now().toString(),
+      id: formData.id || Date.now().toString(),
       title: formData.title,
       source: formData.source,
       url: processedUrl,
     };
 
-    setVideos([...videos, newVideo]);
-    toast.success('Video added successfully!');
-    setIsAddDialogOpen(false);
-    resetForm();
+    createMutation.mutate(newVideo);
   };
 
   const handleEditVideo = () => {
@@ -99,29 +137,21 @@ const VideoManagement = () => {
 
     const processedUrl = processVideoUrl(formData.url, formData.source);
 
-    const updatedVideos = videos.map(video => {
-      if (video.id === currentVideo.id) {
-        return {
-          ...video,
-          title: formData.title,
-          source: formData.source,
-          url: processedUrl,
-        };
-      }
-      return video;
-    });
+    const updatedVideo: Partial<Video> = {
+      title: formData.title,
+      source: formData.source,
+      url: processedUrl,
+    };
 
-    setVideos(updatedVideos);
-    toast.success('Video updated successfully!');
-    setIsEditDialogOpen(false);
-    resetForm();
+    updateMutation.mutate({
+      id: currentVideo.id,
+      video: updatedVideo
+    });
   };
 
   const handleDeleteVideo = (id: string) => {
     if (window.confirm('Are you sure you want to delete this video?')) {
-      const updatedVideos = videos.filter(video => video.id !== id);
-      setVideos(updatedVideos);
-      toast.success('Video deleted successfully!');
+      deleteMutation.mutate(id);
     }
   };
 
@@ -144,11 +174,17 @@ const VideoManagement = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <VideoList 
-              videos={videos}
-              onEdit={openEditDialog}
-              onDelete={handleDeleteVideo}
-            />
+            {isLoading ? (
+              <div className="flex justify-center py-8">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+              </div>
+            ) : (
+              <VideoList 
+                videos={videos}
+                onEdit={openEditDialog}
+                onDelete={handleDeleteVideo}
+              />
+            )}
           </CardContent>
         </Card>
       </div>

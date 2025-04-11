@@ -1,4 +1,6 @@
-export const enTranslations = {
+import { Translation } from ".";
+
+export const enTranslations: Translation = {
   // Navbar
   home: 'Home',
   about: 'About',
@@ -220,5 +222,35 @@ export const enTranslations = {
   shareStory: "Share Your Story",
   fullStory: "Full Story",
   videoTestimonial: "Video Testimonial",
-  noVideosFound: "No video testimonials found"
+  noVideosFound: "No video testimonials found",
+  
+  // Appointment management translations
+  appointmentManagement: "Appointment Management",
+  editAppointment: "Edit Appointment",
+  deleteAppointment: "Delete Appointment",
+  confirmDeleteAppointment: "Are you sure you want to delete this appointment?",
+  appointmentUpdated: "Appointment updated successfully",
+  appointmentDeleted: "Appointment deleted successfully",
+  noAppointments: "No appointments scheduled yet",
+  
+  // Video management translations
+  videoManagement: "Video Management",
+  addVideo: "Add Video",
+  editVideo: "Edit Video", 
+  deleteVideo: "Delete Video",
+  confirmDeleteVideo: "Are you sure you want to delete this video?",
+  videoAdded: "Video added successfully",
+  videoUpdated: "Video updated successfully",
+  videoDeleted: "Video deleted successfully",
+  noVideosFound: "No videos found",
+  
+  // Admin general
+  viewAll: "View All",
+  scheduleNew: "Schedule New",
+  status: "Status",
+  actions: "Actions",
+  patient: "Patient",
+  contact: "Contact",
+  dateTime: "Date & Time",
+  reason: "Reason",
 };

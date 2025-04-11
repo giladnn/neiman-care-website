@@ -1,4 +1,3 @@
-
 import { supabase } from '@/integrations/supabase/client';
 import { AppointmentForm, BlogPost, PatientStory, Service, Testimonial, NewsArticle, Video } from '@/types';
 
@@ -34,10 +33,10 @@ export async function createAppointment(appointment: AppointmentForm) {
   return data;
 }
 
-export async function updateAppointment(id: string, status: string) {
+export async function updateAppointment(id: string, appointment: Partial<AppointmentForm>) {
   const { data, error } = await typedSupabase
     .from('appointments')
-    .update({ status })
+    .update(appointment)
     .eq('id', id)
     .select();
 
@@ -47,6 +46,20 @@ export async function updateAppointment(id: string, status: string) {
   }
   
   return data;
+}
+
+export async function deleteAppointment(id: string) {
+  const { error } = await typedSupabase
+    .from('appointments')
+    .delete()
+    .eq('id', id);
+
+  if (error) {
+    console.error('Error deleting appointment:', error);
+    throw error;
+  }
+  
+  return true;
 }
 
 // Blog related functions
