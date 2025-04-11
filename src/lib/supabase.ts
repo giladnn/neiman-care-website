@@ -1,6 +1,7 @@
 
+import { Language } from '@/context/LanguageContext';
 import { supabase } from '@/integrations/supabase/client';
-import { AppointmentForm, BlogPost, PatientStory, Service, Testimonial, NewsArticle, Video, Message, FAQ, ContactInfo, BiographySection, FooterInfo, Language } from '@/types';
+import { AppointmentForm, BlogPost, PatientStory, Service, Testimonial, NewsArticle, Video, Message, FAQ, ContactInfo, BiographySection, FooterInfo } from '@/types';
 
 // Type-casting the supabase client to avoid TypeScript errors
 const typedSupabase = supabase as any;
@@ -180,6 +181,7 @@ export async function deletePatientStory(id: string) {
 
 // Services related functions
 export async function fetchServices() {
+  debugger
   const { data, error } = await typedSupabase
     .from('services')
     .select('*');

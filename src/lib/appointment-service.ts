@@ -3,11 +3,12 @@ import { v4 as uuidv4 } from 'uuid';
 import emailjs from '@emailjs/browser';
 import { toast } from 'sonner';
 import { AppointmentForm } from '@/types';
+import { createAppointment } from './supabase';
 
 // Submit appointment data, save to localStorage and send email
 export const submitAppointment = async (data: any) => {
   console.log("Form submitted:", data);
-  
+
   try {
     // Create appointment object with unique ID and timestamp
     const appointment: AppointmentForm = {
@@ -20,30 +21,28 @@ export const submitAppointment = async (data: any) => {
       reason: data.reason,
       message: data.message,
       status: 'pending',
-      created_at: new Date().toISOString() // Changed from createdAt to created_at to match DB schema
+      created_at: new Date().toISOString()
     };
-    
-    // Get existing appointments or initialize empty array
-    const existingAppointments = localStorage.getItem('appointments') 
-      ? JSON.parse(localStorage.getItem('appointments') || '[]') 
-      : [];
-    
-    // Add new appointment
-    existingAppointments.push(appointment);
-    
-    // Save back to localStorage
-    localStorage.setItem('appointments', JSON.stringify(existingAppointments));
-    
-    // Send email notification
-    const emailSent = await sendEmailNotification(appointment);
-    
-    if (emailSent) {
-      toast.success('Appointment request submitted successfully! We will contact you shortly to confirm.');
-      return true;
-    } else {
-      toast.warning('Appointment saved but email notification could not be sent. We will still process your request.');
-      return true;
+
+    // Save appointment to the database using createAppointment
+    const { data: createdAppointment, error } = await createAppointment(appointment);
+
+    if (error) {
+      console.error("Error creating appointment:", error);
+      toast.error('There was a problem submitting your appointment. Please try again.');
+      throw error;
     }
+
+    // Send email notification
+    //const emailSent = await sendEmailNotification(appointment);
+
+    // if (emailSent) {
+    //   toast.success('Appointment request submitted successfully! We will contact you shortly to confirm.');
+    //   return true;
+    // } else {
+    //   toast.warning('Appointment saved but email notification could not be sent. We will still process your request.');
+    //   return true;
+    // }
   } catch (error) {
     console.error("Error saving appointment:", error);
     toast.error('There was a problem submitting your appointment. Please try again.');

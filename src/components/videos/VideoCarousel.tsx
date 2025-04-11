@@ -22,52 +22,13 @@ export interface Video {
   thumbnail?: string;
 }
 
-// Default videos if none are in context
-export const videos: Video[] = [
-  {
-    id: "1",
-    title: "Victoria Neiman - Breast Cancer Early Detection",
-    source: "youtube",
-    url: "https://www.youtube.com/embed/RvT0ql_SRfo",
-  },
-  {
-    id: "2",
-    title: "Victoria Neiman - Advances in Oncology",
-    source: "youtube",
-    url: "https://www.youtube.com/embed/lnqMiUNdxAs",
-  },
-  {
-    id: "3",
-    title: "Victoria Neiman - Treatment Options",
-    source: "youtube",
-    url: "https://www.youtube.com/embed/hZyMzEw1bM4",
-  },
-  {
-    id: "4",
-    title: "מהו סרטן כליה? עונים על כל השאלות",
-    source: "facebook",
-    url: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fkeshet.mako%2Fvideos%2F1134048054061042%2F",
-  },
-  {
-    id: "5",
-    title: "כל התשובות לשאלות על סרטן הכליה",
-    source: "facebook",
-    url: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fkeshet.mako%2Fvideos%2F390481672578057%2F",
-  },
-  {
-    id: "6",
-    title: "Victoria Neiman - Cancer Research Updates",
-    source: "youtube",
-    url: "https://www.youtube.com/embed/Lh4fAoKg5uI",
-  }
-];
 
 const VideoCarousel = () => {
   const { direction } = useLanguage();
   const { videos: contextVideos } = useVideos();
   
   // Use context videos if available, otherwise use default videos
-  const displayVideos = contextVideos.length > 0 ? contextVideos : videos;
+  // const displayVideos = contextVideos.length > 0 ? contextVideos : videos;
   
   return (
     <section aria-labelledby="video-carousel-heading">
@@ -82,12 +43,12 @@ const VideoCarousel = () => {
         aria-roledescription="carousel"
       >
         <CarouselContent>
-          {displayVideos.map((video, index) => (
+          {contextVideos.map((video, index) => (
             <CarouselItem 
               key={video.id} 
               className="md:basis-2/3 lg:basis-3/5"
               aria-roledescription="slide"
-              aria-label={`Slide ${index + 1} of ${displayVideos.length}: ${video.title}`}
+              aria-label={`Slide ${index + 1} of ${contextVideos.length}: ${video.title}`}
             >
               <Card className="bg-white shadow-lg border-none">
                 <CardContent className="p-0 aspect-video overflow-hidden">
@@ -117,7 +78,7 @@ const VideoCarousel = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <div className="mt-8 flex justify-center gap-2">
+        <div className="mt-8 flex justify-center gap-2" style={{direction:'ltr'}}>
           <CarouselPrevious 
             className="relative static transform-none mx-2" 
             aria-label={direction === 'rtl' ? "הבא" : "Previous slide"}

@@ -20,7 +20,7 @@ const ContactInfo = () => {
             <h4 className="font-semibold">{translate('phone', language)}</h4>
             <p className="text-gray-600">+972 3 123 4567</p>
             <p className="text-sm text-gray-500">
-              {translate('mondayThursday', language)}: 9am-5pm, {translate('friday', language)}: 9am-2pm
+              {translate('mondayThursday', language)}: 09:00-17, {translate('friday', language)}: 09-14:00
             </p>
           </div>
         </div>
