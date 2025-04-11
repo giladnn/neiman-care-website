@@ -16,6 +16,9 @@ import Login from './pages/admin/Login';
 import Dashboard from './pages/admin/Dashboard';
 import BlogManagement from './pages/admin/BlogManagement';
 import VideoManagement from './pages/admin/VideoManagement';
+import PatientStoryManagement from './pages/admin/PatientStoryManagement';
+import ServiceManagement from './pages/admin/ServiceManagement';
+import NewsManagement from './pages/admin/NewsManagement';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -36,6 +39,9 @@ function App() {
               <Route path="/admin/dashboard" element={<Dashboard />} />
               <Route path="/admin/blog" element={<BlogManagement />} />
               <Route path="/admin/videos" element={<VideoManagement />} />
+              <Route path="/admin/patient-stories" element={<PatientStoryManagement />} />
+              <Route path="/admin/services" element={<ServiceManagement />} />
+              <Route path="/admin/news" element={<NewsManagement />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <Toaster />

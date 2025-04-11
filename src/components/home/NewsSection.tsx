@@ -1,48 +1,45 @@
 
+import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { NewsArticle } from '@/types';
 import { ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { translate } from '@/translations';
-
-// Sample news articles
-const newsArticles: NewsArticle[] = [
-  {
-    id: '1',
-    title: 'Dr. Victoria Neiman Receives Excellence in Oncology Award',
-    source: 'Israeli Medical Journal',
-    date: '2024-02-10',
-    excerpt: 'Dr. Neiman recognized for her groundbreaking work in personalized cancer treatment approaches.',
-    url: '#',
-  },
-  {
-    id: '2',
-    title: 'Leading Oncologist Discusses New Cancer Treatment Protocols',
-    source: 'Health Today',
-    date: '2023-11-20',
-    excerpt: 'Dr. Victoria Neiman shares insights on emerging treatment options for cancer patients.',
-    url: '#',
-  },
-  {
-    id: '3',
-    title: 'International Conference Features Israeli Cancer Specialist',
-    source: 'Medical News Network',
-    date: '2023-09-05',
-    excerpt: 'Dr. Neiman presents research findings at international oncology conference in London.',
-    url: '#',
-  },
-  {
-    id: '4',
-    title: 'Local Doctor Pioneers New Approach to Cancer Care',
-    source: 'Tel Aviv Times',
-    date: '2023-07-15',
-    excerpt: 'Victoria Neiman, MD, implements holistic patient-centered approach to oncology treatment.',
-    url: '#',
-  },
-];
+import { fetchNewsArticles } from '@/lib/supabase';
 
 const NewsSection = () => {
   const { language } = useLanguage();
+  const [newsArticles, setNewsArticles] = useState<NewsArticle[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  
+  useEffect(() => {
+    const loadNewsArticles = async () => {
+      setIsLoading(true);
+      try {
+        const articles = await fetchNewsArticles();
+        setNewsArticles(articles);
+      } catch (error) {
+        console.error('Error loading news articles:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    loadNewsArticles();
+  }, []);
+  
+  if (isLoading) {
+    return (
+      <section className="section-padding">
+        <div className="container mx-auto">
+          <div className="text-center">
+            <div className="w-10 h-10 mx-auto border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+            <p className="mt-2 text-gray-600">Loading news articles...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
   
   return (
     <section className="section-padding">

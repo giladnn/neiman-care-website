@@ -1,89 +1,107 @@
 
-import { createContext, useState, useContext, ReactNode, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { toast } from 'sonner';
 import { BlogPost } from '@/types';
-import { fetchBlogPosts } from '@/lib/supabase';
-import { useQuery } from '@tanstack/react-query';
+import { 
+  fetchBlogPosts,
+  createBlogPost,
+  updateBlogPost,
+  deleteBlogPost
+} from '@/lib/supabase';
 
 interface BlogContextType {
   blogPosts: BlogPost[];
-  setBlogPosts: (posts: BlogPost[]) => void;
   isLoading: boolean;
   error: Error | null;
-  refetch: () => void;
+  refreshBlogPosts: () => Promise<void>;
+  addBlogPost: (blogPost: BlogPost) => Promise<void>;
+  updatePost: (id: string, blogPost: Partial<BlogPost>) => Promise<void>;
+  deletePost: (id: string) => Promise<void>;
 }
 
-const BlogContext = createContext<BlogContextType | undefined>(undefined);
+const BlogContext = createContext<BlogContextType>({
+  blogPosts: [],
+  isLoading: false,
+  error: null,
+  refreshBlogPosts: async () => {},
+  addBlogPost: async () => {},
+  updatePost: async () => {},
+  deletePost: async () => {},
+});
 
-// Sample blog posts for demo/fallback
-const initialBlogPosts: BlogPost[] = [
-  {
-    id: '1',
-    title: 'Advances in Immunotherapy for Cancer Treatment',
-    date: '2024-03-15',
-    excerpt: 'Exploring the latest developments in cancer immunotherapy and how they are transforming treatment outcomes for patients.',
-    content: 'Full content goes here...',
-    author: 'Dr. Victoria Neiman',
-    category: 'Treatment'
-  },
-  {
-    id: '2',
-    title: 'Understanding Genetic Testing in Cancer Diagnosis',
-    date: '2024-03-01',
-    excerpt: 'How genetic testing is revolutionizing our approach to cancer diagnosis and enabling more targeted treatment strategies.',
-    content: 'Full content goes here...',
-    author: 'Dr. Victoria Neiman',
-    category: 'Diagnosis'
-  },
-  {
-    id: '3',
-    title: 'Nutrition and Wellness During Cancer Treatment',
-    date: '2024-02-15',
-    excerpt: 'Practical advice on maintaining nutrition and overall wellness while undergoing cancer treatment.',
-    content: 'Full content goes here...',
-    author: 'Dr. Victoria Neiman',
-    category: 'Wellness'
-  },
-];
+export const useBlog = () => useContext(BlogContext);
 
 export const BlogProvider = ({ children }: { children: ReactNode }) => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  
-  // Use React Query to fetch blog posts with updated configuration
-  const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ['blogPosts'],
-    queryFn: fetchBlogPosts,
-    meta: {
-      onSuccess: (data) => {
-        if (data && data.length > 0) {
-          setBlogPosts(data);
-        } else {
-          setBlogPosts(initialBlogPosts);
-        }
-      },
-      onError: () => {
-        // Use fallback data if there's an error
-        setBlogPosts(initialBlogPosts);
-      }
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  const refreshBlogPosts = async () => {
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      const postsData = await fetchBlogPosts();
+      setBlogPosts(postsData);
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error('Unknown error fetching blog posts'));
+      toast.error('Failed to load blog posts');
+      console.error('Error loading blog posts:', err);
+    } finally {
+      setIsLoading(false);
     }
-  });
+  };
+
+  const addBlogPost = async (blogPost: BlogPost) => {
+    try {
+      await createBlogPost(blogPost);
+      toast.success('Blog post created successfully');
+      await refreshBlogPosts();
+    } catch (err) {
+      toast.error('Failed to create blog post');
+      throw err;
+    }
+  };
+
+  const updatePost = async (id: string, blogPost: Partial<BlogPost>) => {
+    try {
+      await updateBlogPost(id, blogPost);
+      toast.success('Blog post updated successfully');
+      await refreshBlogPosts();
+    } catch (err) {
+      toast.error('Failed to update blog post');
+      throw err;
+    }
+  };
+
+  const deletePost = async (id: string) => {
+    try {
+      await deleteBlogPost(id);
+      toast.success('Blog post deleted successfully');
+      await refreshBlogPosts();
+    } catch (err) {
+      toast.error('Failed to delete blog post');
+      throw err;
+    }
+  };
+
+  useEffect(() => {
+    refreshBlogPosts();
+  }, []);
 
   return (
-    <BlogContext.Provider value={{ 
-      blogPosts, 
-      setBlogPosts, 
-      isLoading, 
-      error: error as Error | null,
-      refetch
-    }}>
+    <BlogContext.Provider
+      value={{
+        blogPosts,
+        isLoading,
+        error,
+        refreshBlogPosts,
+        addBlogPost,
+        updatePost,
+        deletePost,
+      }}
+    >
       {children}
     </BlogContext.Provider>
   );
-};
-
-export const useBlog = (): BlogContextType => {
-  const context = useContext(BlogContext);
-  if (context === undefined) {
-    throw new Error('useBlog must be used within a BlogProvider');
-  }
-  return context;
 };

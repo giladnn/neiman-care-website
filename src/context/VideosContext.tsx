@@ -1,71 +1,107 @@
 
-import { createContext, useState, useContext, ReactNode, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { toast } from 'sonner';
 import { Video } from '@/types';
-import { fetchVideos } from '@/lib/supabase';
-import { useQuery } from '@tanstack/react-query';
+import { 
+  fetchVideos,
+  createVideo,
+  updateVideo,
+  deleteVideo
+} from '@/lib/supabase';
 
 interface VideosContextType {
   videos: Video[];
-  setVideos: (videos: Video[]) => void;
   isLoading: boolean;
   error: Error | null;
-  refetch: () => void;
+  refreshVideos: () => Promise<void>;
+  addVideo: (video: Video) => Promise<void>;
+  updateVideoItem: (id: string, video: Partial<Video>) => Promise<void>;
+  deleteVideoItem: (id: string) => Promise<void>;
 }
 
-const VideosContext = createContext<VideosContextType | undefined>(undefined);
+const VideosContext = createContext<VideosContextType>({
+  videos: [],
+  isLoading: false,
+  error: null,
+  refreshVideos: async () => {},
+  addVideo: async () => {},
+  updateVideoItem: async () => {},
+  deleteVideoItem: async () => {},
+});
+
+export const useVideos = () => useContext(VideosContext);
 
 export const VideosProvider = ({ children }: { children: ReactNode }) => {
   const [videos, setVideos] = useState<Video[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<Error | null>(null);
 
-  // Use React Query to fetch videos from Supabase
-  const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ['videos'],
-    queryFn: fetchVideos,
-    meta: {
-      onSuccess: (data: Video[]) => {
-        if (data && data.length > 0) {
-          setVideos(data);
-        }
-      },
-      onError: (error) => {
-        console.error('Error fetching videos:', error);
-        // If there's an error, try to load from localStorage as fallback
-        const storedVideos = localStorage.getItem('videos');
-        if (storedVideos) {
-          try {
-            setVideos(JSON.parse(storedVideos));
-          } catch (parseError) {
-            console.error('Failed to parse stored videos:', parseError);
-          }
-        }
-      }
+  const refreshVideos = async () => {
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      const videosData = await fetchVideos();
+      setVideos(videosData);
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error('Unknown error fetching videos'));
+      toast.error('Failed to load videos');
+      console.error('Error loading videos:', err);
+    } finally {
+      setIsLoading(false);
     }
-  });
+  };
 
-  // Save videos to localStorage as backup whenever they change
+  const addVideo = async (video: Video) => {
+    try {
+      await createVideo(video);
+      toast.success('Video created successfully');
+      await refreshVideos();
+    } catch (err) {
+      toast.error('Failed to create video');
+      throw err;
+    }
+  };
+
+  const updateVideoItem = async (id: string, video: Partial<Video>) => {
+    try {
+      await updateVideo(id, video);
+      toast.success('Video updated successfully');
+      await refreshVideos();
+    } catch (err) {
+      toast.error('Failed to update video');
+      throw err;
+    }
+  };
+
+  const deleteVideoItem = async (id: string) => {
+    try {
+      await deleteVideo(id);
+      toast.success('Video deleted successfully');
+      await refreshVideos();
+    } catch (err) {
+      toast.error('Failed to delete video');
+      throw err;
+    }
+  };
+
   useEffect(() => {
-    if (videos.length > 0) {
-      localStorage.setItem('videos', JSON.stringify(videos));
-    }
-  }, [videos]);
+    refreshVideos();
+  }, []);
 
   return (
-    <VideosContext.Provider value={{ 
-      videos, 
-      setVideos, 
-      isLoading,
-      error: error as Error | null,
-      refetch
-    }}>
+    <VideosContext.Provider
+      value={{
+        videos,
+        isLoading,
+        error,
+        refreshVideos,
+        addVideo,
+        updateVideoItem,
+        deleteVideoItem
+      }}
+    >
       {children}
     </VideosContext.Provider>
   );
-};
-
-export const useVideos = (): VideosContextType => {
-  const context = useContext(VideosContext);
-  if (context === undefined) {
-    throw new Error('useVideos must be used within a VideosProvider');
-  }
-  return context;
 };

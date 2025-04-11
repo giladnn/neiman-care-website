@@ -1,5 +1,5 @@
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import {
   Carousel,
   CarouselContent,
@@ -12,44 +12,41 @@ import { Star } from 'lucide-react';
 import { Testimonial } from '@/types';
 import { useLanguage } from '@/context/LanguageContext';
 import { translate } from '@/translations';
-
-const testimonials: Testimonial[] = [
-  {
-    id: '1',
-    name: 'Sarah Cohen',
-    position: 'Breast Cancer Survivor',
-    content: 'Dr. Victoria Neiman is truly exceptional. Her expertise and compassionate approach made all the difference during my cancer journey. She took the time to explain every aspect of my treatment and was always available to address my concerns.',
-    rating: 5,
-    imageUrl: 'https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&q=80&w=300&h=300'
-  },
-  {
-    id: '2',
-    name: 'David Levy',
-    position: 'Lymphoma Patient',
-    content: 'When I was diagnosed with lymphoma, I was terrified. Dr. Neiman not only provided world-class medical care but also gave me hope and confidence. Her knowledge of the latest treatments and dedication to her patients is remarkable.',
-    rating: 5,
-    imageUrl: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=300&h=300'
-  },
-  {
-    id: '3',
-    name: 'Rachel Goldstein',
-    position: 'Family Member of Patient',
-    content: 'My father was under Dr. Neiman\'s care during his battle with lung cancer. Her expertise, patience, and genuine concern for his well-being were evident in every interaction. She guided our family through a difficult time with tremendous skill and empathy.',
-    rating: 5,
-    imageUrl: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80&w=300&h=300'
-  },
-  {
-    id: '4',
-    name: 'Michael Berkovich',
-    position: 'Colon Cancer Survivor',
-    content: 'Dr. Neiman\'s approach combines cutting-edge medical knowledge with personalized care. She developed a treatment plan specifically for my condition that considered all aspects of my health and lifestyle. I couldn\'t have asked for better care.',
-    rating: 5,
-    imageUrl: 'https://images.unsplash.com/photo-1527576539890-dfa815648363?auto=format&fit=crop&q=80&w=300&h=300'
-  }
-];
+import { fetchTestimonials } from '@/lib/supabase';
 
 const TestimonialsSection = () => {
   const { language, direction } = useLanguage();
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  
+  useEffect(() => {
+    const loadTestimonials = async () => {
+      setIsLoading(true);
+      try {
+        const data = await fetchTestimonials();
+        setTestimonials(data);
+      } catch (error) {
+        console.error('Error loading testimonials:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    loadTestimonials();
+  }, []);
+  
+  if (isLoading) {
+    return (
+      <section className="section-padding bg-gray-50">
+        <div className="container mx-auto">
+          <div className="text-center">
+            <div className="w-10 h-10 mx-auto border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+            <p className="mt-2 text-gray-600">Loading testimonials...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
   
   return (
     <section className="section-padding bg-gray-50" aria-labelledby="testimonials-heading">

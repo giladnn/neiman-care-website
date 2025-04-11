@@ -1,96 +1,107 @@
 
-import { createContext, useState, useContext, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { toast } from 'sonner';
 import { Service } from '@/types';
-import { fetchServices } from '@/lib/supabase';
-import { useQuery } from '@tanstack/react-query';
+import { 
+  fetchServices,
+  createService,
+  updateService,
+  deleteService
+} from '@/lib/supabase';
 
 interface ServicesContextType {
   services: Service[];
-  setServices: (services: Service[]) => void;
   isLoading: boolean;
   error: Error | null;
-  refetch: () => void;
+  refreshServices: () => Promise<void>;
+  addService: (service: Service) => Promise<void>;
+  updateServiceItem: (id: string, service: Partial<Service>) => Promise<void>;
+  deleteServiceItem: (id: string) => Promise<void>;
 }
 
-const ServicesContext = createContext<ServicesContextType | undefined>(undefined);
+const ServicesContext = createContext<ServicesContextType>({
+  services: [],
+  isLoading: false,
+  error: null,
+  refreshServices: async () => {},
+  addService: async () => {},
+  updateServiceItem: async () => {},
+  deleteServiceItem: async () => {},
+});
 
-// Default services for fallback
-const defaultServices: Service[] = [
-  {
-    id: '1',
-    title: 'Cancer Diagnosis',
-    description: 'Comprehensive diagnostic services including genetic testing and advanced imaging to accurately identify cancer types and stages.',
-    icon: '🔬',
-  },
-  {
-    id: '2',
-    title: 'Personalized Treatment Planning',
-    description: 'Individualized treatment plans tailored to your specific diagnosis, health profile, and personal preferences.',
-    icon: '📋',
-  },
-  {
-    id: '3',
-    title: 'Chemotherapy',
-    description: 'Administration and management of the most advanced and appropriate chemotherapy regimens for your specific cancer type.',
-    icon: '💊',
-  },
-  {
-    id: '4',
-    title: 'Immunotherapy',
-    description: 'Cutting-edge immunotherapy treatments that harness your immune system to fight cancer cells.',
-    icon: '🛡️',
-  },
-  {
-    id: '5',
-    title: 'Targeted Therapy',
-    description: 'Precision medicine approaches that target specific genes or proteins that contribute to cancer growth and survival.',
-    icon: '🎯',
-  },
-  {
-    id: '6',
-    title: 'Survivorship Care',
-    description: 'Comprehensive follow-up care and support for cancer survivors to maintain health and prevent recurrence.',
-    icon: '🌱',
-  }
-];
+export const useServices = () => useContext(ServicesContext);
 
 export const ServicesProvider = ({ children }: { children: ReactNode }) => {
-  const [services, setServices] = useState<Service[]>(defaultServices);
-  
-  // Use React Query to fetch services with updated configuration
-  const { isLoading, error, refetch } = useQuery({
-    queryKey: ['services'],
-    queryFn: fetchServices,
-    meta: {
-      onSuccess: (data) => {
-        if (data && data.length > 0) {
-          setServices(data);
-        }
-      },
-      onError: () => {
-        // If there's an error, use the default services
-        setServices(defaultServices);
-      }
+  const [services, setServices] = useState<Service[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  const refreshServices = async () => {
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      const servicesData = await fetchServices();
+      setServices(servicesData);
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error('Unknown error fetching services'));
+      toast.error('Failed to load services');
+      console.error('Error loading services:', err);
+    } finally {
+      setIsLoading(false);
     }
-  });
+  };
+
+  const addService = async (service: Service) => {
+    try {
+      await createService(service);
+      toast.success('Service created successfully');
+      await refreshServices();
+    } catch (err) {
+      toast.error('Failed to create service');
+      throw err;
+    }
+  };
+
+  const updateServiceItem = async (id: string, service: Partial<Service>) => {
+    try {
+      await updateService(id, service);
+      toast.success('Service updated successfully');
+      await refreshServices();
+    } catch (err) {
+      toast.error('Failed to update service');
+      throw err;
+    }
+  };
+
+  const deleteServiceItem = async (id: string) => {
+    try {
+      await deleteService(id);
+      toast.success('Service deleted successfully');
+      await refreshServices();
+    } catch (err) {
+      toast.error('Failed to delete service');
+      throw err;
+    }
+  };
+
+  useEffect(() => {
+    refreshServices();
+  }, []);
 
   return (
-    <ServicesContext.Provider value={{ 
-      services, 
-      setServices, 
-      isLoading, 
-      error: error as Error | null,
-      refetch
-    }}>
+    <ServicesContext.Provider
+      value={{
+        services,
+        isLoading,
+        error,
+        refreshServices,
+        addService,
+        updateServiceItem,
+        deleteServiceItem
+      }}
+    >
       {children}
     </ServicesContext.Provider>
   );
-};
-
-export const useServices = (): ServicesContextType => {
-  const context = useContext(ServicesContext);
-  if (context === undefined) {
-    throw new Error('useServices must be used within a ServicesProvider');
-  }
-  return context;
 };

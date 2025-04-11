@@ -1,56 +1,43 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { translate } from '@/translations';
 import { PatientStory } from '@/types';
 import { Play } from 'lucide-react';
-
-// Mock data - would be replaced by actual data from API/database
-const videoTestimonials: PatientStory[] = [
-  {
-    id: 'v1',
-    name: 'Sarah Cohen',
-    position: 'Breast Cancer Survivor',
-    content: 'Dr. Victoria Neiman is truly exceptional. Her expertise and compassionate approach made all the difference during my cancer journey.',
-    fullStory: "I was diagnosed with Stage 2 Breast Cancer in 2020...",
-    diagnosis: 'Stage 2 Breast Cancer',
-    treatmentJourney: 'Surgery, chemotherapy, radiation therapy',
-    rating: 5,
-    imageUrl: 'https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&q=80&w=300&h=300',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    featured: true
-  },
-  {
-    id: 'v2',
-    name: 'David Levy',
-    position: 'Lymphoma Survivor',
-    content: 'When I was diagnosed with lymphoma, I was terrified. Dr. Neiman not only provided world-class medical care but also gave me hope.',
-    fullStory: "My journey with Dr. Neiman began when I was diagnosed with Non-Hodgkin's Lymphoma in 2019...",
-    diagnosis: "Non-Hodgkin's Lymphoma",
-    treatmentJourney: 'Immunotherapy, targeted chemotherapy',
-    rating: 5,
-    imageUrl: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=300&h=300',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    featured: false
-  },
-  {
-    id: 'v3',
-    name: 'Rachel Goldstein',
-    position: 'Family Member of Patient',
-    content: 'My father was under Dr. Neiman\'s care during his battle with lung cancer. Her expertise and genuine concern were evident.',
-    fullStory: "When my father was diagnosed with Stage 3 Lung Cancer at the age of 72...",
-    diagnosis: 'Stage 3 Lung Cancer',
-    treatmentJourney: 'Targeted therapy, immunotherapy',
-    rating: 5,
-    imageUrl: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80&w=300&h=300',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    featured: false
-  }
-];
+import { fetchPatientStories } from '@/lib/supabase';
 
 const VideoTestimonials = () => {
   const { language, direction } = useLanguage();
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const [videoTestimonials, setVideoTestimonials] = useState<PatientStory[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  
+  useEffect(() => {
+    const loadVideoTestimonials = async () => {
+      setIsLoading(true);
+      try {
+        const data = await fetchPatientStories();
+        // Filter stories with video URLs
+        const videos = data.filter(story => story.videoUrl);
+        setVideoTestimonials(videos);
+      } catch (error) {
+        console.error('Error loading video testimonials:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    loadVideoTestimonials();
+  }, []);
+  
+  if (isLoading) {
+    return (
+      <div className="text-center py-10">
+        <div className="w-10 h-10 mx-auto border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+        <p className="mt-2 text-gray-600">Loading video testimonials...</p>
+      </div>
+    );
+  }
   
   return (
     <div>
@@ -85,33 +72,39 @@ const VideoTestimonials = () => {
         </div>
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {videoTestimonials.map((video) => (
-            <div 
-              key={video.id}
-              className="rounded-lg overflow-hidden shadow-sm border border-gray-200 hover:shadow-md transition-shadow"
-            >
-              <div className="relative group cursor-pointer" onClick={() => setActiveVideo(video.videoUrl)}>
-                <div className="h-48 overflow-hidden">
-                  <img 
-                    src={video.imageUrl} 
-                    alt={video.name} 
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/50 transition-colors">
-                    <div className="rounded-full bg-white/90 w-16 h-16 flex items-center justify-center transition-transform group-hover:scale-110">
-                      <Play size={30} className="text-primary ml-1" />
+          {videoTestimonials.length > 0 ? (
+            videoTestimonials.map((video) => (
+              <div 
+                key={video.id}
+                className="rounded-lg overflow-hidden shadow-sm border border-gray-200 hover:shadow-md transition-shadow"
+              >
+                <div className="relative group cursor-pointer" onClick={() => setActiveVideo(video.videoUrl || '')}>
+                  <div className="h-48 overflow-hidden">
+                    <img 
+                      src={video.imageUrl || 'https://via.placeholder.com/300'} 
+                      alt={video.name} 
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/50 transition-colors">
+                      <div className="rounded-full bg-white/90 w-16 h-16 flex items-center justify-center transition-transform group-hover:scale-110">
+                        <Play size={30} className="text-primary ml-1" />
+                      </div>
                     </div>
                   </div>
                 </div>
+                
+                <div className="p-4">
+                  <h3 className="font-bold text-gray-800">{video.name}</h3>
+                  <p className="text-sm text-gray-500 mb-2">{video.position}</p>
+                  <p className="text-gray-600 text-sm line-clamp-2">{video.content}</p>
+                </div>
               </div>
-              
-              <div className="p-4">
-                <h3 className="font-bold text-gray-800">{video.name}</h3>
-                <p className="text-sm text-gray-500 mb-2">{video.position}</p>
-                <p className="text-gray-600 text-sm line-clamp-2">{video.content}</p>
-              </div>
+            ))
+          ) : (
+            <div className="col-span-3 text-center py-10">
+              <p className="text-gray-500">{translate('noVideosFound', language)}</p>
             </div>
-          ))}
+          )}
         </div>
       )}
     </div>
