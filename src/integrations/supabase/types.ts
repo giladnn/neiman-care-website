@@ -9,7 +9,270 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      appointments: {
+        Row: {
+          created_at: string | null
+          date: string
+          email: string
+          id: string
+          message: string | null
+          name: string
+          phone: string
+          reason: string
+          status: string | null
+          time: string
+        }
+        Insert: {
+          created_at?: string | null
+          date: string
+          email: string
+          id?: string
+          message?: string | null
+          name: string
+          phone: string
+          reason: string
+          status?: string | null
+          time: string
+        }
+        Update: {
+          created_at?: string | null
+          date?: string
+          email?: string
+          id?: string
+          message?: string | null
+          name?: string
+          phone?: string
+          reason?: string
+          status?: string | null
+          time?: string
+        }
+        Relationships: []
+      }
+      blog_posts: {
+        Row: {
+          author: string
+          category: string
+          content: string
+          created_at: string | null
+          date: string
+          excerpt: string
+          id: string
+          image_url: string | null
+          title: string
+        }
+        Insert: {
+          author: string
+          category: string
+          content: string
+          created_at?: string | null
+          date: string
+          excerpt: string
+          id?: string
+          image_url?: string | null
+          title: string
+        }
+        Update: {
+          author?: string
+          category?: string
+          content?: string
+          created_at?: string | null
+          date?: string
+          excerpt?: string
+          id?: string
+          image_url?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
+      messages: {
+        Row: {
+          created_at: string | null
+          email: string
+          id: string
+          message: string
+          name: string
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          id?: string
+          message: string
+          name: string
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+        }
+        Relationships: []
+      }
+      news_articles: {
+        Row: {
+          created_at: string | null
+          date: string
+          excerpt: string
+          id: string
+          image_url: string | null
+          source: string
+          title: string
+          url: string
+        }
+        Insert: {
+          created_at?: string | null
+          date: string
+          excerpt: string
+          id?: string
+          image_url?: string | null
+          source: string
+          title: string
+          url: string
+        }
+        Update: {
+          created_at?: string | null
+          date?: string
+          excerpt?: string
+          id?: string
+          image_url?: string | null
+          source?: string
+          title?: string
+          url?: string
+        }
+        Relationships: []
+      }
+      patient_stories: {
+        Row: {
+          category: string | null
+          content: string
+          created_at: string | null
+          diagnosis: string | null
+          featured: boolean | null
+          full_story: string
+          id: string
+          image_url: string | null
+          name: string
+          position: string | null
+          rating: number
+          treatment_journey: string | null
+          video_url: string | null
+        }
+        Insert: {
+          category?: string | null
+          content: string
+          created_at?: string | null
+          diagnosis?: string | null
+          featured?: boolean | null
+          full_story: string
+          id?: string
+          image_url?: string | null
+          name: string
+          position?: string | null
+          rating: number
+          treatment_journey?: string | null
+          video_url?: string | null
+        }
+        Update: {
+          category?: string | null
+          content?: string
+          created_at?: string | null
+          diagnosis?: string | null
+          featured?: boolean | null
+          full_story?: string
+          id?: string
+          image_url?: string | null
+          name?: string
+          position?: string | null
+          rating?: number
+          treatment_journey?: string | null
+          video_url?: string | null
+        }
+        Relationships: []
+      }
+      services: {
+        Row: {
+          created_at: string | null
+          description: string
+          icon: string | null
+          id: string
+          image_url: string | null
+          title: string
+        }
+        Insert: {
+          created_at?: string | null
+          description: string
+          icon?: string | null
+          id?: string
+          image_url?: string | null
+          title: string
+        }
+        Update: {
+          created_at?: string | null
+          description?: string
+          icon?: string | null
+          id?: string
+          image_url?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
+      testimonials: {
+        Row: {
+          content: string
+          created_at: string | null
+          id: string
+          image_url: string | null
+          name: string
+          position: string | null
+          rating: number
+        }
+        Insert: {
+          content: string
+          created_at?: string | null
+          id?: string
+          image_url?: string | null
+          name: string
+          position?: string | null
+          rating: number
+        }
+        Update: {
+          content?: string
+          created_at?: string | null
+          id?: string
+          image_url?: string | null
+          name?: string
+          position?: string | null
+          rating?: number
+        }
+        Relationships: []
+      }
+      videos: {
+        Row: {
+          created_at: string | null
+          id: string
+          source: string
+          thumbnail: string | null
+          title: string
+          url: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          source: string
+          thumbnail?: string | null
+          title: string
+          url: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          source?: string
+          thumbnail?: string | null
+          title?: string
+          url?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
