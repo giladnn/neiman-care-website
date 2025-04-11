@@ -1,15 +1,20 @@
 
 import { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 import { BlogPost } from '@/types';
+import { fetchBlogPosts } from '@/lib/supabase';
+import { useQuery } from '@tanstack/react-query';
 
 interface BlogContextType {
   blogPosts: BlogPost[];
   setBlogPosts: (posts: BlogPost[]) => void;
+  isLoading: boolean;
+  error: Error | null;
+  refetch: () => void;
 }
 
 const BlogContext = createContext<BlogContextType | undefined>(undefined);
 
-// Sample blog posts for demo
+// Sample blog posts for demo/fallback
 const initialBlogPosts: BlogPost[] = [
   {
     id: '1',
@@ -42,31 +47,32 @@ const initialBlogPosts: BlogPost[] = [
 
 export const BlogProvider = ({ children }: { children: ReactNode }) => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-
-  // Load blog posts from localStorage if available
-  useEffect(() => {
-    const storedPosts = localStorage.getItem('blogPosts');
-    if (storedPosts) {
-      try {
-        setBlogPosts(JSON.parse(storedPosts));
-      } catch (error) {
-        console.error('Failed to parse stored blog posts:', error);
+  
+  // Use React Query to fetch blog posts
+  const { data, isLoading, error, refetch } = useQuery({
+    queryKey: ['blogPosts'],
+    queryFn: fetchBlogPosts,
+    onSuccess: (data) => {
+      if (data && data.length > 0) {
+        setBlogPosts(data);
+      } else {
         setBlogPosts(initialBlogPosts);
       }
-    } else {
+    },
+    onError: () => {
+      // Use fallback data if there's an error
       setBlogPosts(initialBlogPosts);
     }
-  }, []);
-
-  // Save blog posts to localStorage whenever they change
-  useEffect(() => {
-    if (blogPosts.length > 0) {
-      localStorage.setItem('blogPosts', JSON.stringify(blogPosts));
-    }
-  }, [blogPosts]);
+  });
 
   return (
-    <BlogContext.Provider value={{ blogPosts, setBlogPosts }}>
+    <BlogContext.Provider value={{ 
+      blogPosts, 
+      setBlogPosts, 
+      isLoading, 
+      error: error as Error | null,
+      refetch
+    }}>
       {children}
     </BlogContext.Provider>
   );

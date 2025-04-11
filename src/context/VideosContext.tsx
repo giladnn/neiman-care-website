@@ -1,10 +1,15 @@
 
 import { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 import { Video } from '@/components/videos/VideoCarousel';
+import { fetchVideos } from '@/lib/supabase';
+import { useQuery } from '@tanstack/react-query';
 
 interface VideosContextType {
   videos: Video[];
   setVideos: (videos: Video[]) => void;
+  isLoading: boolean;
+  error: Error | null;
+  refetch: () => void;
 }
 
 const VideosContext = createContext<VideosContextType | undefined>(undefined);
@@ -12,19 +17,30 @@ const VideosContext = createContext<VideosContextType | undefined>(undefined);
 export const VideosProvider = ({ children }: { children: ReactNode }) => {
   const [videos, setVideos] = useState<Video[]>([]);
 
-  // Load videos from localStorage if available
-  useEffect(() => {
-    const storedVideos = localStorage.getItem('videos');
-    if (storedVideos) {
-      try {
-        setVideos(JSON.parse(storedVideos));
-      } catch (error) {
-        console.error('Failed to parse stored videos:', error);
+  // Use React Query to fetch videos from Supabase
+  const { data, isLoading, error, refetch } = useQuery({
+    queryKey: ['videos'],
+    queryFn: fetchVideos,
+    onSuccess: (data) => {
+      if (data && data.length > 0) {
+        setVideos(data);
+      }
+    },
+    onError: (error) => {
+      console.error('Error fetching videos:', error);
+      // If there's an error, try to load from localStorage as fallback
+      const storedVideos = localStorage.getItem('videos');
+      if (storedVideos) {
+        try {
+          setVideos(JSON.parse(storedVideos));
+        } catch (parseError) {
+          console.error('Failed to parse stored videos:', parseError);
+        }
       }
     }
-  }, []);
+  });
 
-  // Save videos to localStorage whenever they change
+  // Save videos to localStorage as backup whenever they change
   useEffect(() => {
     if (videos.length > 0) {
       localStorage.setItem('videos', JSON.stringify(videos));
@@ -32,7 +48,13 @@ export const VideosProvider = ({ children }: { children: ReactNode }) => {
   }, [videos]);
 
   return (
-    <VideosContext.Provider value={{ videos, setVideos }}>
+    <VideosContext.Provider value={{ 
+      videos, 
+      setVideos, 
+      isLoading,
+      error: error as Error | null,
+      refetch
+    }}>
       {children}
     </VideosContext.Provider>
   );

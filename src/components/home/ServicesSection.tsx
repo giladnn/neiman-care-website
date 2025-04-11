@@ -5,49 +5,24 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/context/LanguageContext';
 import { translate } from '@/translations';
+import { useServices } from '@/context/ServicesContext';
 
 const ServicesSection = () => {
   const { language, direction } = useLanguage();
+  const { services, isLoading } = useServices();
 
-  // Services with translation keys
-  const services = [
-    {
-      id: '1',
-      titleKey: 'cancerDiagnosis',
-      descriptionKey: 'cancerDiagnosisDesc',
-      icon: '🔬',
-    },
-    {
-      id: '2',
-      titleKey: 'personalizedTreatment',
-      descriptionKey: 'personalizedTreatmentDesc',
-      icon: '📋',
-    },
-    {
-      id: '3',
-      titleKey: 'chemotherapy',
-      descriptionKey: 'chemotherapyDesc',
-      icon: '💊',
-    },
-    {
-      id: '4',
-      titleKey: 'immunotherapy',
-      descriptionKey: 'immunotherapyDesc',
-      icon: '🛡️',
-    },
-    {
-      id: '5',
-      titleKey: 'targetedTherapy',
-      descriptionKey: 'targetedTherapyDesc',
-      icon: '🎯',
-    },
-    {
-      id: '6',
-      titleKey: 'survivorshipCare',
-      descriptionKey: 'survivorshipCareDesc',
-      icon: '🌱',
-    }
-  ];
+  if (isLoading) {
+    return (
+      <section className="section-padding">
+        <div className="container mx-auto">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary mx-auto"></div>
+            <p className="mt-4">Loading services...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="section-padding">
@@ -68,10 +43,10 @@ const ServicesSection = () => {
               <CardContent className="p-6">
                 <div className="text-4xl mb-4">{service.icon}</div>
                 <h3 className="text-xl font-bold mb-2 text-gray-800">
-                  {translate(service.titleKey as any, language)}
+                  {service.title}
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  {translate(service.descriptionKey as any, language)}
+                  {service.description}
                 </p>
                 <Link 
                   to={`/services#${service.id}`} 

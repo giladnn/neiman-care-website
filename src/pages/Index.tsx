@@ -8,13 +8,16 @@ import AppointmentSection from '@/components/home/AppointmentSection';
 import BlogSection from '@/components/home/BlogSection';
 import NewsSection from '@/components/home/NewsSection';
 import VideoSection from '@/components/about/VideoSection';
+import { ServicesProvider } from '@/context/ServicesContext';
 
 const Index = () => {
   return (
     <Layout>
       <HeroSection />
       <AboutSection />
-      <ServicesSection />
+      <ServicesProvider>
+        <ServicesSection />
+      </ServicesProvider>
       <TestimonialsSection />
       <VideoSection />
       <AppointmentSection />
