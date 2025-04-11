@@ -17,6 +17,7 @@ interface VideosContextType {
   addVideo: (video: Video) => Promise<void>;
   updateVideoItem: (id: string, video: Partial<Video>) => Promise<void>;
   deleteVideoItem: (id: string) => Promise<void>;
+  setVideos: (videos: Video[]) => void; // Add this line to include setVideos
 }
 
 const VideosContext = createContext<VideosContextType>({
@@ -27,6 +28,7 @@ const VideosContext = createContext<VideosContextType>({
   addVideo: async () => {},
   updateVideoItem: async () => {},
   deleteVideoItem: async () => {},
+  setVideos: () => {}, // Add this line to include setVideos in the default value
 });
 
 export const useVideos = () => useContext(VideosContext);
@@ -98,7 +100,8 @@ export const VideosProvider = ({ children }: { children: ReactNode }) => {
         refreshVideos,
         addVideo,
         updateVideoItem,
-        deleteVideoItem
+        deleteVideoItem,
+        setVideos, // Add this line to include setVideos in the context value
       }}
     >
       {children}

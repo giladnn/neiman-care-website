@@ -17,6 +17,7 @@ interface BlogContextType {
   addBlogPost: (blogPost: BlogPost) => Promise<void>;
   updatePost: (id: string, blogPost: Partial<BlogPost>) => Promise<void>;
   deletePost: (id: string) => Promise<void>;
+  setBlogPosts: (posts: BlogPost[]) => void; // Add this line to include setBlogPosts
 }
 
 const BlogContext = createContext<BlogContextType>({
@@ -27,6 +28,7 @@ const BlogContext = createContext<BlogContextType>({
   addBlogPost: async () => {},
   updatePost: async () => {},
   deletePost: async () => {},
+  setBlogPosts: () => {}, // Add this line to include setBlogPosts in the default value
 });
 
 export const useBlog = () => useContext(BlogContext);
@@ -99,6 +101,7 @@ export const BlogProvider = ({ children }: { children: ReactNode }) => {
         addBlogPost,
         updatePost,
         deletePost,
+        setBlogPosts, // Add this line to include setBlogPosts in the context value
       }}
     >
       {children}

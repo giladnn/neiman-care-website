@@ -15,8 +15,8 @@ const translations: Record<Language, Translation> = {
   ru: ruTranslations,
 };
 
-export function translate(key: TranslationKey, language: Language): string {
-  return translations[language][key] || translations.en[key] || key;
+export function translate(key: TranslationKey | string, language: Language): string {
+  return translations[language][key as TranslationKey] || translations.en[key as TranslationKey] || key;
 }
 
 // Helper function to get direction based on language

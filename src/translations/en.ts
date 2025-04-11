@@ -1,4 +1,3 @@
-
 export const enTranslations = {
   // Navbar
   home: 'Home',
@@ -220,5 +219,6 @@ export const enTranslations = {
   patientStory: "Patient Story",
   shareStory: "Share Your Story",
   fullStory: "Full Story",
-  videoTestimonial: "Video Testimonial"
+  videoTestimonial: "Video Testimonial",
+  noVideosFound: "No video testimonials found"
 };
