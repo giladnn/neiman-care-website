@@ -1,6 +1,6 @@
-import { Translation } from ".";
 
-export const enTranslations: Translation = {
+// Define translations without circular references
+export const enTranslations: Record<string, string> = {
   // Navbar
   home: 'Home',
   about: 'About',

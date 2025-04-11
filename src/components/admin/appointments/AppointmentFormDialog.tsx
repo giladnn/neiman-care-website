@@ -54,6 +54,24 @@ const AppointmentFormDialog: React.FC<AppointmentFormDialogProps> = ({
     onInputChange(changeEvent);
   };
   
+  // Format the date value properly for input element
+  const getFormattedDateValue = (): string => {
+    if (!formData.date) return '';
+    
+    // If it's a Date object, convert to YYYY-MM-DD
+    if (formData.date instanceof Date) {
+      return formData.date.toISOString().split('T')[0];
+    }
+    
+    // If it's already a string, ensure it's in YYYY-MM-DD format
+    if (typeof formData.date === 'string') {
+      // Check if date contains time part and remove if needed
+      return formData.date.split('T')[0];
+    }
+    
+    return '';
+  };
+  
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
@@ -116,7 +134,7 @@ const AppointmentFormDialog: React.FC<AppointmentFormDialogProps> = ({
                 id="date"
                 name="date"
                 type="date"
-                value={typeof formData.date === 'string' ? formData.date.split('T')[0] : formData.date}
+                value={getFormattedDateValue()}
                 onChange={onInputChange}
                 required
               />
