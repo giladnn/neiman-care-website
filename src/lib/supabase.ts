@@ -1,12 +1,6 @@
 
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from '@/integrations/supabase/client';
 import { AppointmentForm, BlogPost, PatientStory, Service, Testimonial, NewsArticle, Video } from '@/types';
-
-// Create a single supabase client for the entire app
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
-const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
-
-export const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Appointments related functions
 export async function fetchAppointments() {
