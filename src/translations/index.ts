@@ -7,7 +7,9 @@ import { Language } from '../context/LanguageContext';
 // Define TranslationKey as a union of literal string types
 // This ensures TypeScript knows all possible key values
 export type TranslationKey = keyof typeof enTranslations;
-export type Translation = Record<TranslationKey, string>;
+
+// Make Translation type more flexible - all keys from English translations are optional
+export type Translation = Partial<Record<TranslationKey, string>>;
 
 const translations: Record<Language, Translation> = {
   en: enTranslations,
@@ -16,7 +18,14 @@ const translations: Record<Language, Translation> = {
 };
 
 export function translate(key: TranslationKey | string, language: Language): string {
-  return translations[language][key as TranslationKey] || translations.en[key as TranslationKey] || key;
+  // First try to get the translation in the requested language
+  // If it doesn't exist, fall back to English
+  // If it doesn't exist in English either, return the key itself as fallback
+  return (
+    translations[language]?.[key as TranslationKey] || 
+    translations.en[key as TranslationKey] || 
+    key
+  );
 }
 
 // Helper function to get direction based on language
