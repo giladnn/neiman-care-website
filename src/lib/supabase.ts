@@ -5,7 +5,7 @@ import { AppointmentForm, BlogPost, PatientStory, Service, Testimonial, NewsArti
 // Appointments related functions
 export async function fetchAppointments() {
   const { data, error } = await supabase
-    .from('appointments')
+    .from('appointments' as any)
     .select('*')
     .order('date', { ascending: true });
 
@@ -19,8 +19,8 @@ export async function fetchAppointments() {
 
 export async function createAppointment(appointment: AppointmentForm) {
   const { data, error } = await supabase
-    .from('appointments')
-    .insert([appointment])
+    .from('appointments' as any)
+    .insert([appointment] as any)
     .select();
 
   if (error) {
@@ -34,7 +34,7 @@ export async function createAppointment(appointment: AppointmentForm) {
 // Blog related functions
 export async function fetchBlogPosts() {
   const { data, error } = await supabase
-    .from('blog_posts')
+    .from('blog_posts' as any)
     .select('*')
     .order('date', { ascending: false });
 
@@ -49,7 +49,7 @@ export async function fetchBlogPosts() {
 // Patient stories related functions
 export async function fetchPatientStories() {
   const { data, error } = await supabase
-    .from('patient_stories')
+    .from('patient_stories' as any)
     .select('*');
 
   if (error) {
@@ -63,7 +63,7 @@ export async function fetchPatientStories() {
 // Services related functions
 export async function fetchServices() {
   const { data, error } = await supabase
-    .from('services')
+    .from('services' as any)
     .select('*');
 
   if (error) {
@@ -77,7 +77,7 @@ export async function fetchServices() {
 // Testimonials related functions
 export async function fetchTestimonials() {
   const { data, error } = await supabase
-    .from('testimonials')
+    .from('testimonials' as any)
     .select('*');
 
   if (error) {
@@ -91,7 +91,7 @@ export async function fetchTestimonials() {
 // News related functions
 export async function fetchNewsArticles() {
   const { data, error } = await supabase
-    .from('news_articles')
+    .from('news_articles' as any)
     .select('*')
     .order('date', { ascending: false });
 
@@ -106,7 +106,7 @@ export async function fetchNewsArticles() {
 // Videos related functions
 export async function fetchVideos() {
   const { data, error } = await supabase
-    .from('videos')
+    .from('videos' as any)
     .select('*');
 
   if (error) {
@@ -120,7 +120,7 @@ export async function fetchVideos() {
 // Messages related functions
 export async function fetchMessages() {
   const { data, error } = await supabase
-    .from('messages')
+    .from('messages' as any)
     .select('*')
     .order('created_at', { ascending: false })
     .limit(5);
