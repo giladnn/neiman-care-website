@@ -65,3 +65,11 @@ export interface UserData {
   role: 'admin' | 'user';
   name: string;
 }
+
+export interface Video {
+  id: string;
+  title: string;
+  source: 'youtube' | 'facebook';
+  url: string;
+  thumbnail?: string;
+}

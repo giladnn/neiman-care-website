@@ -1,6 +1,6 @@
 
 import { createContext, useState, useContext, ReactNode, useEffect } from 'react';
-import { Video } from '@/components/videos/VideoCarousel';
+import { Video } from '@/types';
 import { fetchVideos } from '@/lib/supabase';
 import { useQuery } from '@tanstack/react-query';
 
@@ -21,21 +21,27 @@ export const VideosProvider = ({ children }: { children: ReactNode }) => {
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['videos'],
     queryFn: fetchVideos,
-    onSuccess: (data) => {
-      if (data && data.length > 0) {
-        setVideos(data);
+    meta: {
+      onSuccess: (data: Video[]) => {
+        if (data && data.length > 0) {
+          setVideos(data);
+        }
       }
     },
-    onError: (error) => {
-      console.error('Error fetching videos:', error);
-      // If there's an error, try to load from localStorage as fallback
-      const storedVideos = localStorage.getItem('videos');
-      if (storedVideos) {
-        try {
-          setVideos(JSON.parse(storedVideos));
-        } catch (parseError) {
-          console.error('Failed to parse stored videos:', parseError);
+    onSettled: (data, error) => {
+      if (error) {
+        console.error('Error fetching videos:', error);
+        // If there's an error, try to load from localStorage as fallback
+        const storedVideos = localStorage.getItem('videos');
+        if (storedVideos) {
+          try {
+            setVideos(JSON.parse(storedVideos));
+          } catch (parseError) {
+            console.error('Failed to parse stored videos:', parseError);
+          }
         }
+      } else if (data && data.length > 0) {
+        setVideos(data);
       }
     }
   });
