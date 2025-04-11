@@ -193,6 +193,10 @@ export const enTranslations = {
   faqTreatmentTimeAnswer: "The duration of cancer treatment varies significantly depending on the type and stage of cancer, as well as the specific treatment approach. During your consultation, Dr. Neiman will provide you with a detailed timeline based on your individual case.",
   faqTeam: "Does Dr. Neiman work with a multidisciplinary team?",
   faqTeamAnswer: "Yes, Dr. Neiman collaborates with a comprehensive team of healthcare professionals including surgeons, radiation oncologists, pathologists, nurses, nutritionists, and mental health professionals to ensure holistic care for each patient.",
+  faqFirstAppointment: "What should I bring to my first appointment?",
+  faqFirstAppointmentAnswer: "Please bring your medical records, including previous test results, scans, and pathology reports. Also, bring a list of current medications, insurance information, and any questions you may have.",
+  faqTelemedicine: "Are telemedicine consultations available?",
+  faqTelemedicineAnswer: "Yes, Dr. Neiman offers telemedicine appointments for appropriate situations such as follow-up consultations and certain types of treatment discussions.",
   
   // Patient Stories
   patientStoriesTitle: "Patient Stories",
@@ -203,13 +207,18 @@ export const enTranslations = {
   gastrointestinal: "Gastrointestinal",
   lymphoma: "Lymphoma",
   videoTestimonials: "Video Testimonials",
+  videoTestimonialsDescription: "Watch video testimonials from patients sharing their experience with Dr. Neiman",
   featuredStories: "Featured Stories",
   featuredStoriesDescription: "Special stories highlighting Dr. Neiman's comprehensive and personal approach to cancer care.",
   readFullStory: "Read Full Story",
   noStoriesFound: "No stories found in this category.",
   watchVideo: "Watch Video",
+  backToVideos: "Back to Videos",
   diagnosis: "Diagnosis",
+  treatment: "Treatment",
   treatmentJourney: "Treatment Journey",
   patientStory: "Patient Story",
-  shareStory: "Share Your Story"
+  shareStory: "Share Your Story",
+  fullStory: "Full Story",
+  videoTestimonial: "Video Testimonial"
 };
