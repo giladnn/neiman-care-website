@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import {
   Dialog,
@@ -83,7 +82,12 @@ const FAQFormDialog: React.FC<FAQFormDialogProps> = ({
   });
 
   const updateMutation = useMutation({
-    mutationFn: updateFaq,
+    mutationFn: (data: FAQ) => {
+      if (!data.id) {
+        throw new Error('ID is required for updating FAQ');
+      }
+      return updateFaq(data);
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['faqs'] });
       onOpenChange(false);
@@ -97,14 +101,19 @@ const FAQFormDialog: React.FC<FAQFormDialogProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validate at least English is filled out
     if (!formData.question.en || !formData.answer.en) {
       toast.error(translate('pleaseFillInAllRequiredFields', language));
       return;
     }
     
     if (formData.id) {
-      updateMutation.mutate(formData);
+      updateMutation.mutate({
+        id: formData.id,
+        question: formData.question,
+        answer: formData.answer,
+        category: formData.category,
+        order: formData.order
+      });
     } else {
       createMutation.mutate(formData);
     }
@@ -151,7 +160,7 @@ const FAQFormDialog: React.FC<FAQFormDialogProps> = ({
                     id={`question-${lang.code}`}
                     value={formData.question[lang.code] || ''}
                     onChange={(e) => handleInputChange(lang.code, 'question', e.target.value)}
-                    required={lang.code === 'en'} // Only English is required
+                    required={lang.code === 'en'}
                     dir={lang.code === 'he' ? 'rtl' : 'ltr'}
                   />
                 </div>
@@ -162,7 +171,7 @@ const FAQFormDialog: React.FC<FAQFormDialogProps> = ({
                     id={`answer-${lang.code}`}
                     value={formData.answer[lang.code] || ''}
                     onChange={(e) => handleInputChange(lang.code, 'answer', e.target.value)}
-                    required={lang.code === 'en'} // Only English is required
+                    required={lang.code === 'en'}
                     rows={5}
                     dir={lang.code === 'he' ? 'rtl' : 'ltr'}
                   />

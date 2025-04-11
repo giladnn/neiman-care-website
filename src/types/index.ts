@@ -1,3 +1,6 @@
+
+export type Language = 'en' | 'he' | 'ru';
+
 export interface BlogPost {
   id: string;
   title: string;

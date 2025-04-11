@@ -81,7 +81,13 @@ const BiographyFormDialog: React.FC<BiographyFormDialogProps> = ({
   });
 
   const updateMutation = useMutation({
-    mutationFn: updateBiographySection,
+    mutationFn: (data: BiographySection) => {
+      // Fix: Ensure id is always present for update operations
+      if (!data.id) {
+        throw new Error('ID is required for updating biography section');
+      }
+      return updateBiographySection(data);
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['biographySections'] });
       onOpenChange(false);
@@ -102,7 +108,12 @@ const BiographyFormDialog: React.FC<BiographyFormDialogProps> = ({
     }
     
     if (formData.id) {
-      updateMutation.mutate(formData);
+      updateMutation.mutate({
+        id: formData.id,
+        title: formData.title,
+        content: formData.content,
+        order: formData.order
+      });
     } else {
       createMutation.mutate(formData);
     }

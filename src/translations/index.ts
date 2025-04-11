@@ -2,9 +2,9 @@
 import { enTranslations } from './en';
 import { heTranslations } from './he';
 import { ruTranslations } from './ru';
-import { Language } from '../context/LanguageContext';
+import { Language } from '../types';
 
-// Use a type that doesn't reference itself
+// Use a concrete type for translations that doesn't reference itself
 export type Translation = Record<string, string>;
 
 // Define translations record using concrete types

@@ -97,7 +97,13 @@ const ContactInfoFormDialog: React.FC<ContactInfoFormDialogProps> = ({
   });
 
   const updateMutation = useMutation({
-    mutationFn: updateContactInfo,
+    mutationFn: (data: ContactInfo) => {
+      // Fix: Ensure id is always present for update operations
+      if (!data.id) {
+        throw new Error('ID is required for updating contact info');
+      }
+      return updateContactInfo(data);
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['contactInfo'] });
       onOpenChange(false);
@@ -118,7 +124,13 @@ const ContactInfoFormDialog: React.FC<ContactInfoFormDialogProps> = ({
     }
     
     if (formData.id) {
-      updateMutation.mutate(formData);
+      updateMutation.mutate({
+        id: formData.id,
+        type: formData.type,
+        value: formData.value,
+        icon: formData.icon,
+        order: formData.order
+      });
     } else {
       createMutation.mutate(formData);
     }

@@ -26,7 +26,7 @@ interface AdminLayoutProps {
 }
 
 const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
-  const { signOut } = useAuth();
+  const { user, logout } = useAuth(); // Fixed: Use logout instead of signOut
   const location = useLocation();
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -50,7 +50,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
   }, []);
 
   const handleSignOut = () => {
-    signOut();
+    logout(); // Fixed: Use logout instead of signOut
     navigate('/admin/login');
   };
 

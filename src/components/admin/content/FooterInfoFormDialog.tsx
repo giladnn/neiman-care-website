@@ -104,7 +104,13 @@ const FooterInfoFormDialog: React.FC<FooterInfoFormDialogProps> = ({
   });
 
   const updateMutation = useMutation({
-    mutationFn: updateFooterInfo,
+    mutationFn: (data: FooterInfo) => {
+      // Fix: Ensure id is always present for update operations
+      if (!data.id) {
+        throw new Error('ID is required for updating footer info');
+      }
+      return updateFooterInfo(data);
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['footerInfo'] });
       onOpenChange(false);
@@ -125,7 +131,15 @@ const FooterInfoFormDialog: React.FC<FooterInfoFormDialogProps> = ({
     }
     
     if (formData.id) {
-      updateMutation.mutate(formData);
+      updateMutation.mutate({
+        id: formData.id,
+        section: formData.section,
+        title: formData.title,
+        content: formData.content,
+        link: formData.link,
+        icon: formData.icon,
+        order: formData.order
+      });
     } else {
       createMutation.mutate(formData);
     }
