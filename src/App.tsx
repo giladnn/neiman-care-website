@@ -20,6 +20,7 @@ import PatientStoryManagement from './pages/admin/PatientStoryManagement';
 import ServiceManagement from './pages/admin/ServiceManagement';
 import NewsManagement from './pages/admin/NewsManagement';
 import AppointmentManagement from './pages/admin/AppointmentManagement';
+import ContentManagement from './pages/admin/ContentManagement';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
               <Route path="/admin/services" element={<ServiceManagement />} />
               <Route path="/admin/news" element={<NewsManagement />} />
               <Route path="/admin/appointments" element={<AppointmentManagement />} />
+              <Route path="/admin/content" element={<ContentManagement />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <Toaster />

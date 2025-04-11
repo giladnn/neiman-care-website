@@ -114,7 +114,7 @@ export type Database = {
           date: string
           excerpt: string
           id: string
-          image_url: string | null
+          imageUrl: string | null
           source: string
           title: string
           url: string
@@ -124,7 +124,7 @@ export type Database = {
           date: string
           excerpt: string
           id?: string
-          image_url?: string | null
+          imageUrl?: string | null
           source: string
           title: string
           url: string
@@ -134,7 +134,7 @@ export type Database = {
           date?: string
           excerpt?: string
           id?: string
-          image_url?: string | null
+          imageUrl?: string | null
           source?: string
           title?: string
           url?: string
@@ -191,27 +191,27 @@ export type Database = {
       }
       services: {
         Row: {
-          created_at: string | null
+          createdAt: string | null
           description: string
           icon: string | null
           id: string
-          image_url: string | null
+          imageUrl: string | null
           title: string
         }
         Insert: {
-          created_at?: string | null
+          createdAt?: string | null
           description: string
           icon?: string | null
           id?: string
-          image_url?: string | null
+          imageUrl?: string | null
           title: string
         }
         Update: {
-          created_at?: string | null
+          createdAt?: string | null
           description?: string
           icon?: string | null
           id?: string
-          image_url?: string | null
+          imageUrl?: string | null
           title?: string
         }
         Relationships: []

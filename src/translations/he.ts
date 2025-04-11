@@ -1,3 +1,4 @@
+
 export const heTranslations = {
   home: "בית",
   about: "אודות",
@@ -68,4 +69,60 @@ export const heTranslations = {
   advancedTechnology: "טכנולוגיה מתקדמת",
   backToVideos: "חזרה לסרטונים",
   noVideosFound: "לא נמצאו וידאו עדויות",
+  
+  // FAQ section
+  frequentlyAskedQuestions: "שאלות נפוצות",
+  faqSubtitle: "מצא תשובות לשאלות נפוצות על השירותים האונקולוגיים שלנו",
+  dontSeeQuestion: "לא רואה את השאלה שלך כאן? אל תהסס לפנות אלינו ישירות.",
+  
+  // Admin section
+  messages: "הודעות",
+  messagesManagement: "ניהול הודעות",
+  recentMessages: "הודעות אחרונות",
+  messageDetails: "פרטי הודעה",
+  allMessages: "כל ההודעות",
+  noMessages: "לא נמצאו הודעות",
+  markAsRead: "סמן כנקרא",
+  markAsUnread: "סמן כלא נקרא",
+  messageFrom: "הודעה מאת",
+  sent: "נשלח",
+  reply: "השב",
+  deleteMessage: "מחק הודעה",
+  faqsManagement: "ניהול שאלות נפוצות",
+  addFaq: "הוסף שאלה נפוצה",
+  editFaq: "ערוך שאלה נפוצה",
+  question: "שאלה",
+  answer: "תשובה",
+  contentManagement: "ניהול תוכן",
+  footerManagement: "ניהול כותרת תחתונה",
+  contactInfoManagement: "ניהול פרטי יצירת קשר",
+  biographyManagement: "ניהול ביוגרפיה",
+  editContent: "ערוך תוכן",
+  save: "שמור",
+  cancel: "ביטול",
+  contentUpdated: "התוכן עודכן בהצלחה",
+  contentCreated: "התוכן נוצר בהצלחה",
+  contentDeleted: "התוכן נמחק בהצלחה",
+  confirmDelete: "האם אתה בטוח שברצונך למחוק פריט זה?",
+  addNew: "הוסף חדש",
+  emptyState: "לא נמצאו פריטים. לחץ על 'הוסף חדש' כדי ליצור אחד.",
+  
+  // FAQ questions and answers
+  faqCancerTypes: "באילו סוגי סרטן ד״ר נימן מתמחה?",
+  faqCancerTypesAnswer: "ד״ר נימן מתמחה בטיפול במגוון רחב של סוגי סרטן, עם מומחיות מיוחדת בסרטן השד, סרטן הריאות, סרטן במערכת העיכול ולימפומות.",
+  faqTreatmentTime: "כמה זמן נמשך תהליך טיפול טיפוסי?",
+  faqTreatmentTimeAnswer: "משך הטיפול בסרטן משתנה משמעותית בהתאם לסוג ושלב הסרטן, וכן לגישת הטיפול הספציפית. במהלך הייעוץ, ד״ר נימן תספק לך לוח זמנים מפורט על בסיס המקרה האישי שלך.",
+  faqTeam: "האם ד״ר נימן עובדת עם צוות רב-תחומי?",
+  faqTeamAnswer: "כן, ד״ר נימן משתפת פעולה עם צוות מקיף של אנשי מקצוע בתחום הבריאות כולל מנתחים, אונקולוגים מומחי קרינה, פתולוגים, אחיות, תזונאים ואנשי מקצוע בתחום בריאות הנפש כדי להבטיח טיפול הוליסטי לכל מטופל.",
+  faqFirstAppointment: "מה עלי להביא לפגישה הראשונה שלי?",
+  faqFirstAppointmentAnswer: "אנא הבא את הרשומות הרפואיות שלך, כולל תוצאות בדיקות קודמות, סריקות ודוחות פתולוגיים. כמו כן, הבא רשימה של תרופות נוכחיות, מידע על ביטוח וכל שאלה שיש לך.",
+  faqTelemedicine: "האם זמינות התייעצויות רפואה מרחוק?",
+  faqTelemedicineAnswer: "כן, ד״ר נימן מציעה פגישות רפואה מרחוק למצבים מתאימים כגון ייעוץ המשך וסוגים מסוימים של דיוני טיפול.",
+  
+  // Quick links section
+  quickLinks: "קישורים מהירים",
+  contactInfo: "פרטי יצירת קשר",
+  officeHoursFooter: "שעות פעילות",
+  privacyPolicy: "מדיניות פרטיות",
+  termsOfService: "תנאי שימוש",
 };

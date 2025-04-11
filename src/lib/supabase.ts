@@ -1,5 +1,6 @@
+
 import { supabase } from '@/integrations/supabase/client';
-import { AppointmentForm, BlogPost, PatientStory, Service, Testimonial, NewsArticle, Video } from '@/types';
+import { AppointmentForm, BlogPost, PatientStory, Service, Testimonial, NewsArticle, Video, Message, FAQ, ContactInfo, BiographySection, FooterInfo, Language } from '@/types';
 
 // Type-casting the supabase client to avoid TypeScript errors
 const typedSupabase = supabase as any;
@@ -411,15 +412,14 @@ export async function fetchMessages() {
   const { data, error } = await typedSupabase
     .from('messages')
     .select('*')
-    .order('created_at', { ascending: false })
-    .limit(5);
+    .order('created_at', { ascending: false });
 
   if (error) {
     console.error('Error fetching messages:', error);
     return [];
   }
   
-  return data;
+  return data as Message[];
 }
 
 export async function createMessage(message: { name: string, email: string, message: string }) {
@@ -434,4 +434,363 @@ export async function createMessage(message: { name: string, email: string, mess
   }
   
   return data;
+}
+
+export async function updateMessageStatus(update: { id: string, read: boolean }) {
+  const { data, error } = await typedSupabase
+    .from('messages')
+    .update({ read: update.read })
+    .eq('id', update.id)
+    .select();
+
+  if (error) {
+    console.error('Error updating message status:', error);
+    throw error;
+  }
+  
+  return data;
+}
+
+export async function deleteMessage(id: string) {
+  const { error } = await typedSupabase
+    .from('messages')
+    .delete()
+    .eq('id', id);
+
+  if (error) {
+    console.error('Error deleting message:', error);
+    throw error;
+  }
+  
+  return true;
+}
+
+// FAQs related functions
+export async function fetchFaqs() {
+  const { data, error } = await typedSupabase
+    .from('faqs')
+    .select('*')
+    .order('order', { ascending: true });
+
+  if (error) {
+    console.error('Error fetching FAQs:', error);
+    return [];
+  }
+  
+  return data as FAQ[];
+}
+
+export async function createFaq(faq: {
+  question: Record<Language, string>;
+  answer: Record<Language, string>;
+  category?: string;
+  order?: number;
+}) {
+  const { data, error } = await typedSupabase
+    .from('faqs')
+    .insert([faq])
+    .select();
+
+  if (error) {
+    console.error('Error creating FAQ:', error);
+    throw error;
+  }
+  
+  return data;
+}
+
+export async function updateFaq(faq: {
+  id: string;
+  question: Record<Language, string>;
+  answer: Record<Language, string>;
+  category?: string;
+  order?: number;
+}) {
+  const { data, error } = await typedSupabase
+    .from('faqs')
+    .update({
+      question: faq.question,
+      answer: faq.answer,
+      category: faq.category,
+      order: faq.order
+    })
+    .eq('id', faq.id)
+    .select();
+
+  if (error) {
+    console.error('Error updating FAQ:', error);
+    throw error;
+  }
+  
+  return data;
+}
+
+export async function deleteFaq(id: string) {
+  const { error } = await typedSupabase
+    .from('faqs')
+    .delete()
+    .eq('id', id);
+
+  if (error) {
+    console.error('Error deleting FAQ:', error);
+    throw error;
+  }
+  
+  return true;
+}
+
+// Contact Info related functions
+export async function fetchContactInfo() {
+  const { data, error } = await typedSupabase
+    .from('contact_info')
+    .select('*')
+    .order('order', { ascending: true });
+
+  if (error) {
+    console.error('Error fetching contact info:', error);
+    return [];
+  }
+  
+  return data as ContactInfo[];
+}
+
+export async function createContactInfo(info: {
+  type: 'address' | 'phone' | 'email' | 'hours';
+  value: Record<Language, string>;
+  icon?: string;
+  order?: number;
+}) {
+  const { data, error } = await typedSupabase
+    .from('contact_info')
+    .insert([info])
+    .select();
+
+  if (error) {
+    console.error('Error creating contact info:', error);
+    throw error;
+  }
+  
+  return data;
+}
+
+export async function updateContactInfo(info: {
+  id: string;
+  type: 'address' | 'phone' | 'email' | 'hours';
+  value: Record<Language, string>;
+  icon?: string;
+  order?: number;
+}) {
+  const { data, error } = await typedSupabase
+    .from('contact_info')
+    .update({
+      type: info.type,
+      value: info.value,
+      icon: info.icon,
+      order: info.order
+    })
+    .eq('id', info.id)
+    .select();
+
+  if (error) {
+    console.error('Error updating contact info:', error);
+    throw error;
+  }
+  
+  return data;
+}
+
+export async function deleteContactInfo(id: string) {
+  const { error } = await typedSupabase
+    .from('contact_info')
+    .delete()
+    .eq('id', id);
+
+  if (error) {
+    console.error('Error deleting contact info:', error);
+    throw error;
+  }
+  
+  return true;
+}
+
+// Biography sections related functions
+export async function fetchBiographySections() {
+  const { data, error } = await typedSupabase
+    .from('biography_sections')
+    .select('*')
+    .order('order', { ascending: true });
+
+  if (error) {
+    console.error('Error fetching biography sections:', error);
+    return [];
+  }
+  
+  return data as BiographySection[];
+}
+
+export async function createBiographySection(section: {
+  title: Record<Language, string>;
+  content: Record<Language, string>;
+  order: number;
+}) {
+  const { data, error } = await typedSupabase
+    .from('biography_sections')
+    .insert([section])
+    .select();
+
+  if (error) {
+    console.error('Error creating biography section:', error);
+    throw error;
+  }
+  
+  return data;
+}
+
+export async function updateBiographySection(section: {
+  id: string;
+  title: Record<Language, string>;
+  content: Record<Language, string>;
+  order: number;
+}) {
+  const { data, error } = await typedSupabase
+    .from('biography_sections')
+    .update({
+      title: section.title,
+      content: section.content,
+      order: section.order
+    })
+    .eq('id', section.id)
+    .select();
+
+  if (error) {
+    console.error('Error updating biography section:', error);
+    throw error;
+  }
+  
+  return data;
+}
+
+export async function deleteBiographySection(id: string) {
+  const { error } = await typedSupabase
+    .from('biography_sections')
+    .delete()
+    .eq('id', id);
+
+  if (error) {
+    console.error('Error deleting biography section:', error);
+    throw error;
+  }
+  
+  return true;
+}
+
+export async function updateBiographyOrder(orderUpdate: {
+  id1: string;
+  order1: number;
+  id2: string;
+  order2: number;
+}) {
+  // Update first section
+  const { error: error1 } = await typedSupabase
+    .from('biography_sections')
+    .update({ order: orderUpdate.order1 })
+    .eq('id', orderUpdate.id1);
+
+  if (error1) {
+    console.error('Error updating biography order:', error1);
+    throw error1;
+  }
+  
+  // Update second section
+  const { error: error2 } = await typedSupabase
+    .from('biography_sections')
+    .update({ order: orderUpdate.order2 })
+    .eq('id', orderUpdate.id2);
+
+  if (error2) {
+    console.error('Error updating biography order:', error2);
+    throw error2;
+  }
+  
+  return true;
+}
+
+// Footer info related functions
+export async function fetchFooterInfo() {
+  const { data, error } = await typedSupabase
+    .from('footer_info')
+    .select('*')
+    .order('order', { ascending: true });
+
+  if (error) {
+    console.error('Error fetching footer info:', error);
+    return [];
+  }
+  
+  return data as FooterInfo[];
+}
+
+export async function createFooterInfo(info: {
+  section: 'quickLinks' | 'contactInfo' | 'officeHours';
+  title: Record<Language, string>;
+  content: Record<Language, string>;
+  link?: string;
+  icon?: string;
+  order: number;
+}) {
+  const { data, error } = await typedSupabase
+    .from('footer_info')
+    .insert([info])
+    .select();
+
+  if (error) {
+    console.error('Error creating footer info:', error);
+    throw error;
+  }
+  
+  return data;
+}
+
+export async function updateFooterInfo(info: {
+  id: string;
+  section: 'quickLinks' | 'contactInfo' | 'officeHours';
+  title: Record<Language, string>;
+  content: Record<Language, string>;
+  link?: string;
+  icon?: string;
+  order: number;
+}) {
+  const { data, error } = await typedSupabase
+    .from('footer_info')
+    .update({
+      section: info.section,
+      title: info.title,
+      content: info.content,
+      link: info.link,
+      icon: info.icon,
+      order: info.order
+    })
+    .eq('id', info.id)
+    .select();
+
+  if (error) {
+    console.error('Error updating footer info:', error);
+    throw error;
+  }
+  
+  return data;
+}
+
+export async function deleteFooterInfo(id: string) {
+  const { error } = await typedSupabase
+    .from('footer_info')
+    .delete()
+    .eq('id', id);
+
+  if (error) {
+    console.error('Error deleting footer info:', error);
+    throw error;
+  }
+  
+  return true;
 }

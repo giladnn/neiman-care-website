@@ -1,4 +1,3 @@
-
 export interface BlogPost {
   id: string;
   title: string;
@@ -51,12 +50,55 @@ export interface AppointmentForm {
   name: string;
   email: string;
   phone: string;
-  date: string | Date;
+  date: Date | string;
   time: string;
   reason: string;
   message?: string;
   status?: 'pending' | 'confirmed' | 'cancelled';
-  created_at?: string; // Changed from createdAt to created_at to match DB schema
+  created_at?: string;
+}
+
+export interface Message {
+  id: string;
+  name: string;
+  email: string;
+  message: string;
+  created_at: string;
+  read?: boolean;
+}
+
+export interface FAQ {
+  id: string;
+  question: Record<Language, string>;
+  answer: Record<Language, string>;
+  category?: string;
+  order?: number;
+  created_at?: string;
+}
+
+export interface ContactInfo {
+  id: string;
+  type: 'address' | 'phone' | 'email' | 'hours';
+  value: Record<Language, string>;
+  icon?: string;
+  order?: number;
+}
+
+export interface BiographySection {
+  id: string;
+  title: Record<Language, string>;
+  content: Record<Language, string>;
+  order: number;
+}
+
+export interface FooterInfo {
+  id: string;
+  section: 'quickLinks' | 'contactInfo' | 'officeHours';
+  title: Record<Language, string>;
+  content: Record<Language, string>;
+  link?: string;
+  icon?: string;
+  order: number;
 }
 
 export interface UserData {
