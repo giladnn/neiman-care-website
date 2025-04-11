@@ -20,7 +20,7 @@ export const submitAppointment = async (data: any) => {
       reason: data.reason,
       message: data.message,
       status: 'pending',
-      createdAt: new Date().toISOString()
+      created_at: new Date().toISOString() // Changed from createdAt to created_at to match DB schema
     };
     
     // Get existing appointments or initialize empty array
@@ -71,7 +71,7 @@ export const sendEmailNotification = async (appointment: AppointmentForm) => {
         Reason: ${appointment.reason}
         Message: ${appointment.message || 'No additional message'}
         Status: ${appointment.status}
-        Created: ${appointment.createdAt}
+        Created: ${appointment.created_at}
       `,
       reply_to: appointment.email
     };

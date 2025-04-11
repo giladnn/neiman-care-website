@@ -56,7 +56,7 @@ export interface AppointmentForm {
   reason: string;
   message?: string;
   status?: 'pending' | 'confirmed' | 'cancelled';
-  createdAt?: string;
+  created_at?: string; // Changed from createdAt to created_at to match DB schema
 }
 
 export interface UserData {
