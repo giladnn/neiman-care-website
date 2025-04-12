@@ -34,7 +34,6 @@ const Layout = ({ children }: LayoutProps) => {
       lang={language}
     >
       <SkipToContent />
-      <AccessibilityWidget />
       <Navbar />
       <main 
         id="main-content" 
