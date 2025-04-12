@@ -4,6 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/context/LanguageContext';
 import { translate } from '@/translations';
+import { Link } from 'react-router-dom';
 
 const ServicesMain = () => {
   const { language, direction } = useLanguage();
@@ -81,9 +82,11 @@ const ServicesMain = () => {
                   <p className="text-gray-600 flex-grow mb-4">
                     {translate(service.descriptionKey as any, language)}
                   </p>
-                  <Button variant="outline" className="w-full text-primary border-primary hover:bg-primary hover:text-white">
+                <Link to="/contact"  className="w-full text-primary border-primary hover:text-gray-60"> {translate('learnMore', language)}</Link>
+                  
+                  {/* <Button variant="outline" className="w-full text-primary border-primary hover:bg-primary hover:text-white">
                     {translate('learnMore', language)}
-                  </Button>
+                  </Button> */}
                 </div>
               </CardContent>
             </Card>

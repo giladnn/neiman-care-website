@@ -110,7 +110,7 @@ const Navbar = () => {
                   </Link>
                 </NavigationMenuItem>
                 
-                <NavigationMenuItem>
+                {/* <NavigationMenuItem>
                   <Link to="/blog">
                     <NavigationMenuLink 
                       className={navigationMenuTriggerStyle({ className: isActive('/blog') ? 'bg-primary/5 text-primary' : '' })}
@@ -118,7 +118,7 @@ const Navbar = () => {
                       {translate('blog', language)}
                     </NavigationMenuLink>
                   </Link>
-                </NavigationMenuItem>
+                </NavigationMenuItem> */}
                 
                 <NavigationMenuItem>
                   <Link to="/contact">
@@ -205,7 +205,7 @@ const Navbar = () => {
             >
               {translate('patientTestimonials', language)}
             </Link>
-            <Link 
+            {/* <Link 
               to="/blog" 
               className={`px-4 py-2 text-gray-600 hover:bg-gray-100 rounded ${
                 isActive('/blog') ? 'bg-primary/5 text-primary' : ''
@@ -213,7 +213,7 @@ const Navbar = () => {
               onClick={closeMenu}
             >
               {translate('blog', language)}
-            </Link>
+            </Link> */}
             <Link 
               to="/contact" 
               className={`px-4 py-2 text-gray-600 hover:bg-gray-100 rounded ${

@@ -41,7 +41,7 @@ const Footer = () => {
               <li><Link to="/" className="text-gray-300 hover:text-secondary transition-colors">{translate('home', language)}</Link></li>
               <li><Link to="/about" className="text-gray-300 hover:text-secondary transition-colors">{translate('about', language)}</Link></li>
               <li><Link to="/services" className="text-gray-300 hover:text-secondary transition-colors">{translate('services', language)}</Link></li>
-              <li><Link to="/blog" className="text-gray-300 hover:text-secondary transition-colors">{translate('blog', language)}</Link></li>
+              {/* <li><Link to="/blog" className="text-gray-300 hover:text-secondary transition-colors">{translate('blog', language)}</Link></li> */}
               <li><Link to="/contact" className="text-gray-300 hover:text-secondary transition-colors">{translate('contact', language)}</Link></li>
             </ul>
           </div>
@@ -97,11 +97,11 @@ const Footer = () => {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 mb-4 md:mb-0">© {currentYear} Dr. Victoria Neiman. {translate('rights', language)}.</p>
-            <div className="flex space-x-6">
-              <Link to="/privacy-policy" className="text-gray-400 hover:text-secondary transition-colors">{translate('privacyPolicy', language)}</Link>
-              <Link to="/terms" className="text-gray-400 hover:text-secondary transition-colors">{translate('termsOfService', language)}</Link>
+            {/* <div className="flex space-x-6"> */}
+              {/* <Link to="/privacy-policy" className="text-gray-400 hover:text-secondary transition-colors">{translate('privacyPolicy', language)}</Link> */}
+              {/* <Link to="/terms" className="text-gray-400 hover:text-secondary transition-colors">{translate('termsOfService', language)}</Link> */}
               {/* Admin Login link removed */}
-            </div>
+            {/* </div> */}
           </div>
         </div>
       </div>
