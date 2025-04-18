@@ -2,8 +2,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/context/LanguageContext';
+import { translate } from '@/translations';
 
 const PhilosophySection = () => {
+  const { language, direction } = useLanguage();
+
   return (
     <section className="py-16 bg-primary text-white">
       <div className="container mx-auto">
@@ -16,7 +20,8 @@ const PhilosophySection = () => {
             Dr. Neiman's approach to cancer care is guided by several core principles: personalization, compassion, education, and collaboration. She believes in treating each patient as an individual, considering not just their medical condition but their personal preferences, quality of life goals, and support systems.
           </p>
           <Button asChild className="bg-secondary hover:bg-secondary-dark text-white">
-            <Link to="/appointment">Schedule a Consultation</Link>
+
+            <Link to="/appointment">{translate('scheduleAppointment', language)}</Link>
           </Button>
         </div>
       </div>
