@@ -21,7 +21,7 @@ const PhilosophySection = () => {
           </p>
           <Button asChild className="bg-secondary hover:bg-secondary-dark text-white">
 
-            <Link to="/appointment">{translate('scheduleAppointment', language)}</Link>
+            <Link to="/appointment">Schedule an Appointment</Link>
           </Button>
         </div>
       </div>
