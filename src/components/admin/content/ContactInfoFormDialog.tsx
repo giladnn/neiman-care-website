@@ -6,43 +6,20 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createContactInfo, updateContactInfo } from '@/lib/supabase';
-import { ContactInfo, Language } from '@/types';
+import { ContactInfo } from '@/types';
 import { toast } from 'sonner';
 import { useLanguage } from '@/context/LanguageContext';
 import { translate } from '@/translations';
+import { createContactInfo, updateContactInfo } from '@/lib/supabase';
+import ContactInfoFields from './ContactInfoFields';
+import ContactInfoFormActions from './ContactInfoFormActions';
 
 interface ContactInfoFormDialogProps {
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
   contactInfo: ContactInfo | null;
 }
-
-const supportedLanguages: { code: Language; name: string }[] = [
-  { code: 'en', name: 'English' },
-  { code: 'he', name: 'Hebrew' },
-  { code: 'ru', name: 'Russian' },
-];
-
-const contactTypes = [
-  { value: 'address', label: 'Address' },
-  { value: 'phone', label: 'Phone' },
-  { value: 'email', label: 'Email' },
-  { value: 'hours', label: 'Office Hours' },
-];
 
 const ContactInfoFormDialog: React.FC<ContactInfoFormDialogProps> = ({
   isOpen,
@@ -51,63 +28,55 @@ const ContactInfoFormDialog: React.FC<ContactInfoFormDialogProps> = ({
 }) => {
   const { language } = useLanguage();
   const queryClient = useQueryClient();
-  const [activeTab, setActiveTab] = useState<Language>('en');
+  const [activeTab, setActiveTab] = useState('en');
   const [formData, setFormData] = useState<{
-    id?: string;
-    type: 'address' | 'phone' | 'email' | 'hours';
-    value: Record<Language, string>;
-    icon?: string;
-    order_num?: number;
+    type: ContactInfo['type'];
+    value: Record<string, string>;
+    order_num: number;
   }>({
     type: 'address',
     value: { en: '', he: '', ru: '' },
-    icon: '',
     order_num: 0,
   });
 
   useEffect(() => {
     if (contactInfo) {
       setFormData({
-        id: contactInfo.id,
-        type: contactInfo.type || 'address',
-        value: contactInfo.value || { en: '', he: '', ru: '' },
-        icon: contactInfo.icon || '',
+        type: contactInfo.type,
+        value: contactInfo.value,
         order_num: contactInfo.order_num || 0,
       });
     } else {
       setFormData({
         type: 'address',
         value: { en: '', he: '', ru: '' },
-        icon: '',
         order_num: 0,
       });
     }
   }, [contactInfo]);
 
-  const createMutation = useMutation({
-    mutationFn: createContactInfo,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['contactInfo'] });
-      onOpenChange(false);
-      toast.success(translate('contentCreated', language));
-    },
-    onError: (error) => {
-      toast.error(`${translate('error', language)}: ${error.message}`);
-    },
-  });
-
-  const updateMutation = useMutation({
-    mutationFn: (data: ContactInfo) => {
-      // Fix: Ensure id is always present for update operations
-      if (!data.id) {
-        throw new Error('ID is required for updating contact info');
+  const mutation = useMutation({
+    mutationFn: async (data: typeof formData) => {
+      if (contactInfo) {
+        return updateContactInfo({
+          id: contactInfo.id,
+          type: data.type,
+          value: data.value,
+          order_num: data.order_num,
+        });
+      } else {
+        return createContactInfo(data);
       }
-      return updateContactInfo(data);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['contactInfo'] });
       onOpenChange(false);
-      toast.success(translate('contentUpdated', language));
+      toast.success(
+        translate(
+          contactInfo ? 'contactInfoUpdated' : 'contactInfoAdded',
+          language
+        )
+      );
     },
     onError: (error) => {
       toast.error(`${translate('error', language)}: ${error.message}`);
@@ -116,44 +85,14 @@ const ContactInfoFormDialog: React.FC<ContactInfoFormDialogProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Validate at least English is filled out
-    if (!formData.value.en) {
-      toast.error(translate('pleaseFillInAllRequiredFields', language));
-      return;
-    }
-    
-    if (formData.id) {
-      updateMutation.mutate({
-        id: formData.id,
-        type: formData.type,
-        value: formData.value,
-        icon: formData.icon,
-        order_num: formData.order_num || 0
-      });
-    } else {
-      createMutation.mutate(formData as ContactInfo);
-    }
+    mutation.mutate(formData);
   };
 
-  const handleValueChange = (
-    lang: Language,
-    value: string
-  ) => {
-    setFormData({
-      ...formData,
-      value: {
-        ...formData.value,
-        [lang]: value,
-      },
-    });
-  };
-
-  const handleTypeChange = (type: 'address' | 'phone' | 'email' | 'hours') => {
-    setFormData({
-      ...formData,
-      type
-    });
+  const handleFieldChange = (field: string, value: any) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
   };
 
   return (
@@ -161,84 +100,24 @@ const ContactInfoFormDialog: React.FC<ContactInfoFormDialogProps> = ({
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
           <DialogTitle>
-            {contactInfo ? translate('editContent', language) : translate('addNew', language)}
+            {translate(
+              contactInfo ? 'editContactInfo' : 'addContactInfo',
+              language
+            )}
           </DialogTitle>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="space-y-2">
-            <Label htmlFor="type">{translate('type', language)}</Label>
-            <Select
-              value={formData.type}
-              onValueChange={(value) => handleTypeChange(value as any)}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder={translate('selectType', language)} />
-              </SelectTrigger>
-              <SelectContent>
-                {contactTypes.map((type) => (
-                  <SelectItem key={type.value} value={type.value}>
-                    {type.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-            
-          <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as Language)}>
-            <TabsList className="grid grid-cols-3">
-              {supportedLanguages.map((lang) => (
-                <TabsTrigger key={lang.code} value={lang.code}>
-                  {lang.name}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-
-            {supportedLanguages.map((lang) => (
-              <TabsContent key={lang.code} value={lang.code} className="space-y-4 mt-4">
-                <div className="space-y-2">
-                  <Label htmlFor={`value-${lang.code}`}>{translate('value', language)}</Label>
-                  {formData.type === 'address' || formData.type === 'hours' ? (
-                    <Textarea
-                      id={`value-${lang.code}`}
-                      value={formData.value[lang.code] || ''}
-                      onChange={(e) => handleValueChange(lang.code, e.target.value)}
-                      required={lang.code === 'en'} // Only English is required
-                      rows={5}
-                      dir={lang.code === 'he' ? 'rtl' : 'ltr'}
-                    />
-                  ) : (
-                    <Input
-                      id={`value-${lang.code}`}
-                      value={formData.value[lang.code] || ''}
-                      onChange={(e) => handleValueChange(lang.code, e.target.value)}
-                      required={lang.code === 'en'} // Only English is required
-                      dir={lang.code === 'he' ? 'rtl' : 'ltr'}
-                    />
-                  )}
-                </div>
-              </TabsContent>
-            ))}
-          </Tabs>
-
-          <div className="flex justify-end space-x-2">
-            <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
-              {translate('cancel', language)}
-            </Button>
-            <Button 
-              type="submit" 
-              disabled={createMutation.isPending || updateMutation.isPending}
-            >
-              {(createMutation.isPending || updateMutation.isPending) ? (
-                <span className="flex items-center gap-2">
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                  {translate('saving', language)}
-                </span>
-              ) : (
-                translate('save', language)
-              )}
-            </Button>
-          </div>
+          <ContactInfoFields
+            formData={formData}
+            onFieldChange={handleFieldChange}
+            activeTab={activeTab}
+            onTabChange={setActiveTab}
+          />
+          <ContactInfoFormActions
+            onCancel={() => onOpenChange(false)}
+            isLoading={mutation.isPending}
+          />
         </form>
       </DialogContent>
     </Dialog>
