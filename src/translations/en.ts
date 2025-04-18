@@ -324,9 +324,9 @@ export const enTranslations: Record<string, string> = {
   reason: "Reason",
 
   // Biography section
-  biographyText1: "Dr. Victoria Neiman is a leading expert in Clinical Oncology, Internal Medicine, and Radiotherapy, with over 30 years of experience. She heads the Oncology Inpatient Department at the Davidoff Cancer Center at Rabin Medical Center.",
-  biographyText2: "Her specialization focuses on uro-oncological tumors, including kidney, prostate, bladder, and testicular cancer, as well as breast cancer. Dr. Neiman is active in international clinical research, lectures at Tel Aviv University, and leads innovations in oncology.",
-  biographyText3: "Known for her humane and empathetic approach, she combines professionalism with personal attention to her patients. She is a member of leading professional associations, including ESMO and the Israeli Society of Clinical Oncology.",
+  // biographyText1: "Dr. Victoria Neiman is a leading expert in Clinical Oncology, Internal Medicine, and Radiotherapy, with over 30 years of experience. She heads the Oncology Inpatient Department at the Davidoff Cancer Center at Rabin Medical Center.",
+  // biographyText2: "Her specialization focuses on uro-oncological tumors, including kidney, prostate, bladder, and testicular cancer, as well as breast cancer. Dr. Neiman is active in international clinical research, lectures at Tel Aviv University, and leads innovations in oncology.",
+  // biographyText3: "Known for her humane and empathetic approach, she combines professionalism with personal attention to her patients. She is a member of leading professional associations, including ESMO and the Israeli Society of Clinical Oncology.",
   
   // Credentials section
   educationCredentials: "Education & Credentials",
