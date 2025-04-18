@@ -211,6 +211,8 @@ export const ruTranslations = {
   resetAll: "Сбросить все",
   adjustFontSize: "Настроить размер шрифта",
   adjustBrightness: "Настроить яркость экрана",
+  subject: "перевозчик",
+  subjectPlaceHolder: "Пожалуйста, предоставьте подробную информацию о вашем запросе",
 
   // Treatment Process Section
   treatmentProcessTitle: "Наш процесс лечения",
@@ -388,6 +390,7 @@ export const ruTranslations = {
   
   // Admin section
   messages: "Сообщения",
+  messagePlaceHolder: "Пожалуйста, предоставьте подробную информацию о вашем запросе",
   messagesManagement: "Управление сообщениями",
   recentMessages: "Последние сообщения",
   messageDetails: "Детали сообщения",

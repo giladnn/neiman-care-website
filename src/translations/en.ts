@@ -368,6 +368,7 @@ export const enTranslations = {
   phoneNumber: "Phone Number",
   subject: "Subject",
   message: "Message",
+  messagePlaceHolder: "Please provide details about your inquiry",
   submitMessage: "Send Message",
   officeAddress: "Address",
   officePhone: "Phone",

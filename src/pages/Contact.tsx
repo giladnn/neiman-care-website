@@ -220,7 +220,7 @@ const Contact = () => {
                         <FormLabel>{translate('subject', language)}</FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="How can we help you?"
+                            placeholder={translate('subjectPlaceHolder', language)}
                             {...field}
                           />
                         </FormControl>
@@ -237,7 +237,7 @@ const Contact = () => {
                         <FormLabel>{translate('message', language)}</FormLabel>
                         <FormControl>
                           <Textarea
-                            placeholder="Please provide details about your inquiry..."
+                            placeholder={translate('messagePlaceHolder', language)}
                             className="resize-none"
                             rows={6}
                             {...field}
