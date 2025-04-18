@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,6 +22,7 @@ import { createMessage } from "@/lib/supabase";
 import WhatsAppQR from "@/components/contact/WhatsAppQR";
 import { useLanguage } from "@/context/LanguageContext";
 import { translate } from "@/translations";
+import ContactInfo from "@/components/contact/ContactInfo";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -93,70 +95,7 @@ const Contact = () => {
               </CardContent>
             </Card>
 
-            <div className="grid gap-6">
-              <Card className="border-l-4 border-l-primary">
-                <CardContent className="p-4 flex items-center gap-4">
-                  <div className="bg-primary/10 p-3 rounded-full">
-                    <MapPin className="text-primary" size={24} />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-800">{translate("officeAddress", language)}</h3>
-                    <p className="text-gray-600">
-                      4 Mota Gur
-                      <br />
-                      Petah tikva
-                      <br />
-                      Israel
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="border-l-4 border-l-primary">
-                <CardContent className="p-4 flex items-center gap-4">
-                  <div className="bg-primary/10 p-3 rounded-full">
-                    <Phone className="text-primary" size={24} />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-800">Phone</h3>
-                    <p className="text-gray-600">073-702-1736</p>
-                    <p className="text-sm text-gray-500">
-                      Mon-Thu: 9am-5pm, Fri: 9am-2pm
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="border-l-4 border-l-primary">
-                <CardContent className="p-4 flex items-center gap-4">
-                  <div className="bg-primary/10 p-3 rounded-full">
-                    <Mail className="text-primary" size={24} />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-800">Email</h3>
-                    <p className="text-gray-600">victoria.neiman@gmail.com</p>
-                    <p className="text-sm text-gray-500">
-                      We'll respond within 24 hours
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="border-l-4 border-l-primary">
-                <CardContent className="p-4 flex items-center gap-4">
-                  <div className="bg-primary/10 p-3 rounded-full">
-                    <Clock className="text-primary" size={24} />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-800">Office Hours</h3>
-                    <p className="text-gray-600">
-                      Sunday - Thursday: 9:00 - 17:00{" "}
-                    </p>
-                    <p className="text-gray-600">Friday - Saturday: Closed</p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+            <ContactInfo />
           </div>
 
           <div className="md:col-span-3">

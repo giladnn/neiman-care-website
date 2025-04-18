@@ -307,8 +307,6 @@ export const heTranslations = {
   survivorshipPlanningDesc:
     "תכנון טיפול ארוך טווח המתמקד במניעת הישנות, מעקב אחר השפעות מאוחרות של הטיפול ותמיכה בחזרתך לבריאות.",
   
-  // FAQ questions and answers
-  
   // Patient Stories
   patientStoriesTitle: "סיפורי מטופלים",
   patientStoriesDescription:
@@ -409,6 +407,13 @@ export const heTranslations = {
   error: "שגיאה",
   type: "סוג",
   value: "ערך",
+  section: "מדור",
+  selectSection: "בחר מדור",
+  order: "סדר",
+  link: "קישור",
+  icon: "אייקון",
+  title: "כותרת",
+  content: "תוכן",
   saving: "שומר...",
   pleaseFillInAllRequiredFields: "אנא מלא את כל השדות הנדרשים",
   selectType: "בחר סוג",
