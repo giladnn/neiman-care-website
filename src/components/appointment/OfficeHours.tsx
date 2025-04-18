@@ -28,7 +28,7 @@ const OfficeHours = () => {
               9:00 - 5:00
             </td>
           </tr>
-          <tr className="border-b">
+          {/* <tr className="border-b">
             <td className="py-2 font-medium">
               {translate("friday", language)}
             </td>
@@ -39,10 +39,10 @@ const OfficeHours = () => {
             >
               9:00 - 14:00{" "}
             </td>
-          </tr>
+          </tr> */}
           <tr className="border-b">
             <td className="py-2 font-medium">
-              {translate("saturday", language)}
+              {translate("friday", language)} - {translate("saturday", language)} 
             </td>
             <td
               className={`py-2 ${
@@ -52,7 +52,7 @@ const OfficeHours = () => {
               {translate("closed", language)}
             </td>
           </tr>
-          <tr>
+          {/* <tr>
             <td className="py-2 font-medium">
               {translate("sunday", language)}
             </td>
@@ -63,7 +63,7 @@ const OfficeHours = () => {
             >
               {translate("closed", language)}
             </td>
-          </tr>
+          </tr> */}
         </tbody>
       </table>
     </div>
