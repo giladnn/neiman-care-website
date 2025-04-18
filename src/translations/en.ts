@@ -87,7 +87,6 @@ export const enTranslations = {
     "Find answers to common questions about our oncological services",
   dontSeeQuestion:
     "Don't see your question here? Feel free to contact us directly.",
-  contactUs: "Contact Us",
 
   // Appointment Page
   scheduleAnAppointment: "Schedule an Appointment",
@@ -363,9 +362,6 @@ export const enTranslations = {
   contactDescription: "Have questions or need to get in touch with Dr. Victoria Neiman? We're here to help.",
   sendUsMessage: "Send Us a Message",
   contactInfo: "Contact Information",
-  fullName: "Full Name",
-  email: "Email",
-  phoneNumber: "Phone Number",
   subject: "Subject",
   message: "Message",
   messagePlaceHolder: "Please provide details about your inquiry",
