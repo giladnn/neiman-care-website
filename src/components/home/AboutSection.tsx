@@ -14,8 +14,8 @@ const AboutSection = () => {
           <div className="relative">
             <div className="rounded-lg overflow-hidden shadow-xl">
               <img 
-                src="/placeholder.svg" 
-                alt="Dr. Victoria Neiman" 
+                src="/lovable-uploads/2c3dcd37-f373-409b-a38e-5b98d460c366.png"
+                alt="Dr. Victoria Neiman"
                 className="w-full h-[500px] object-cover"
               />
             </div>

@@ -22,14 +22,10 @@ export const enTranslations: Record<string, string> = {
 
   // About Section
   aboutSectionTitle: "Dr. Victoria Neiman",
-  aboutSectionSubtitle:
-    "Leading Oncologist Specializing in Personalized Cancer Care",
-  aboutSectionText1:
-    "Dr. Victoria Neiman is a respected oncologist with over 15 years of experience in diagnosing and treating various types of cancer. Her expertise spans medical oncology with a special focus on breast cancer, lung cancer, and gastrointestinal tumors.",
-  aboutSectionText2:
-    "After completing her medical training at Hadassah Medical Center in Jerusalem, Dr. Neiman went on to specialize in oncology at leading institutions across Europe and the United States. She holds multiple certifications and is actively involved in clinical research to advance cancer treatment protocols.",
-  aboutSectionText3:
-    "Dr. Neiman's approach combines innovative medical expertise with compassionate care, ensuring that each patient receives personalized treatment tailored to their specific needs and condition.",
+  aboutSectionSubtitle: "Leading Oncologist Specializing in Clinical Oncology and Personalized Cancer Care",
+  aboutSectionText1: "Dr. Victoria Neiman is a leading expert in Clinical Oncology, Internal Medicine, and Radiotherapy, with over 30 years of experience. She heads the Oncology Inpatient Department at the Davidoff Cancer Center at Rabin Medical Center.",
+  aboutSectionText2: "Her specialization focuses on uro-oncological tumors, including kidney, prostate, bladder, and testicular cancer, as well as breast cancer. Dr. Neiman is active in international clinical research, lectures at Tel Aviv University, and leads innovations in oncology.",
+  aboutSectionText3: "Known for her humane and empathetic approach, she combines professionalism with personal attention to her patients. She is a member of leading professional associations, including ESMO and the Israeli Society of Clinical Oncology.",
   readFullBio: "Read Full Biography",
   yearsExperience: "30+ Years of Experience",
 
