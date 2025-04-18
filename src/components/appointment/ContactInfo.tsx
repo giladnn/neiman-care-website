@@ -43,8 +43,8 @@ const ContactInfo = () => {
           <div className={direction === 'rtl' ? 'text-right' : ''}>
             <h4 className="font-semibold">{translate('address', language)}</h4>
             <p className="text-gray-600">
-              123 Medical Center Dr.<br />
-              Tel Aviv, 61000<br />
+              4 Mota Gur<br />
+              Petah Tikva<br />
               Israel
             </p>
           </div>

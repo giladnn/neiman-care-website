@@ -102,9 +102,9 @@ const Contact = () => {
                   <div>
                     <h3 className="font-bold text-gray-800">{translate("officeAddress", language)}</h3>
                     <p className="text-gray-600">
-                      123 Medical Center Dr.
+                      4 Mota Gur
                       <br />
-                      Tel Aviv, 61000
+                      Petah tikva
                       <br />
                       Israel
                     </p>

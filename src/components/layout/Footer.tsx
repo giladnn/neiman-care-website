@@ -52,7 +52,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <MapPin size={20} className="mt-1 flex-shrink-0 text-secondary" />
-                <span className="text-gray-300">123 Medical Center Dr.<br/>Tel Aviv, 61000, Israel</span>
+                <span className="text-gray-300">4 Mota Gur<br/>Petah Tikva, Israel</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone size={20} className="flex-shrink-0 text-secondary" />

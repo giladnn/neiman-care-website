@@ -77,8 +77,8 @@ const AppointmentSection = () => {
                 <Calendar size={48} className="mx-auto mb-4 text-primary" />
                 <h3 className="text-xl font-bold mb-2">{translate('clinicLocation', language)}</h3>
                 <p className="text-gray-600">
-                  123 Medical Center Dr.<br />
-                  Tel Aviv, 61000<br />
+                  4 Mota Gur<br />
+                 Petah Tikva<br />
                   Israel
                 </p>
               </div>
