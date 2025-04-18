@@ -66,7 +66,7 @@ const StoryDialog = ({ story, open, onClose }: StoryDialogProps) => {
           {/* Full Story */}
           <div className="mb-6">
             <h3 className="font-bold text-gray-800 mb-3 text-lg">{translate('fullStory', language)}</h3>
-            {story.fullStory.split('\n\n').map((paragraph, index) => (
+            {story.fullStory && story.fullStory.split('\n\n').map((paragraph, index) => (
               <p key={index} className="text-gray-600 mb-4">
                 {paragraph}
               </p>

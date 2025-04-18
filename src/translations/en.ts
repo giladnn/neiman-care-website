@@ -1,3 +1,4 @@
+
 export const enTranslations = {
   // Navbar
   home: "Home",
@@ -274,6 +275,8 @@ export const enTranslations = {
   lungCancer: "Lung Cancer",
   gastrointestinal: "Gastrointestinal",
   lymphoma: "Lymphoma",
+  melanoma: "Melanoma", // Added missing category
+  prostate: "Prostate Cancer", // Added missing category
   videoTestimonials: "Video Testimonials",
   videoTestimonialsDescription:
     "Watch video testimonials from patients sharing their experience with Dr. Neiman",
@@ -311,6 +314,7 @@ export const enTranslations = {
   videoAdded: "Video added successfully",
   videoUpdated: "Video updated successfully",
   videoDeleted: "Video deleted successfully",
+  
   // Admin general
   viewAll: "View All",
   scheduleNew: "Schedule New",
@@ -321,11 +325,6 @@ export const enTranslations = {
   dateTime: "Date & Time",
   reason: "Reason",
 
-  // Biography section
-  // biographyText1: "Dr. Victoria Neiman is a leading expert in Clinical Oncology, Internal Medicine, and Radiotherapy, with over 30 years of experience. She heads the Oncology Inpatient Department at the Davidoff Cancer Center at Rabin Medical Center.",
-  // biographyText2: "Her specialization focuses on uro-oncological tumors, including kidney, prostate, bladder, and testicular cancer, as well as breast cancer. Dr. Neiman is active in international clinical research, lectures at Tel Aviv University, and leads innovations in oncology.",
-  // biographyText3: "Known for her humane and empathetic approach, she combines professionalism with personal attention to her patients. She is a member of leading professional associations, including ESMO and the Israeli Society of Clinical Oncology.",
-  
   // Credentials section
   educationCredentials: "Education & Credentials",
   education: "Education",
@@ -345,6 +344,7 @@ export const enTranslations = {
   israeliInternalMedicine: "Israeli Society of Internal Medicine",
   israeliUrologySociety: "Israeli Society of Urology",
   esmoMembership: "European Society for Medical Oncology (ESMO)",
+  
   // Biography Section
   professionalBiography: "Professional Biography",
   biographyText1: "Dr. Victoria Neiman is a leading expert in Clinical Oncology, Internal Medicine, and Radiotherapy, with over 30 years of experience. She serves as the Head of the Oncology Inpatient Department at the Davidoff Cancer Center, part of Rabin Medical Center (Beilinson).",
@@ -355,13 +355,13 @@ export const enTranslations = {
   biographyText6: "Her patients consistently note her professionalism, humanity, and exceptional availability.",
   biographyText7: "Dr. Neiman is considered a central figure in the field of oncology in Israel, combining deep clinical knowledge with a humane and empathetic approach. She leads medical and research teams and invests heavily in training the next generation of doctors.",
   biographyText8: "Additionally, she participates in professional conferences, gives lectures, and publishes articles in her field of expertise. She strives to provide the highest level of medical care while offering personal attention and support to her patients.",
-  biographyText9: "Dr. Neiman speaks Hebrew, English, and Russian, offering medical services to a wide range of patients.",
-  biographyText10: "Her approach to patient care combines cutting-edge medical expertise with deep compassion, ensuring each patient receives personalized treatment tailored to their specific needs and circumstances.",
+  biographyText9: "Her approach to patient care combines cutting-edge medical expertise with deep compassion, ensuring each patient receives personalized treatment tailored to their specific needs and circumstances.",
+  biographyText10: "Dr. Neiman speaks Hebrew, English, and Russian, offering medical services to a wide range of patients.",
+  
   // Contact page translations
   contactUs: "Contact Us",
   contactDescription: "Have questions or need to get in touch with Dr. Victoria Neiman? We're here to help.",
   sendUsMessage: "Send Us a Message",
-  contactInfo: "Contact Information",
   subject: "Subject",
   message: "Message",
   messagePlaceHolder: "Please provide details about your inquiry",
@@ -369,7 +369,6 @@ export const enTranslations = {
   officeAddress: "Address",
   officePhone: "Phone",
   officeEmail: "Email",
-  officeHours: "Office Hours",
   messageSent: "Your message has been sent! We will get back to you shortly.",
   errorSending: "Error sending message",
   enterValidEmail: "Please enter a valid email.",
@@ -384,5 +383,6 @@ export const enTranslations = {
   referralAnswer: "While a referral from your primary care physician is helpful, it is not always required. Please contact our office to discuss your specific situation.",
   insuranceQuestion: "What insurance plans do you accept?",
   insuranceAnswer: "We work with most major health insurance providers. Please contact our office for specific information about your insurance coverage.",
-  aboutDoctorHeader:"About Dr. Victoria Neiman"
+  aboutDoctorHeader: "About Dr. Victoria Neiman",
+  loadMore: "Load More",
 };
