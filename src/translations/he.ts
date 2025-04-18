@@ -206,9 +206,9 @@ export const heTranslations = {
   
   // Office Hours and Contact Info
   contactInformation: "פרטי התקשרות",
-  mondayThursday: "שני - חמישי",
+  mondayThursday: "ראשון - חמישי",
   friday: "שישי",
-  officeHoursSchedule: "שני-חמישי: 9:00-17:00, שישי: 9:00-14:00",
+  officeHoursSchedule: "ראשון-חמישי: 9:00-17:00 ",
   
   // Form placeholders
   namePlaceholder: "יוחנן כהן",

@@ -114,7 +114,7 @@ export const enTranslations = {
   contactInformation: "Contact Information",
   phone: "Phone",
   address: "Address",
-  mondayThursday: "Monday - Thursday",
+  mondayThursday: "Sunday - Thursday",
   friday: "Friday",
   saturday: "Saturday",
   sunday: "Sunday",

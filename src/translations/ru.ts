@@ -132,12 +132,12 @@ export const ruTranslations = {
   contactInformation: "Контактная информация",
   phone: "Телефон",
   address: "Адрес",
-  mondayThursday: "Понедельник - Четверг",
+  mondayThursday: "Воскресенье - Четверг",
   friday: "Пятница",
   saturday: "Суббота",
   sunday: "Воскресенье",
   closed: "Закрыто",
-  officeHoursSchedule: "Понедельник-Четверг: 9:00-17:00, Пятница: 9:00-14:00",
+  officeHoursSchedule: "Воскресенье-Четверг: 9:00-17:00",
 
   // Form placeholders
   namePlaceholder: "Иван Иванов",
