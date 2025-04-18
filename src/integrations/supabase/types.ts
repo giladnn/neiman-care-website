@@ -84,6 +84,36 @@ export type Database = {
         }
         Relationships: []
       }
+      contact_info: {
+        Row: {
+          created_at: string | null
+          icon: string | null
+          id: string
+          order_num: number | null
+          type: string
+          updated_at: string | null
+          value: Json
+        }
+        Insert: {
+          created_at?: string | null
+          icon?: string | null
+          id?: string
+          order_num?: number | null
+          type: string
+          updated_at?: string | null
+          value: Json
+        }
+        Update: {
+          created_at?: string | null
+          icon?: string | null
+          id?: string
+          order_num?: number | null
+          type?: string
+          updated_at?: string | null
+          value?: Json
+        }
+        Relationships: []
+      }
       messages: {
         Row: {
           created_at: string | null

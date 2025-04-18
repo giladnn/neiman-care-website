@@ -1,4 +1,3 @@
-
 export type Language = 'en' | 'he' | 'ru';
 
 export interface BlogPost {
@@ -79,13 +78,15 @@ export interface FAQ {
   created_at?: string;
 }
 
-export interface ContactInfo {
+export type ContactInfo = {
   id: string;
   type: 'address' | 'phone' | 'email' | 'hours';
   value: Record<Language, string>;
   icon?: string;
-  order?: number;
-}
+  order_num: number;
+  created_at?: string;
+  updated_at?: string;
+};
 
 export interface BiographySection {
   id: string;
