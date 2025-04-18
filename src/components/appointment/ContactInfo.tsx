@@ -18,7 +18,7 @@ const ContactInfo = () => {
           </div>
           <div className={direction === 'rtl' ? 'text-right' : ''}>
             <h4 className="font-semibold">{translate('phone', language)}</h4>
-            <p className="text-gray-600">+972 3 123 4567</p>
+            <p className="text-gray-600">073-702-1736</p>
             <p className="text-sm text-gray-500">
               {translate('mondayThursday', language)}: 09:00-17, {translate('friday', language)}: 09-14:00
             </p>
@@ -31,7 +31,7 @@ const ContactInfo = () => {
           </div>
           <div className={direction === 'rtl' ? 'text-right' : ''}>
             <h4 className="font-semibold">{translate('email', language)}</h4>
-            <p className="text-gray-600">contact@neiman-care.com</p>
+            <p className="text-gray-600">victoria.neiman@gmail.com</p>
             <p className="text-sm text-gray-500">We'll respond within 24 hours</p>
           </div>
         </div>

@@ -30,7 +30,7 @@ const AppointmentSection = () => {
                   </div>
                   <div className={direction === 'rtl' ? 'text-right' : ''}>
                     <h3 className="font-bold text-gray-800">{translate('callUs', language)}</h3>
-                    <p className="text-gray-600">+972 3 123 4567</p>
+                    <p className="text-gray-600">073-702-1736</p>
                   </div>
                 </CardContent>
               </Card>
@@ -42,7 +42,7 @@ const AppointmentSection = () => {
                   </div>
                   <div className={direction === 'rtl' ? 'text-right' : ''}>
                     <h3 className="font-bold text-gray-800">{translate('emailUs', language)}</h3>
-                    <p className="text-gray-600">contact@neiman-care.com</p>
+                    <p className="text-gray-600">victoria.neiman@gmail.com</p>
                   </div>
                 </CardContent>
               </Card>

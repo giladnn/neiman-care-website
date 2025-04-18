@@ -119,7 +119,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-800">Phone</h3>
-                    <p className="text-gray-600">+972 3 123 4567</p>
+                    <p className="text-gray-600">073-702-1736</p>
                     <p className="text-sm text-gray-500">
                       Mon-Thu: 9am-5pm, Fri: 9am-2pm
                     </p>
@@ -134,7 +134,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-800">Email</h3>
-                    <p className="text-gray-600">contact@neiman-care.com</p>
+                    <p className="text-gray-600">victoria.neiman@gmail.com</p>
                     <p className="text-sm text-gray-500">
                       We'll respond within 24 hours
                     </p>
