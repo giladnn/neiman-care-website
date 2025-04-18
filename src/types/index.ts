@@ -1,3 +1,4 @@
+
 export type Language = 'en' | 'he' | 'ru';
 
 export interface BlogPost {
@@ -84,6 +85,7 @@ export type ContactInfo = {
   value: Record<Language, string>;
   icon?: string;
   order_num: number;
+  order?: number; // Adding order property for backward compatibility
   created_at?: string;
   updated_at?: string;
 };

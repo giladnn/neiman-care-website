@@ -1,3 +1,4 @@
+
 export const heTranslations = {
   home: "בית",
   about: "אודות",
@@ -231,7 +232,7 @@ export const heTranslations = {
     "שירותי אבחון מקיפים כולל דימות מתקדם, ביופסיות ובדיקות גנטיות לקביעת טבעו ומצבו המדויק של הסרטן שלך.",
   personalizedTreatment: "תוכניות טיפול אישיות",
   personalizedTreatmentDesc:
-    "אסטרטגיות טיפול מותאמות שנוצרות במיוחד עבור מצבך, תוך התחשבות בסוג הסרטן שלך, מצבך הגנטי, ובריאותך האישית.",
+    "אסטרטגיות טיפול מותאמות שנוצרו במיוחד עבור מצבך, תוך התחשבות בסוג הסרטן שלך, מצבך הגנטי, ובריאותך האישית.",
   chemotherapy: "כימותרפיה",
   chemotherapyDesc:
     "מתן וניהול פרוטוקולי כימותרפיה עם מעקב צמוד וטיפול תומך להקטנת תופעות לוואי ולהגברת היעילות.",
@@ -337,7 +338,7 @@ export const heTranslations = {
   addVideo: "הוסף וידאו",
   editVideo: "ערוך וידאו",
   deleteVideo: "מחק וידאו",
-  confirmDeleteVideo: "האם אתה בטוח שברצונך למחוק את ��וידאו הזה?",
+  confirmDeleteVideo: "האם אתה בטוח שברצונך למחוק את הוידאו הזה?",
   videoAdded: "וידאו נוסף בהצלחה",
   videoUpdated: "וידאו עודכן בהצלחה",
   videoDeleted: "וידאו נמחק בהצלחה",
@@ -365,14 +366,14 @@ export const heTranslations = {
   biographyText7: "ד\"ר ניימן נחשבת לדמות מרכזית בתחום האונקולוגיה בישראל, ומשלבת ידע קליני עמוק עם גישה אנושית ואמפתית. היא מובילה צוותים רפואיים ומחקריים, ומשקיעה רבות בהכשרת הדור הבא של הרופאים.",
   biographyText8: "בנוסף, היא משתתפת בכנסים מקצועיים, מעבירה הרצאות ומפרסמת מאמרים בתחום התמחותה. היא שואפת להעניק טיפול רפואי ברמה הגבוהה ביותר, תוך מתן יחס אישי ותמיכה למטופליה.",
   biographyText9: "ד\"ר ניימן מדברת עברית, אנגלית ורוסית, ומציעה שירותים רפואיים למגוון רחב של מטופלים.",
-  biographyText10: "גישתה לטיפול במטופלים משלבת מומחיות רפואית מתקדמת עם חמלה עמוקה, תוך הבטחת טיפול מותאם אישית לצרכים ול sexualesidades של כל מטופל.",
+  biographyText10: "גישתה לטיפול במטופלים משלבת מומחיות רפואית מתקדמת עם חמלה עמוקה, תוך הבטחת טיפול מותאם אישית לצרכים הספציפיים של כל מטופל.",
+  
   // Contact page translations
   contactDescription: "יש לך שאלות או צורך ליצור קשר עם ד\"ר ויקטוריה ניימן? אנחנו כאן לעזור.",
   sendUsMessage: "שלח לנו הודעה",
-  email: "דוא\"ל",
   subject: "נושא",
   subjectPlaceHolder: "איך נוכל לעזור לך?",
-  messagePlaceHolder: "א��א ספק פרטים לגבי שאלתך",
+  messagePlaceHolder: "אנא ספק פרטים לגבי שאלתך",
   submitMessage: "שלח הודעה",
   officeAddress: "כתובת",
   officePhone: "טלפון",
@@ -392,6 +393,8 @@ export const heTranslations = {
   insuranceQuestion: "אילו תוכניות ביטוח אתם מקבלים?",
   insuranceAnswer: "אנו עובדים עם רוב ספקי הביטוח הרפואי הגדולים. אנא צור קשר עם המשרד שלנו למידע ספציפי על כיסוי הביטוח שלך.",
   aboutDoctorHeader: `על ד"ר ויקטוריה ניימן`,
+  melanoma: "מלנומה",
+  prostate: "סרטן הערמונית",
   
   // Contact Management
   contactManagement: "ניהול פרטי יצירת קשר",
@@ -401,13 +404,14 @@ export const heTranslations = {
   valueLabel: "ערך",
   orderLabel: "סדר",
   iconLabel: "אייקון",
-  address: "כתובת",
-  phone: "טלפון",
-  email: "דוא\"ל",
   hours: "שעות פעילות",
   saveChanges: "שמור שינויים",
-  cancel: "ביטול",
-  contactInfoUpdated: "פרטי יצירת הקשר עודכנו בהצלחה",
-  contactInfoAdded: "פרטי יצירת הקשר נוספו בהצלחה",
-  contactInfoDeleted: "פרטי יצירת הקשר נמחקו בהצלחה",
+  error: "שגיאה",
+  type: "סוג",
+  value: "ערך",
+  saving: "שומר...",
+  pleaseFillInAllRequiredFields: "אנא מלא את כל השדות הנדרשים",
+  selectType: "בחר סוג",
+  edit: "ערוך",
+  delete: "מחק",
 };

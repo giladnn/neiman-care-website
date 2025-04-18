@@ -57,12 +57,12 @@ const ContactInfoFormDialog: React.FC<ContactInfoFormDialogProps> = ({
     type: 'address' | 'phone' | 'email' | 'hours';
     value: Record<Language, string>;
     icon?: string;
-    order?: number;
+    order_num?: number;
   }>({
     type: 'address',
     value: { en: '', he: '', ru: '' },
     icon: '',
-    order: 0,
+    order_num: 0,
   });
 
   useEffect(() => {
@@ -72,14 +72,14 @@ const ContactInfoFormDialog: React.FC<ContactInfoFormDialogProps> = ({
         type: contactInfo.type || 'address',
         value: contactInfo.value || { en: '', he: '', ru: '' },
         icon: contactInfo.icon || '',
-        order: contactInfo.order || 0,
+        order_num: contactInfo.order_num || 0,
       });
     } else {
       setFormData({
         type: 'address',
         value: { en: '', he: '', ru: '' },
         icon: '',
-        order: 0,
+        order_num: 0,
       });
     }
   }, [contactInfo]);
@@ -129,10 +129,10 @@ const ContactInfoFormDialog: React.FC<ContactInfoFormDialogProps> = ({
         type: formData.type,
         value: formData.value,
         icon: formData.icon,
-        order: formData.order
+        order_num: formData.order_num || 0
       });
     } else {
-      createMutation.mutate(formData);
+      createMutation.mutate(formData as ContactInfo);
     }
   };
 
