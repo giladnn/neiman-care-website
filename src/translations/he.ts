@@ -369,7 +369,6 @@ export const heTranslations = {
   // Contact page translations
   contactDescription: "יש לך שאלות או צורך ליצור קשר עם ד\"ר ויקטוריה ניימן? אנחנו כאן לעזור.",
   sendUsMessage: "שלח לנו הודעה",
-  contactInfo: "פרטי התקשרות",
   email: "דוא\"ל",
   subject: "נושא",
   subjectPlaceHolder: "איך נוכל לעזור לך?",
