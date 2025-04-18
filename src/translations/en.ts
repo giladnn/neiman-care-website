@@ -347,4 +347,16 @@ export const enTranslations: Record<string, string> = {
   israeliInternalMedicine: "Israeli Society of Internal Medicine",
   israeliUrologySociety: "Israeli Society of Urology",
   esmoMembership: "European Society for Medical Oncology (ESMO)",
+  // Biography Section
+  professionalBiography: "Professional Biography",
+  biographyText1: "Dr. Victoria Neiman is a leading expert in Clinical Oncology, Internal Medicine, and Radiotherapy, with over 30 years of experience. She serves as the Head of the Oncology Inpatient Department at the Davidoff Cancer Center, part of Rabin Medical Center (Beilinson).",
+  biographyText2: "Her areas of specialization include internal medicine, clinical oncology, and radiotherapy, with a special focus on uro-oncological tumors and breast cancer. She treats a wide range of diseases, including kidney, prostate, bladder, and testicular cancer.",
+  biographyText3: "After completing her medical studies at a university in the Soviet Union, Dr. Neiman specialized in internal medicine, clinical oncology, and radiotherapy at Rabin Medical Center. She lectures at the Sackler School of Medicine at Tel Aviv University and at the School of Nursing.",
+  biographyText4: "She is actively involved in numerous clinical trials, including international research on breast, kidney, urinary system, and prostate cancer. Her research contributes to advancing oncological treatment and understanding of the disease.",
+  biographyText5: "Dr. Neiman is a member of leading professional associations, including the Society for Clinical Oncology and Radiotherapy, the Israeli Society of Internal Medicine, the Israeli Urological Association, and the European Society for Medical Oncology (ESMO).",
+  biographyText6: "Her patients consistently note her professionalism, humanity, and exceptional availability.",
+  biographyText7: "Dr. Neiman is considered a central figure in the field of oncology in Israel, combining deep clinical knowledge with a humane and empathetic approach. She leads medical and research teams and invests heavily in training the next generation of doctors.",
+  biographyText8: "Additionally, she participates in professional conferences, gives lectures, and publishes articles in her field of expertise. She strives to provide the highest level of medical care while offering personal attention and support to her patients.",
+  biographyText9: "Dr. Neiman speaks Hebrew, English, and Russian, offering medical services to a wide range of patients.",
+  biographyText10: "Her approach to patient care combines cutting-edge medical expertise with deep compassion, ensuring each patient receives personalized treatment tailored to their specific needs and circumstances.",
 };

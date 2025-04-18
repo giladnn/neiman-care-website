@@ -32,6 +32,13 @@ const BiographySection = () => {
               <p>{translate("biographyText1", language)}</p>
               <p>{translate("biographyText2", language)}</p>
               <p>{translate("biographyText3", language)}</p>
+              <p>{translate("biographyText4", language)}</p>
+              <p>{translate("biographyText5", language)}</p>
+              <p>{translate("biographyText6", language)}</p>
+              <p>{translate("biographyText7", language)}</p>
+              <p>{translate("biographyText8", language)}</p>
+              <p>{translate("biographyText9", language)}</p>
+              <p>{translate("biographyText10", language)}</p>
             </div>
 
             <div className="pt-4">
