@@ -21,7 +21,7 @@ const Index = () => {
       <TestimonialsSection />
       <VideoSection />
       <AppointmentSection />
-      <BlogSection />
+      {/* <BlogSection /> */}
       <NewsSection />
     </Layout>
   );
