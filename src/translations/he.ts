@@ -1,4 +1,3 @@
-
 export const heTranslations = {
   home: "בית",
   about: "אודות",
@@ -9,7 +8,7 @@ export const heTranslations = {
   appointment: "פגישה",
   patientStories: "סיפורי מטופלים",
   videoTestimonials: "וידאו המלצות",
-  videoTestimonialsDescription: "צפו בסיפורי המטופלים שלנו ושמעו ממקור ראשון על החוויות שלהם.",
+  videoTestimonialsDescription: "צפו בסיפורי המטופלים שלנו ושמעו ממקור ראשון על החוויה שלהם.",
   allStories: "כל הסיפורים",
   breastCancer: "סרטן השד",
   lungCancer: "סרטן הריאות",
@@ -111,13 +110,13 @@ export const heTranslations = {
   faqCancerTypes: "באילו סוגי סרטן ד״ר נימן מתמחה?",
   faqCancerTypesAnswer: "ד״ר נימן מתמחה בטיפול במגוון רחב של סוגי סרטן, עם מומחיות מיוחדת בסרטן השד, סרטן הריאות, סרטן במערכת העיכול ולימפומות.",
   faqTreatmentTime: "כמה זמן נמשך תהליך טיפול טיפוסי?",
-  faqTreatmentTimeAnswer: "משך הטיפול בסרטן משתנה משמעותית בהתאם לסוג ושלב הסרטן, וכן לגישת הטיפול הספציפית. במהלך הייעוץ, ד״ר נימן תספק לך לוח זמנים מפורט על בסיס המקרה האישי שלך.",
+  faqTreatmentTimeAnswer: "משך הטיפול בסרטן משתנה משמעותית בהתאם לסוג ושלב הסרטן, וכן לגישת הטיפול הספציפית. במהלך הייעוץ, ד״ר ניימן תספק לך לוח זמנים מפורט על בסיס המקרה האישי שלך.",
   faqTeam: "האם ד״ר נימן עובדת עם צוות רב-תחומי?",
-  faqTeamAnswer: "כן, ד״ר נימן משתפת פעולה עם צוות מקיף של אנשי מקצוע בתחום הבריאות כולל מנתחים, אונקולוגים מומחי קרינה, פתולוגים, אחיות, תזונאים ואנשי מקצוע בתחום בריאות הנפש כדי להבטיח טיפול הוליסטי לכל מטופל.",
+  faqTeamAnswer: "כן, ד״ר ניימן משתפת פעולה עם צוות מקיף של אנשי מקצוע בתחום הבריאות כולל מנתחים, אונקולוגים מומחי קרינה, פתולוגים, אחיות, תזונאים ואנשי מקצוע בתחום בריאות הנפש כדי להבטיח טיפול הוליסטי לכל מטופל.",
   faqFirstAppointment: "מה עלי להביא לפגישה הראשונה שלי?",
   faqFirstAppointmentAnswer: "אנא הבא את הרשומות הרפואיות שלך, כולל תוצאות בדיקות קודמות, סריקות ודוחות פתולוגיים. כמו כן, הבא רשימה של תרופות נוכחיות, מידע על ביטוח וכל שאלה שיש לך.",
   faqTelemedicine: "האם זמינות התייעצויות רפואה מרחוק?",
-  faqTelemedicineAnswer: "כן, ד״ר נימן מציעה פגישות רפואה מרחוק למצבים מתאימים כגון ייעוץ המשך וסוגים מסוימים של דיוני טיפול.",
+  faqTelemedicineAnswer: "כן, ד״ר ניימן מציעה פגישות רפואה מרחוק למצבים מתאימים כגון ייעוץ המשך וסוגים מסוימים של דיוני טיפול.",
   
   // Quick links section
   quickLinks: "קישורים מהירים",
@@ -125,230 +124,236 @@ export const heTranslations = {
   officeHoursFooter: "שעות פעילות",
   privacyPolicy: "מדיניות פרטיות",
   termsOfService: "תנאי שימוש",
-    // Navbar
   
-    // Hero Section
-    heroTitle: "טיפול אונקולוגי מיוחד עם ד\"ר ויקטוריה ניימן",
-    heroSubtitle:
-      "אונקולוגית מובילה המחויבת לספק טיפול אישי בסרטן באמצעות מומחיות רפואית חדשנית וטיפול חומל.",
+  // Navbar
   
-    // About Section
-    aboutSectionTitle: "ד\"ר ויקטוריה ניימן",
-    aboutSectionSubtitle: "אונקולוגית מובילה המתמחה בטיפול אישי בסרטן",
-    aboutSectionText1:
-      "ד\"ר ויקטוריה ניימן היא אונקולוגית מכובדת עם יותר מ-15 שנות ניסיון באבחון וטיפול בסוגים שונים של סרטן. מומחיותה כוללת אונקולוגיה רפואית עם דגש מיוחד על סרטן השד, סרטן הריאות וגידולים גסטרואינטסטינליים.",
-    aboutSectionText2:
-      "לאחר שסיימה את הכשרתה הרפואית במרכז הרפואי הדסה בירושלים, המשיכה ד\"ר ניימן להתמחות באונקולוגיה במוסדות מובילים באירופה ובארצות הברית. היא מחזיקה במספר תעודות והיא מעורבת באופן פעיל במחקר קליני לקידום פרוטוקולי טיפול בסרטן.",
-    aboutSectionText3:
-      "הגישה של ד\"ר ניימן משלבת מומחיות רפואית חדשנית עם טיפול חומל, ומבטיחה שכל מטופל יקבל טיפול אישי המותאם לצרכיו ולמצבו הספציפיים.",
-    readFullBio: "קרא את הביוגרפיה המלאה",
-    yearsExperience: "30+ שנות ניסיון",
+  // Hero Section
+  heroTitle: "טיפול אונקולוגי מיוחד עם ד\"ר ויקטוריה ניימן",
+  heroSubtitle:
+    "אונקולוגית מובילה המחויבת לספק טיפול אישי בסרטן באמצעות מומחיות רפואית חדשנית וטיפול חומל.",
   
-    // Services Section
-    servicesSubtitle:
-      "ד\"ר ניימן מציעה מגוון מקיף של שירותים אונקולוגיים, מאבחון ועד תכנון טיפול ארוך טווח.",
-    viewAllServices: "צפה בכל השירותים",
+  // About Section
+  aboutSectionTitle: "ד\"ר ויקטוריה ניימן",
+  aboutSectionSubtitle: "אונקולוגית מובילה המתמחה בטיפול אישי בסרטן",
+  aboutSectionText1:
+    "ד\"ר ויקטוריה ניימן היא אונקולוגית מכובדת עם יותר מ-15 שנות ניסיון באבחון וטיפול בסוגים שונים של סרטן. מומחיותה כוללת אונקולוגיה רפואית עם דגש מיוחד על סרטן השד, סרטן הריאות וגידולים גסטרואינטסטינליים.",
+  aboutSectionText2:
+    "לאחר שסיימה את הכשרתה הרפואית במרכז הרפואי הדסה בירושלים, המשיכה ד\"ר ניימן להתמחות באונקולוגיה במוסדות מובילים באירופה ובארצות הברית. היא מחזיקה במספר תעודות והיא מעורבת באופן פעיל במחקר קליני לקידום פרוטוקולי טיפול בסרטן.",
+  aboutSectionText3:
+    "הגישה של ד\"ר ניימן משלבת מומחיות רפואית חדשנית עם טיפול חומל, ומבטיחה שכל מטופל יקבל טיפול אישי המותאם לצרכיו ולמצבו הספציפיים.",
+  readFullBio: "קרא את הביוגרפיה המלאה",
+  yearsExperience: "30+ שנות ניסיון",
   
-    // Testimonials Section
-    patientTestimonials: "עדויות מטופלים",
-    testimonialsSubtitle:
-      "קרא מה המטופלים שלנו אומרים על החוויה שלהם עם ד\"ר ויקטוריה ניימן.",
+  // Services Section
+  servicesSubtitle:
+    "ד\"ר ניימן מציעה מגוון מקיף של שירותים אונקולוגיים, מאבחון ועד תכנון טיפול ארוך טווח.",
+  viewAllServices: "צפה בכל השירותים",
   
-    // Appointment Section
-    scheduleAppointment: "קבע תור",
-    appointmentText:
-      "קח את הצעד הראשון לקראת טיפול אישי בסרטן על ידי קביעת פגישה עם ד\"ר ויקטוריה ניימן. הצוות שלנו מוכן לעזור ולספק את התמיכה שאתה צריך לאורך כל המסע הזה.",
-    officeHours: "שעות פעילות",
-    bookOnline: "הזמן אונליין",
-    orCallDirectly: "או התקשר ישירות",
-    clinicLocation: "מיקום הקליניקה",
-    easyAccess: "גישה נוחה",
+  // Testimonials Section
+  patientTestimonials: "עדויות מטופלים",
+  testimonialsSubtitle:
+    "קרא מה המטופלים שלנו אומרים על החוויה שלהם עם ד\"ר ויקטוריה ניימן.",
   
-    // Blog Section
-    blogSectionTitle: "תובנות רפואיות אחרונות",
-    blogSectionSubtitle:
-      "הישאר מעודכן עם המחקרים האחרונים, אפשרויות הטיפול ותובנות בריאותיות מד\"ר ויקטוריה ניימן.",
-    viewAllPosts: "צפה בכל הפוסטים",
+  // Appointment Section
+  scheduleAppointment: "קבע תור",
+  appointmentText:
+    "קח את הצעד הראשון לקראת טיפול אישי בסרטן על ידי קביעת פגישה עם ד\"ר ויקטוריה ניימן. הצוות שלנו מוכן לעזור ולספק את התמיכה שאתה צריך לאורך כל המסע הזה.",
+  officeHours: "שעות פעילות",
+  bookOnline: "הזמן אונליין",
+  orCallDirectly: "או התקשר ישירות",
+  clinicLocation: "מיקום הקליניקה",
+  easyAccess: "גישה נוחה",
   
-    // News Section
-    inTheNews: "בחדשות",
-    newsSubtitle:
-      "תרומותיה של ד\"ר ויקטוריה ניימן למחקר אונקולוגי וטיפול במטופלים מופיעות בפרסומים רפואיים ובאמצעי התקשורת.",
-    readOriginal: "קרא את המאמר המקורי",
+  // Blog Section
+  blogSectionTitle: "תובנות רפואיות אחרונות",
+  blogSectionSubtitle:
+    "הישאר מעודכן עם המחקרים האחרונים, אפשרויות הטיפול ותובנות בריאותיות מד\"ר ויקטוריה ניימן.",
+  viewAllPosts: "צפה בכל הפוסטים",
   
-    adminLogin: "כניסת מנהל",
+  // News Section
+  inTheNews: "בחדשות",
+  newsSubtitle:
+    "תרומותיה של ד\"ר ויקטוריה ניימן למחקר אונקולוגי וטיפול במטופלים מופיעות בפרסומים רפואיים ובאמצעי התקשורת.",
+  readOriginal: "קרא את המאמר המקורי",
   
-    // Services page
-    servicesHeroTitle: "השירותים שלנו",
-    servicesHeroSubtitle:
-      "ד\"ר ויקטוריה ניימן מציעה שירותים אונקולוגיים מקיפים עם דגש על טיפול אישי וטיפול חומל.",
+  adminLogin: "כניסת מנהל",
   
-    // CTA Section
-    readyForNextStep: "מוכן לשלב הבא?",
-    scheduleCTA:
-      "קבע פגישה עם ד\"ר ויקטוריה ניימן לדון במצבך ולבחון את אפשרויות הטיפול הטובות ביותר עבור הצרכים הספציפיים שלך.",
+  // Services page
+  servicesHeroTitle: "השירותים שלנו",
+  servicesHeroSubtitle:
+    "ד\"ר ויקטוריה ניימן מציעה שירותים אונקולוגיים מקיפים עם דגש על טיפול אישי וטיפול חומל.",
   
-    // Appointment Page
-    scheduleAnAppointment: "קבע תור",
-    appointmentDescription:
-      "בקש תור עם ד\"ר ויקטוריה ניימן. ניצור איתך קשר בקרוב לאשר את מועד התור שלך.",
-    requestAnAppointment: "בקשת תור",
+  // CTA Section
+  readyForNextStep: "מוכן לשלב הבא?",
+  scheduleCTA:
+    "קבע פגישה עם ד\"ר ויקטוריה ניימן לדון במצבך ולבחון את אפשרויות הטיפול הטובות ביותר עבור הצרכים הספציפיים שלך.",
   
-    // Appointment Form
-    fullName: "שם מלא",
-    phoneNumber: "מספר טלפון",
-    selectDate: "בחר תאריך",
-    selectTime: "בחר שעה",
-    reasonForVisit: "סיבת הביקור",
-    selectReason: "בחר סיבה",
-    additionalInformation: "מידע נוסף (אופציונלי)",
-    additionalInfoPlaceholder:
-      "אנא שתף מידע נוסף על מצבך או חששות ספציפיים.",
-    submitRequest: "שלח בקשה",
-    submitting: "שולח...",
+  // Appointment Page
+  scheduleAnAppointment: "קבע תור",
+  appointmentDescription:
+    "בקש תור עם ד\"ר ויקטוריה ניימן. ניצור איתך קשר בקרוב לאשר את מועד התור שלך.",
+  requestAnAppointment: "בקשת תור",
   
-    // Office Hours and Contact Info
-    contactInformation: "פרטי התקשרות",
-    mondayThursday: "שני - חמישי",
-    friday: "שישי",
-    officeHoursSchedule: "שני-חמישי: 9:00-17:00, שישי: 9:00-14:00",
+  // Appointment Form
+  fullName: "שם מלא",
+  phoneNumber: "מספר טלפון",
+  selectDate: "בחר תאריך",
+  selectTime: "בחר שעה",
+  reasonForVisit: "סיבת הביקור",
+  selectReason: "בחר סיבה",
+  additionalInformation: "מידע נוסף (אופציונלי)",
+  additionalInfoPlaceholder:
+    "אנא שתף מידע נוסף על מצבך או חששות ספציפיים.",
+  submitRequest: "שלח בקשה",
+  submitting: "שולח...",
   
-    // Form placeholders
-    namePlaceholder: "יוחנן כהן",
-    emailPlaceholder: "your@email.com",
-    phonePlaceholder: "+972 (55) 123-4567",
+  // Office Hours and Contact Info
+  contactInformation: "פרטי התקשרות",
+  mondayThursday: "שני - חמישי",
+  friday: "שישי",
+  officeHoursSchedule: "שני-חמישי: 9:00-17:00, שישי: 9:00-14:00",
   
-    // Appointment Reasons
-    initialConsultation: "התייעצות ראשונית",
-    followUp: "ביקור מעקב",
-    treatmentDiscussion: "דיון בטיפול",
-    secondOpinion: "חוות דעת שנייה",
-    testResultsReview: "סקירת תוצאות בדיקה",
-    other: "אחר",
+  // Form placeholders
+  namePlaceholder: "יוחנן כהן",
+  emailPlaceholder: "your@email.com",
+  phonePlaceholder: "+972 (55) 123-4567",
   
-    skipToContent: "דלג לתוכן הראשי",
+  // Appointment Reasons
+  initialConsultation: "התייעצות ראשונית",
+  followUp: "ביקור מעקב",
+  treatmentDiscussion: "דיון בטיפול",
+  secondOpinion: "חוות דעת שנייה",
+  testResultsReview: "סקירת תוצאות בדיקה",
+  other: "אחר",
   
-    // Service titles and descriptions
-    cancerDiagnosis: "אבחון סרטן",
-    cancerDiagnosisDesc:
-      "שירותי אבחון מקיפים כולל דימות מתקדם, ביופסיות ובדיקות גנטיות לקביעת טבעו ומצבו המדויק של הסרטן שלך.",
-    personalizedTreatment: "תוכניות טיפול אישיות",
-    personalizedTreatmentDesc:
-      "אסטרטגיות טיפול מותאמות שנוצרות במיוחד עבור מצבך, תוך התחשבות בסוג הסרטן שלך, מצבך הגנטי, ובריאותך האישית.",
-    chemotherapy: "כימותרפיה",
-    chemotherapyDesc:
-      "מתן וניהול פרוטוקולי כימותרפיה עם מעקב צמוד וטיפול תומך להקטנת תופעות לוואי ולהגברת היעילות.",
-    immunotherapy: "אימונותרפיה",
-    immunotherapyDesc:
-      "טיפולי אימונותרפיה מתקדמים שמגייסים את מערכת החיסון שלך להילחם בסרטן, עם מומחיות מיוחדת בפרוטוקולים החדישים ביותר.",
-    targetedTherapy: "טיפול ממוקד",
-    targetedTherapyDesc:
-      "גישות רפואה מדויקת שמטרתן מוטציות גנטיות או חלבונים ספציפיים המעורבים בצמיחה והתפשטות הסרטן שלך.",
-    survivorshipCare: "טיפול בהישרדות",
-    survivorshipCareDesc:
-      "טיפול מעקב ארוך טווח ותכנון בריאות לחולי סרטן, המתייחס להיבטים הפיזיים והפסיכולוגיים של החיים לאחר הסרטן.",
+  skipToContent: "דלג לתוכן הראשי",
   
-    // Research Section
-    selectedPublications: "פרסומים נבחרים",
-    researchInterests: "תחומי מחקר",
-    publication1:
-      'Neiman V, et al. (2022) "יעילות ורעילות של הקרנה היפופרקציונלית בחולי סרטן השד." סוגיות אונקולוגיות נוכחיות.',
-    publication2:
-      'Neiman V, et al. (2022) "ניסיון ממשי עם אנתרציקלינים וטקסנים במינון גבוה או במינון צפוף לחולי סרטן שד שלילי משולש." סוגיות אונקולוגיות נוכחיות.',
-    publication3:
-      'Neiman V, et al. (2021) "תוצאות חולי סרטן שד שלילי משולש שטופלו בבווציזומאב פליאטיבי." האונקולוג.',
-    publication4:
-      'Neiman V, et al. (2020) "יעילות ורעילות של דוקסורוביצין וציקלופוספמיד במינון צפוף (ddAC) בחולי סרטן השד: ניסיון של מרכז יחיד." סרטן השד הקליני.',
-    publication5:
-      'Neiman V, et al. (2019) "יעילות ורעילות של חוסמי קולטן לאנגיוטנסין II בהגדרה משנית לחולי סרטן השד: סקירה שיטתית." כתב העת לאונקולוגיה קלינית.',
+  // Service titles and descriptions
+  cancerDiagnosis: "אבחון סרטן",
+  cancerDiagnosisDesc:
+    "שירותי אבחון מקיפים כולל דימות מתקדם, ביופסיות ובדיקות גנטיות לקביעת טבעו ומצבו המדויק של הסרטן שלך.",
+  personalizedTreatment: "תוכניות טיפול אישיות",
+  personalizedTreatmentDesc:
+    "אסטרטגיות טיפול מותאמות שנוצרות במיוחד עבור מצבך, תוך התחשבות בסוג הסרטן שלך, מצבך הגנטי, ובריאותך האישית.",
+  chemotherapy: "כימותרפיה",
+  chemotherapyDesc:
+    "מתן וניהול פרוטוקולי כימותרפיה עם מעקב צמוד וטיפול תומך להקטנת תופעות לוואי ולהגברת היעילות.",
+  immunotherapy: "אימונותרפיה",
+  immunotherapyDesc:
+    "טיפולי אימונותרפיה מתקדמים שמגייסים את מערכת החיסון שלך להילחם בסרטן, עם מומחיות מיוחדת בפרוטוקולים החדישים ביותר.",
+  targetedTherapy: "טיפול ממוקד",
+  targetedTherapyDesc:
+    "גישות רפואה מדויקת שמטרתן מוטציות גנטיות או חלבונים ספציפיים המעורבים בצמיחה והתפשטות הסרטן שלך.",
+  survivorshipCare: "טיפול בהישרדות",
+  survivorshipCareDesc:
+    "טיפול מעקב ארוך טווח ותכנון בריאות לחולי סרטן, המתייחס להיבטים הפיזיים והפסיכולוגיים של החיים לאחר הסרטן.",
   
-    personalizedCancer: "טיפול אישי בסרטן",
-    personalizedCancerDesc:
-      "פיתוח גישות טיפול מותאמות אישית על בסיס פרופיל גנטי ומולקולרי של גידולים.",
-    immunotherapyOptimization: "אופטימיזציה של אימונותרפיה",
-    immunotherapyOptimizationDesc:
-      "שיפור היעילות והפחתת תופעות לוואי של אימונותרפיה בסוגי סרטן שונים.",
-    cancerInElderly: "סרטן בחולים קשישים",
-    cancerInElderlyDesc:
-      "גישות מיוחדות לטיפול בסרטן בחולים גריאטריים, באיזון בין יעילות ואיכות חיים.",
-    combinationTherapy: "פרוטוקולים של טיפול משולב",
-    combinationTherapyDesc:
-      "חקר השפעות הסינרגיה של שילוב של גישות טיפול שונות לשיפור התוצאות.",
+  // Research Section
+  selectedPublications: "פרסומים נבחרים",
+  researchInterests: "תחומי מחקר",
+  publication1:
+    'Neiman V, et al. (2022) "יעילות ורעילות של הקרנה היפופרקציונלית בחולי סרטן השד." סוגיות אונקולוגיות נוכחיות.',
+  publication2:
+    'Neiman V, et al. (2022) "ניסיון ממשי עם אנתרציקלינים וטקסנים במינון גבוה או במינון צפוף לחולי סרטן שד שלילי משולש." סוגיות אונקולוגיות נוכחיות.',
+  publication3:
+    'Neiman V, et al. (2021) "תוצאות חולי סרטן שד שלילי משולש שטופלו בבווציזומאב פליאטיבי." האונקולוג.',
+  publication4:
+    'Neiman V, et al. (2020) "יעילות ורעילות של דוקסורוביצין וציקלופוספמיד במינון צפוף (ddAC) בחולי סרטן השד: ניסיון של מרכז יחיד." סרטן השד הקליני.',
+  publication5:
+    'Neiman V, et al. (2019) "יעילות ורעילות של חוסמי קולטן לאנגיוטנסין II בהגדרה משנית לחולי סרטן השד: סקירה שיטתית." כתב העת לאונקולוגיה קלינית.',
   
-    // Accessibility Widget
-    accessibilityOptions: "אפשרויות נגישות",
-    fontSize: "גודל גופן",
-    brightness: "בהירות",
-    highContrast: "ניגודיות גבוהה",
-    on: "פועל",
-    off: "כבוי",
-    resetAll: "אפס הכל",
-    adjustFontSize: "כוונן גודל גופן",
-    adjustBrightness: "כוונן בהירות מסך",
+  personalizedCancer: "טיפול אישי בסרטן",
+  personalizedCancerDesc:
+    "פיתוח גישות טיפול מותאמות אישית על בסיס פרופיל גנטי ומולקולרי של גידולים.",
+  immunotherapyOptimization: "אופטימיזציה של אימונותרפיה",
+  immunotherapyOptimizationDesc:
+    "שיפור היעילות והפחתת תופעות לוואי של אימונותרפיה בסוגי סרטן ��ונים.",
+  cancerInElderly: "סרטן בחולים קשישים",
+  cancerInElderlyDesc:
+    "גישות מיוחדות לטיפול בסרטן בחולים גריאטריים, באיזון בין יעילות ואיכות חיים.",
+  combinationTherapy: "פרוטוקולים של טיפול משולב",
+  combinationTherapyDesc:
+    "חקר השפעות הסינרגיה של שילוב של גישות טיפול שונות לשיפור התוצאות.",
   
-    // Treatment Process Section
-    treatmentProcessTitle: "תהליך הטיפול שלנו",
-    treatmentProcessSubtitle:
-      "ד\"ר ניימן עוקבת אחר גישה מובנית כדי להבטיח טיפול מקיף לכל מטופל",
-    initialConsultationStep: "התייעצות ראשונית",
-    initialConsultationDesc:
-      "סקירה מעמיקה של ההיסטוריה הרפואית שלך, הסימפטומים והחששות שלך כדי לקבוע הבנה בסיסית של מצבך.",
-    comprehensiveDiagnosisStep: "אבחון מקיף",
-    comprehensiveDiagnosisDesc:
-      "פרוצדורות אבחון מתקדמות כולל דימות, בדיקות מעבדה וביופסיות כדי לזהות בדיוק את סוג הסרטן ומצבו.",
-    personalizedTreatmentPlanningStep: "תכנון טיפול אישי",
-    personalizedTreatmentPlanningDesc:
-      "פיתוח אסטרטגיית טיפול אישית המתחשבת בפרופיל הסרטן הספציפי שלך, בריאותך הכללית והעדפותיך האישיות.",
-    treatmentImplementationStep: "יישום הטיפול",
-    treatmentImplementationDesc:
-      "מתן זהיר של טיפולים נבחרים עם מעקב והתקנות קבועות לפי הצורך.",
-    followUpCareStep: "טיפול במעקב",
-    followUpCareDesc:
-      "הערכות מתמשכות למעקב אחר התקדמותך, ניהול תופעות לוואי וביצוע שינויים נחוצים בתוכנית הטיפול שלך.",
-    survivorshipPlanningStep: "תכנון הישרדות",
-    survivorshipPlanningDesc:
-      "תכנון טיפול ארוך טווח המתמקד במניעת הישנות, מעקב אחר השפעות מאוחרות של הטיפול ותמיכה בחזרתך לבריאות.",
+  // Accessibility Widget
+  accessibilityOptions: "אפשרויות נגישות",
+  fontSize: "גודל גופן",
+  brightness: "בהירות",
+  highContrast: "ניגודיות גבוהה",
+  on: "פועל",
+  off: "כבוי",
+  resetAll: "אפס הכל",
+  adjustFontSize: "כוונן גודל גופן",
+  adjustBrightness: "כוונן בהירות מסך",
   
-    // FAQ questions and answers
+  // Treatment Process Section
+  treatmentProcessTitle: "תהליך הטיפול שלנו",
+  treatmentProcessSubtitle:
+    "ד\"ר ניימן עוקבת אחר גישה מובנית כדי להבטיח טיפול מקיף לכל מטופל",
+  initialConsultationStep: "התייעצות ראשונית",
+  initialConsultationDesc:
+    "סקירה מעמיקה של ההיסטוריה הרפואית שלך, הסימפטומים והחששות שלך כדי לקבוע הבנה בסיסית של מצבך.",
+  comprehensiveDiagnosisStep: "אבחון מקיף",
+  comprehensiveDiagnosisDesc:
+    "פרוצדורות אבחון מתקדמות כולל דימות, בדיקות מעבדה וביופסיות כדי לזהות בדיוק את סוג הסרטן ומצבו.",
+  personalizedTreatmentPlanningStep: "תכנון טיפול אישי",
+  personalizedTreatmentPlanningDesc:
+    "פיתוח אסטרטגיית טיפול אישית המתחשבת בפרופיל הסרטן הספציפי שלך, בריאותך הכללית והעדפותיך האישיות.",
+  treatmentImplementationStep: "יישום הטיפול",
+  treatmentImplementationDesc:
+    "מתן זהיר של טיפולים נבחרים עם מעקב והתקנות קבועות לפי הצורך.",
+  followUpCareStep: "טיפול במעקב",
+  followUpCareDesc:
+    "הערכות מתמשכות למעקב אחר התקדמותך, ניהול תופעות לוואי וביצוע שינויים נחוצים בתוכנית הטיפול שלך.",
+  survivorshipPlanningStep: "תכנון הישרדות",
+  survivorshipPlanningDesc:
+    "תכנון טיפול ארוך טווח המתמקד במניעת הישנות, מעקב אחר השפעות מאוחרות של הטיפול ותמיכה בחזרתך לבריאות.",
   
-    // Patient Stories
-    patientStoriesTitle: "סיפורי מטופלים",
-    patientStoriesDescription:
-      "מטופלים משתפים את החוויות והמסעות שלהם עם ד\"ר ניימן והטיפולים שקיבלו.",
-    featuredStories: "סיפורים מובחרים",
-    featuredStoriesDescription:
-      "סיפורים מיוחדים המדגישים את הגישה המקיפה והאישית של ד\"ר ניימן לטיפול בסרטן.",
-    readFullStory: "קרא את הסיפור המלא",
-    watchVideo: "צפה בוידאו",
-    treatmentJourney: "מסע הטיפול",
-    patientStory: "סיפור מטופל",
-    shareStory: "שתף את הסיפור שלך",
-    fullStory: "הסיפור המלא",
-    videoTestimonial: "עדות וידאו",
+  // FAQ questions and answers
   
-    // Appointment management translations
-    appointmentManagement: "ניהול תורים",
-    editAppointment: "ערוך תור",
-    deleteAppointment: "מחק תור",
-    confirmDeleteAppointment: "האם אתה בטוח שברצונך למחוק את התור הזה?",
-    appointmentUpdated: "התור עודכן בהצלחה",
-    appointmentDeleted: "התור נמחק בהצלחה",
-    noAppointments: "לא נקבעו תורים עדיין",
+  // Patient Stories
+  patientStoriesTitle: "סיפורי מטופלים",
+  patientStoriesDescription:
+    "מטופלים משתפים את החווויות והמסעות שלהם עם ד\"ר ניימן והטיפולים שקיבלו.",
+  featuredStories: "סיפורים מובחרים",
+  featuredStoriesDescription:
+    "סיפורים מיוחדים המדגישים את הגישה המקיפה והאישית של ד\"ר ניימן לטיפול בסרטן.",
+  readFullStory: "קרא את הסיפור המלא",
+  watchVideo: "צפה בוידאו",
+  treatmentJourney: "מסע הטיפול",
+  patientStory: "סיפור מטופל",
+  shareStory: "שתף את הסיפור שלך",
+  fullStory: "הסיפור המלא",
+  videoTestimonial: "עדות וידאו",
   
-    // Video management translations
-    videoManagement: "ניהול וידאו",
-    addVideo: "הוסף וידאו",
-    editVideo: "ערוך וידאו",
-    deleteVideo: "מחק וידאו",
-    confirmDeleteVideo: "האם אתה בטוח שברצונך למחוק את הוידאו הזה?",
-    videoAdded: "וידאו נוסף בהצלחה",
-    videoUpdated: "וידאו עודכן בהצלחה",
-    videoDeleted: "וידאו נמחק בהצלחה",
-    // Admin general
-    viewAll: "צפה בהכל",
-    scheduleNew: "קבע חדש",
-    status: "סטטוס",
-    actions: "פעולות",
-    patient: "מטופל",
-    dateTime: "תאריך ושעה"
-}
+  // Appointment management translations
+  appointmentManagement: "ניהול תורים",
+  editAppointment: "ערוך תור",
+  deleteAppointment: "מחק תור",
+  confirmDeleteAppointment: "האם אתה בטוח שברצונך למחוק את התור הזה?",
+  appointmentUpdated: "התור עודכן בהצלחה",
+  appointmentDeleted: "התור נמחק בהצלחה",
+  noAppointments: "לא נקבעו תורים עדיין",
+  
+  // Video management translations
+  videoManagement: "ניהול וידאו",
+  addVideo: "הוסף וידאו",
+  editVideo: "ערוך וידאו",
+  deleteVideo: "מחק וידאו",
+  confirmDeleteVideo: "האם אתה בטוח שברצונך למחוק את הוידאו הזה?",
+  videoAdded: "וידאו נוסף בהצלחה",
+  videoUpdated: "וידאו עודכן בהצלחה",
+  videoDeleted: "וידאו נמחק בהצלחה",
+  
+  // Admin general
+  viewAll: "צפה בהכל",
+  scheduleNew: "קבע חדש",
+  status: "סטטוס",
+  actions: "פעולות",
+  patient: "מטופל",
+  dateTime: "תאריך ושעה",
+  
+  // WhatsApp QR Code
+  whatsappQR: 'סרוק לשיחה בווטסאפ',
+  openWhatsApp: 'פתח צ\'אט בווטסאפ'
+};

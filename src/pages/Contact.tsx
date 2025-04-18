@@ -18,8 +18,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { toast } from "sonner";
 import { createMessage } from "@/lib/supabase";
+import WhatsAppQR from "@/components/contact/WhatsAppQR";
 
-// Define the form schema
 const formSchema = z.object({
   name: z.string().min(2, {
     message: "Name must be at least 2 characters.",
@@ -39,7 +39,6 @@ const formSchema = z.object({
 });
 
 const Contact = () => {
-  // Initialize form
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -51,7 +50,6 @@ const Contact = () => {
     },
   });
 
-  // Submit handler
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     console.log("Contact form submitted:", data);
 
@@ -87,9 +85,9 @@ const Contact = () => {
       <div className="container mx-auto py-16">
         <div className="grid md:grid-cols-5 gap-12">
           <div className="md:col-span-2 space-y-8">
+            <WhatsAppQR />
             <Card className="overflow-hidden">
               <CardContent className="p-0">
-                {/* This will be replaced with an actual map component */}
                 <div className="w-full h-[300px] bg-gray-200 flex items-center justify-center">
                   <MapPin size={48} className="text-primary" />
                 </div>

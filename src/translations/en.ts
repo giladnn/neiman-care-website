@@ -332,4 +332,8 @@ export const enTranslations: Record<string, string> = {
 
   //About
   aboutDoctorHeader: "About Dr. Victoria Neiman",
+
+  // WhatsApp QR Code
+  whatsappQR: 'Scan to Chat on WhatsApp',
+  openWhatsApp: 'Open WhatsApp Chat',
 };

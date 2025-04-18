@@ -1,4 +1,3 @@
-
 export const ruTranslations = {
   // Navbar
   home: "Главная",
@@ -243,7 +242,7 @@ export const ruTranslations = {
   // Patient Stories
   patientStoriesTitle: "Истории пациентов",
   patientStoriesDescription:
-    "Пациенты делятся своими переживаниями и путешествиями с доктором Нейманом и полученными лечениями.",
+    "Пациенты делятся своими переживаниями и путешествиями с докт��ром Нейманом и полученными лечениями.",
   allStories: "Все истории",
   breastCancer: "Рак груди",
   lungCancer: "Рак легких",
@@ -448,4 +447,8 @@ export const ruTranslations = {
 
   //About
   aboutDoctorHeader: "О докторе Виктории Нейман",
+
+  // WhatsApp QR Code
+  whatsappQR: 'Отсканируйте для чата в WhatsApp',
+  openWhatsApp: 'Открыть чат в WhatsApp',
 };
