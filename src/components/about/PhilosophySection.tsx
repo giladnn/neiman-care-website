@@ -25,6 +25,7 @@ const PhilosophySection = () => {
           </Button>
         </div>
       </div>
+      
     </section>
   );
 };
