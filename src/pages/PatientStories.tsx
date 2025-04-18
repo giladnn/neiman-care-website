@@ -23,12 +23,14 @@ const PatientStories = () => {
         <div className="mt-16">
           <Tabs defaultValue="all" className="w-full" onValueChange={setActiveTab}>
             <div className="flex justify-center mb-8">
-              <TabsList className="bg-gray-100">
+              <TabsList className="bg-gray-100 flex-wrap gap-2">
                 <TabsTrigger value="all">{translate('allStories', language)}</TabsTrigger>
                 <TabsTrigger value="breast">{translate('breastCancer', language)}</TabsTrigger>
                 <TabsTrigger value="lung">{translate('lungCancer', language)}</TabsTrigger>
                 <TabsTrigger value="gastro">{translate('gastrointestinal', language)}</TabsTrigger>
                 <TabsTrigger value="lymphoma">{translate('lymphoma', language)}</TabsTrigger>
+                <TabsTrigger value="melanoma">{translate('melanoma', language)}</TabsTrigger>
+                <TabsTrigger value="prostate">{translate('prostate', language)}</TabsTrigger>
                 <TabsTrigger value="videos">{translate('videoTestimonials', language)}</TabsTrigger>
               </TabsList>
             </div>
@@ -47,6 +49,12 @@ const PatientStories = () => {
             </TabsContent>
             <TabsContent value="lymphoma">
               <StoryList filter="lymphoma" />
+            </TabsContent>
+            <TabsContent value="melanoma">
+              <StoryList filter="melanoma" />
+            </TabsContent>
+            <TabsContent value="prostate">
+              <StoryList filter="prostate" />
             </TabsContent>
             <TabsContent value="videos">
               <VideoTestimonials />
