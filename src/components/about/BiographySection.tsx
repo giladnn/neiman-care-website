@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -14,7 +15,7 @@ const BiographySection = () => {
           <div className="relative">
             <div className="rounded-lg overflow-hidden shadow-xl">
               <img
-                src="/placeholder.svg"
+                src="/lovable-uploads/c8e66106-bb56-4180-9cb9-f1df0a5fc1e7.png"
                 alt="Dr. Victoria Neiman"
                 className="w-full h-[600px] object-cover"
               />
@@ -27,39 +28,10 @@ const BiographySection = () => {
             </h2>
             <div className="w-20 h-1 bg-secondary"></div>
 
-            <div className="text-gray-600 space-y-4">
-              <p>
-                Dr. Victoria Neiman is a distinguished oncologist with over 15
-                years of experience in diagnosing and treating various types of
-                cancer. Her expertise spans medical oncology with a special
-                focus on breast cancer, lung cancer, and gastrointestinal
-                tumors.
-              </p>
-              <p>
-                After completing her medical training at the Hadassah Medical
-                Center in Jerusalem, Dr. Neiman pursued specialized oncology
-                training in leading institutions across Europe and the United
-                States. She holds multiple board certifications and is actively
-                involved in clinical research to advance cancer treatment
-                protocols.
-              </p>
-              <p>
-                Throughout her career, Dr. Neiman has been committed to a
-                patient-centered approach to cancer care, ensuring that each
-                treatment plan is tailored to the individual's specific
-                condition, needs, and circumstances. Her philosophy integrates
-                cutting-edge medical treatments with supportive care that
-                addresses the physical, emotional, and psychological aspects of
-                living with cancer.
-              </p>
-              <p>
-                Dr. Neiman is known for her compassionate bedside manner and her
-                ability to explain complex medical concepts in a way that
-                patients and their families can understand. She believes
-                strongly in patient education and empowerment, ensuring that her
-                patients are fully informed about their conditions and treatment
-                options.
-              </p>
+            <div className="text-gray-600 space-y-4 text-justify">
+              <p>{translate("biographyText1", language)}</p>
+              <p>{translate("biographyText2", language)}</p>
+              <p>{translate("biographyText3", language)}</p>
             </div>
 
             <div className="pt-4">
@@ -67,7 +39,7 @@ const BiographySection = () => {
                 asChild
                 className="bg-primary hover:bg-primary-dark text-white"
               >
-                <Link to="/appointment">Schedule an Appointment</Link>
+                <Link to="/appointment">{translate("scheduleAppointment", language)}</Link>
               </Button>
             </div>
           </div>

@@ -327,13 +327,28 @@ export const enTranslations: Record<string, string> = {
   dateTime: "Date & Time",
   reason: "Reason",
 
-  //BiographySection
-  professionalBiography: "Professional Biography",
-
-  //About
-  aboutDoctorHeader: "About Dr. Victoria Neiman",
-
-  // WhatsApp QR Code
-  whatsappQR: 'Scan to Chat on WhatsApp',
-  openWhatsApp: 'Open WhatsApp Chat',
+  // Biography section
+  biographyText1: "Dr. Victoria Neiman is a leading expert in Clinical Oncology, Internal Medicine, and Radiotherapy, with over 30 years of experience. She heads the Oncology Inpatient Department at the Davidoff Cancer Center at Rabin Medical Center.",
+  biographyText2: "Her specialization focuses on uro-oncological tumors, including kidney, prostate, bladder, and testicular cancer, as well as breast cancer. Dr. Neiman is active in international clinical research, lectures at Tel Aviv University, and leads innovations in oncology.",
+  biographyText3: "Known for her humane and empathetic approach, she combines professionalism with personal attention to her patients. She is a member of leading professional associations, including ESMO and the Israeli Society of Clinical Oncology.",
+  
+  // Credentials section
+  educationCredentials: "Education & Credentials",
+  education: "Education",
+  medicalDegree: "Medical Degree",
+  sovietUniversityMedicine: "Soviet Union University of Medicine",
+  specialization: "Specialization",
+  rabinMedicalCenter: "Rabin Medical Center",
+  internalMedicineOncology: "Internal Medicine, Clinical Oncology, and Radiotherapy",
+  
+  currentPosition: "Current Position",
+  davidoffCancerCenter: "Davidoff Cancer Center, Rabin Medical Center",
+  oncologyDepartmentHead: "Head of Oncology Inpatient Department",
+  
+  professionalAffiliations: "Professional Affiliations",
+  professionalMemberships: "Professional Memberships",
+  israeliOncologySociety: "Israeli Society of Clinical Oncology and Radiotherapy",
+  israeliInternalMedicine: "Israeli Society of Internal Medicine",
+  israeliUrologySociety: "Israeli Society of Urology",
+  esmoMembership: "European Society for Medical Oncology (ESMO)",
 };
