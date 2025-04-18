@@ -213,7 +213,7 @@ export const ruTranslations = {
   adjustBrightness: "Настроить яркость экрана",
   subject: "перевозчик",
   subjectPlaceHolder: "Пожалуйста, предоставьте подробную информацию о вашем запросе",
-
+  contactDescription: "У вас есть вопросы или вам нужно связаться с доктором Викторией Нейман? Мы здесь, чтобы помочь.",
   // Treatment Process Section
   treatmentProcessTitle: "Наш процесс лечения",
   treatmentProcessSubtitle:
