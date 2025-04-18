@@ -387,4 +387,5 @@ export const enTranslations = {
   referralAnswer: "While a referral from your primary care physician is helpful, it is not always required. Please contact our office to discuss your specific situation.",
   insuranceQuestion: "What insurance plans do you accept?",
   insuranceAnswer: "We work with most major health insurance providers. Please contact our office for specific information about your insurance coverage.",
+  aboutDoctorHeader:"About Dr. Victoria Neiman"
 };
