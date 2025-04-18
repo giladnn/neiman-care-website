@@ -15,7 +15,8 @@ const LocationMap = () => {
     mapboxgl.accessToken = process.env.VITE_MAPBOX_TOKEN || '';
     
     // Coordinates for Mota Gur St 4, Petah Tikva, Israel
-    const coordinates = [34.887728, 32.094595];
+    // LngLat format required by Mapbox: [longitude, latitude]
+    const coordinates: [number, number] = [34.887728, 32.094595];
 
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
