@@ -546,7 +546,7 @@ export async function fetchContactInfo() {
   const { data, error } = await typedSupabase
     .from('contact_info')
     .select('*')
-    .order('order', { ascending: true });
+    .order('order_num', { ascending: true });
 
   if (error) {
     console.error('Error fetching contact info:', error);
@@ -562,9 +562,15 @@ export async function createContactInfo(info: {
   icon?: string;
   order?: number;
 }) {
+  // Map the incoming order to order_num for database compatibility
   const { data, error } = await typedSupabase
     .from('contact_info')
-    .insert([info])
+    .insert([{
+      type: info.type,
+      value: info.value,
+      icon: info.icon,
+      order_num: info.order || 0
+    }])
     .select();
 
   if (error) {
@@ -582,13 +588,14 @@ export async function updateContactInfo(info: {
   icon?: string;
   order?: number;
 }) {
+  // Map the incoming order to order_num for database compatibility
   const { data, error } = await typedSupabase
     .from('contact_info')
     .update({
       type: info.type,
       value: info.value,
       icon: info.icon,
-      order: info.order
+      order_num: info.order || 0
     })
     .eq('id', info.id)
     .select();

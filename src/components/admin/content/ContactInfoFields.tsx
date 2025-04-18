@@ -32,7 +32,7 @@ interface ContactInfoFieldsProps {
   formData: {
     type: ContactInfo['type'];
     value: Record<string, string>;
-    order_num: number;
+    order: number;
   };
   onFieldChange: (field: string, value: any) => void;
   activeTab: string;
@@ -74,9 +74,9 @@ const ContactInfoFields: React.FC<ContactInfoFieldsProps> = ({
         <Label>{translate('orderLabel', language)}</Label>
         <Input
           type="number"
-          value={formData.order_num}
+          value={formData.order}
           onChange={(e) =>
-            onFieldChange('order_num', parseInt(e.target.value) || 0)
+            onFieldChange('order', parseInt(e.target.value) || 0)
           }
         />
       </div>

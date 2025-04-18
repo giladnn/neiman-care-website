@@ -32,11 +32,11 @@ const ContactInfoFormDialog: React.FC<ContactInfoFormDialogProps> = ({
   const [formData, setFormData] = useState<{
     type: ContactInfo['type'];
     value: Record<string, string>;
-    order_num: number;
+    order: number;
   }>({
     type: 'address',
     value: { en: '', he: '', ru: '' },
-    order_num: 0,
+    order: 0,
   });
 
   useEffect(() => {
@@ -44,13 +44,13 @@ const ContactInfoFormDialog: React.FC<ContactInfoFormDialogProps> = ({
       setFormData({
         type: contactInfo.type,
         value: contactInfo.value,
-        order_num: contactInfo.order_num || 0,
+        order: contactInfo.order || 0,
       });
     } else {
       setFormData({
         type: 'address',
         value: { en: '', he: '', ru: '' },
-        order_num: 0,
+        order: 0,
       });
     }
   }, [contactInfo]);
@@ -62,7 +62,7 @@ const ContactInfoFormDialog: React.FC<ContactInfoFormDialogProps> = ({
           id: contactInfo.id,
           type: data.type,
           value: data.value,
-          order_num: data.order_num,
+          order: data.order,
         });
       } else {
         return createContactInfo(data);
