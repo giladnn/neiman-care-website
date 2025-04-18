@@ -203,7 +203,7 @@ const Contact = () => {
                     name="phone"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Phone Number</FormLabel>
+                        <FormLabel>{translate('phoneNumber', language)}</FormLabel>
                         <FormControl>
                           <Input placeholder="+972 50 123 4567" {...field} />
                         </FormControl>
@@ -217,7 +217,7 @@ const Contact = () => {
                     name="subject"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Subject</FormLabel>
+                        <FormLabel>{translate('subject', language)}</FormLabel>
                         <FormControl>
                           <Input
                             placeholder="How can we help you?"
@@ -234,7 +234,7 @@ const Contact = () => {
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Message</FormLabel>
+                        <FormLabel>{translate('message', language)}</FormLabel>
                         <FormControl>
                           <Textarea
                             placeholder="Please provide details about your inquiry..."

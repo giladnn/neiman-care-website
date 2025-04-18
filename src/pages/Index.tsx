@@ -5,7 +5,7 @@ import AboutSection from '@/components/home/AboutSection';
 import ServicesSection from '@/components/home/ServicesSection';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import AppointmentSection from '@/components/home/AppointmentSection';
-import BlogSection from '@/components/home/BlogSection';
+// import BlogSection from '@/components/home/BlogSection';
 import NewsSection from '@/components/home/NewsSection';
 import VideoSection from '@/components/about/VideoSection';
 import { ServicesProvider } from '@/context/ServicesContext';
