@@ -72,21 +72,21 @@ const Footer = () => {
               <li className="flex items-center space-x-3">
                 <Clock size={18} className="flex-shrink-0 text-secondary" />
                 <div>
-                  <p className="text-gray-300">Monday - Thursday</p>
+                  <p className="text-gray-300">Sunday - Thursday</p>
                   <p className="text-gray-400">9:00 AM - 5:00 PM</p>
                 </div>
               </li>
-              <li className="flex items-center space-x-3">
+              {/* <li className="flex items-center space-x-3">
                 <Clock size={18} className="flex-shrink-0 text-secondary" />
                 <div>
                   <p className="text-gray-300">Friday</p>
                   <p className="text-gray-400">9:00 AM - 2:00 PM</p>
                 </div>
-              </li>
+              </li> */}
               <li className="flex items-center space-x-3">
                 <Clock size={18} className="flex-shrink-0 text-secondary" />
                 <div>
-                  <p className="text-gray-300">Saturday - Sunday</p>
+                  <p className="text-gray-300">Friday - Saturday</p>
                   <p className="text-gray-400">Closed</p>
                 </div>
               </li>

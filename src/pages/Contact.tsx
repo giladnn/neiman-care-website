@@ -150,10 +150,9 @@ const Contact = () => {
                   <div>
                     <h3 className="font-bold text-gray-800">Office Hours</h3>
                     <p className="text-gray-600">
-                      Monday - Thursday: 9:00 - 17:00{" "}
+                      Sunday - Thursday: 9:00 - 17:00{" "}
                     </p>
-                    <p className="text-gray-600">Friday: 9:00 - 14:00</p>
-                    <p className="text-gray-600">Saturday - Sunday: Closed</p>
+                    <p className="text-gray-600">Friday - Saturday: Closed</p>
                   </div>
                 </CardContent>
               </Card>
