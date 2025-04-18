@@ -19,6 +19,8 @@ import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { toast } from "sonner";
 import { createMessage } from "@/lib/supabase";
 import WhatsAppQR from "@/components/contact/WhatsAppQR";
+import { useLanguage } from "@/context/LanguageContext";
+import { translate } from "@/translations";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -39,6 +41,7 @@ const formSchema = z.object({
 });
 
 const Contact = () => {
+  const { language } = useLanguage();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -51,19 +54,16 @@ const Contact = () => {
   });
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    console.log("Contact form submitted:", data);
-
     try {
       if (data) {
         await createMessage(data as { name: string, email: string, message: string });
-        toast.success(
-          "Your message has been sent! We will get back to you shortly."
-        );
+        toast.success(translate("messageSent", language));
       } else {
-        toast.error("Error sending message ");
+        toast.error(translate("errorSending", language));
       }
     } catch (error) {
-      console.error("Error saving news article:", error);
+      console.error("Error saving message:", error);
+      toast.error(translate("errorSending", language));
     }
     form.reset();
   };
@@ -73,11 +73,10 @@ const Contact = () => {
       <div className="pt-24 pb-16 bg-primary/10">
         <div className="container mx-auto text-center">
           <h1 className="text-4xl font-bold mb-4 font-serif text-gray-800">
-            Contact Us
+            {translate("contactUs", language)}
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Have questions or need to get in touch with Dr. Victoria Neiman?
-            We're here to help.
+            {translate("contactDescription", language)}
           </p>
         </div>
       </div>
@@ -101,7 +100,7 @@ const Contact = () => {
                     <MapPin className="text-primary" size={24} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-800">Address</h3>
+                    <h3 className="font-bold text-gray-800">{translate("officeAddress", language)}</h3>
                     <p className="text-gray-600">
                       123 Medical Center Dr.
                       <br />
@@ -164,23 +163,20 @@ const Contact = () => {
           <div className="md:col-span-3">
             <div className="bg-white rounded-lg shadow-lg p-8">
               <h2 className="text-2xl font-bold mb-6 font-serif">
-                Send Us a Message
+                {translate("sendUsMessage", language)}
               </h2>
 
               <Form {...form}>
-                <form
-                  onSubmit={form.handleSubmit(onSubmit)}
-                  className="space-y-6"
-                >
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <FormField
                       control={form.control}
                       name="name"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Full Name</FormLabel>
+                          <FormLabel>{translate("fullName", language)}</FormLabel>
                           <FormControl>
-                            <Input placeholder="John Doe" {...field} />
+                            <Input dir={language === 'he' ? 'rtl' : 'ltr'} {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -192,9 +188,9 @@ const Contact = () => {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Email</FormLabel>
+                          <FormLabel>{translate("email", language)}</FormLabel>
                           <FormControl>
-                            <Input placeholder="your@email.com" {...field} />
+                            <Input dir={language === 'he' ? 'rtl' : 'ltr'} {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -257,7 +253,7 @@ const Contact = () => {
                       type="submit"
                       className="w-full md:w-auto bg-primary hover:bg-primary-dark"
                     >
-                      Send Message
+                      {translate("submitMessage", language)}
                     </Button>
                   </div>
                 </form>
@@ -266,34 +262,31 @@ const Contact = () => {
 
             <div className="mt-8 bg-gray-50 rounded-lg p-6">
               <h3 className="text-xl font-bold mb-4 font-serif">
-                Frequently Asked Questions
+                {translate("frequently", language)}
               </h3>
               <div className="space-y-4">
                 <div>
                   <h4 className="font-bold">
-                    How do I schedule an appointment?
+                    {translate("appointmentQuestion", language)}
                   </h4>
                   <p className="text-gray-600">
-                    You can schedule an appointment by calling our office, using
-                    the online appointment form, or sending us an email.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-bold">Do I need a referral?</h4>
-                  <p className="text-gray-600">
-                    While a referral from your primary care physician is
-                    helpful, it is not always required. Please contact our
-                    office to discuss your specific situation.
+                    {translate("appointmentAnswer", language)}
                   </p>
                 </div>
                 <div>
                   <h4 className="font-bold">
-                    What insurance plans do you accept?
+                    {translate("referralQuestion", language)}
                   </h4>
                   <p className="text-gray-600">
-                    We work with most major health insurance providers. Please
-                    contact our office for specific information about your
-                    insurance coverage.
+                    {translate("referralAnswer", language)}
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-bold">
+                    {translate("insuranceQuestion", language)}
+                  </h4>
+                  <p className="text-gray-600">
+                    {translate("insuranceAnswer", language)}
                   </p>
                 </div>
               </div>

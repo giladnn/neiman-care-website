@@ -1,5 +1,4 @@
-// Define translations without circular references
-export const enTranslations: Record<string, string> = {
+export const enTranslations = {
   // Navbar
   home: "Home",
   about: "About",
@@ -359,4 +358,33 @@ export const enTranslations: Record<string, string> = {
   biographyText8: "Additionally, she participates in professional conferences, gives lectures, and publishes articles in her field of expertise. She strives to provide the highest level of medical care while offering personal attention and support to her patients.",
   biographyText9: "Dr. Neiman speaks Hebrew, English, and Russian, offering medical services to a wide range of patients.",
   biographyText10: "Her approach to patient care combines cutting-edge medical expertise with deep compassion, ensuring each patient receives personalized treatment tailored to their specific needs and circumstances.",
+  // Contact page translations
+  contactUs: "Contact Us",
+  contactDescription: "Have questions or need to get in touch with Dr. Victoria Neiman? We're here to help.",
+  sendUsMessage: "Send Us a Message",
+  contactInfo: "Contact Information",
+  fullName: "Full Name",
+  email: "Email",
+  phoneNumber: "Phone Number",
+  subject: "Subject",
+  message: "Message",
+  submitMessage: "Send Message",
+  officeAddress: "Address",
+  officePhone: "Phone",
+  officeEmail: "Email",
+  officeHours: "Office Hours",
+  messageSent: "Your message has been sent! We will get back to you shortly.",
+  errorSending: "Error sending message",
+  enterValidEmail: "Please enter a valid email.",
+  enterValidPhone: "Please enter a valid phone number.",
+  nameRequired: "Name is required",
+  subjectRequired: "Subject is required",
+  messageRequired: "Message is required",
+  frequently: "Frequently Asked Questions",
+  appointmentQuestion: "How do I schedule an appointment?",
+  appointmentAnswer: "You can schedule an appointment by calling our office, using the online appointment form, or sending us an email.",
+  referralQuestion: "Do I need a referral?",
+  referralAnswer: "While a referral from your primary care physician is helpful, it is not always required. Please contact our office to discuss your specific situation.",
+  insuranceQuestion: "What insurance plans do you accept?",
+  insuranceAnswer: "We work with most major health insurance providers. Please contact our office for specific information about your insurance coverage.",
 };
