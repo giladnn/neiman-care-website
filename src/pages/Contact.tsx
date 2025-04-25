@@ -22,6 +22,7 @@ import WhatsAppQR from "@/components/contact/WhatsAppQR";
 import { useLanguage } from "@/context/LanguageContext";
 import { translate } from "@/translations";
 import ContactInfo from "@/components/contact/ContactInfo";
+import { sendContactEmail } from "@/lib/email-service";
 
 const formSchema = z.object({
   name: z.string().min(2, {

@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -17,6 +18,7 @@ import { submitAppointment } from '@/lib/appointment-service';
 import { useLanguage } from '@/context/LanguageContext';
 import { translate } from '@/translations';
 import { sendAppointmentEmail } from '@/lib/email-service';
+import { toast } from 'sonner';
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -76,8 +78,19 @@ const AppointmentForm = () => {
     setIsSubmitting(true);
     
     try {
-      await submitAppointment(data);
-      await sendAppointmentEmail(data);
+      // Make sure data has all required fields for AppointmentFormType
+      const appointmentData: AppointmentFormType = {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        date: data.date,
+        time: data.time,
+        reason: data.reason,
+        message: data.message || ''
+      };
+
+      await submitAppointment(appointmentData);
+      await sendAppointmentEmail(appointmentData);
       form.reset();
       toast.success(translate('appointmentSubmitted', language));
     } catch (error) {
