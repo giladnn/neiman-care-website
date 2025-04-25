@@ -1,8 +1,10 @@
 
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts"
 import { Resend } from "npm:resend@2.0.0"
+import { toast } from 'sonner';
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"))
+toast.error('TRESEND_API_KEY .',resend);
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
