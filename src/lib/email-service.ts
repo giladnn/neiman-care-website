@@ -2,7 +2,7 @@
 import { supabase } from '@/integrations/supabase/client';
 import { AppointmentForm } from '@/types';
 
-interface ContactForm {
+export interface ContactForm {
   name: string;
   email: string;
   phone: string;

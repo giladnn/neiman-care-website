@@ -17,12 +17,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { toast } from "sonner";
-import { createMessage } from "@/lib/supabase";
-import WhatsAppQR from "@/components/contact/WhatsAppQR";
 import { useLanguage } from "@/context/LanguageContext";
 import { translate } from "@/translations";
 import ContactInfo from "@/components/contact/ContactInfo";
 import { sendContactEmail } from "@/lib/email-service";
+import WhatsAppQR from "@/components/contact/WhatsAppQR";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -57,7 +56,15 @@ const Contact = () => {
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
-      const emailSent = await sendContactEmail(data);
+      const contactData = {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        subject: data.subject,
+        message: data.message,
+      };
+      
+      const emailSent = await sendContactEmail(contactData);
       if (emailSent) {
         toast.success(translate("messageSent", language));
         form.reset();
