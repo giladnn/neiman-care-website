@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -57,9 +56,10 @@ const Contact = () => {
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
-      if (data) {
-        await createMessage(data as { name: string, email: string, message: string });
+      const emailSent = await sendContactEmail(data);
+      if (emailSent) {
         toast.success(translate("messageSent", language));
+        form.reset();
       } else {
         toast.error(translate("errorSending", language));
       }
@@ -67,7 +67,6 @@ const Contact = () => {
       console.error("Error saving message:", error);
       toast.error(translate("errorSending", language));
     }
-    form.reset();
   };
 
   return (

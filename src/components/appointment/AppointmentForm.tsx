@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -17,8 +16,8 @@ import { AppointmentForm as AppointmentFormType } from '@/types';
 import { submitAppointment } from '@/lib/appointment-service';
 import { useLanguage } from '@/context/LanguageContext';
 import { translate } from '@/translations';
+import { sendAppointmentEmail } from '@/lib/email-service';
 
-// Define the form schema using zod
 const formSchema = z.object({
   name: z.string().min(2, {
     message: "Name must be at least 2 characters.",
@@ -53,7 +52,6 @@ const AppointmentForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { language } = useLanguage();
 
-  // Get translated appointment reasons
   const appointmentReasons = [
     {key: "initialConsultation", value: translate('initialConsultation', language)},
     {key: "followUp", value: translate('followUp', language)},
@@ -63,7 +61,6 @@ const AppointmentForm = () => {
     {key: "other", value: translate('other', language)}
   ];
 
-  // Initialize form
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -75,15 +72,17 @@ const AppointmentForm = () => {
     },
   });
 
-  // Submit handler
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     setIsSubmitting(true);
     
     try {
       await submitAppointment(data);
+      await sendAppointmentEmail(data);
       form.reset();
+      toast.success(translate('appointmentSubmitted', language));
     } catch (error) {
       console.error("Error saving appointment:", error);
+      toast.error(translate('errorSubmitting', language));
     } finally {
       setIsSubmitting(false);
     }
@@ -171,7 +170,6 @@ const AppointmentForm = () => {
                         setIsDateOpen(false);
                       }}
                       disabled={(date) => {
-                        // Disable weekends and past dates
                         const day = date.getDay();
                         const isPastDate = date < new Date();
                         return day === 0 || day === 6 || isPastDate;
