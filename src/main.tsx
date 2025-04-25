@@ -12,16 +12,24 @@ const queryClient = new QueryClient({
     queries: {
       staleTime: 5 * 60 * 1000, // 5 minutes
       retry: 1,
-      onError: (error: Error) => {
-        console.error('React Query Global Error Handler:', error);
-      }
     },
     mutations: {
-      onError: (error) => {
-        console.error('React Query Mutation Error:', error);
-      },
+      retry: 1,
     },
   },
+});
+
+// Log query and mutation errors
+queryClient.getQueryCache().subscribe({
+  onError: (error) => {
+    console.error('React Query Error:', error);
+  }
+});
+
+queryClient.getMutationCache().subscribe({
+  onError: (error) => {
+    console.error('React Query Mutation Error:', error);
+  }
 });
 
 // Global error handling
