@@ -19,18 +19,28 @@ import {
 import { useAuth } from '@/context/AuthContext';
 import { useLanguage } from '@/context/LanguageContext';
 import { translate } from '@/translations';
+import { useRoleCheck } from '@/hooks/useRoleCheck';
 import LanguageSelector from '../layout/LanguageSelector';
 
 interface AdminLayoutProps {
   children: React.ReactNode;
+  requireRoles?: string[];
 }
 
-const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
-  const { user, logout } = useAuth(); // Fixed: Use logout instead of signOut
+const AdminLayout: React.FC<AdminLayoutProps> = ({ children, requireRoles = ['admin'] }) => {
+  const { user, logout, userRoles } = useAuth();
+  const { withAnyRoleGuard } = useRoleCheck();
   const location = useLocation();
   const navigate = useNavigate();
   const { language } = useLanguage();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  // Check for required roles
+  useEffect(() => {
+    if (requireRoles && requireRoles.length > 0) {
+      withAnyRoleGuard(requireRoles);
+    }
+  }, [location.pathname, requireRoles, withAnyRoleGuard, userRoles]);
 
   // Responsive sidebar management
   useEffect(() => {
@@ -50,7 +60,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
   }, []);
 
   const handleSignOut = () => {
-    logout(); // Fixed: Use logout instead of signOut
+    logout();
     navigate('/admin/login');
   };
 

@@ -35,18 +35,56 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      try {
-        const userData = JSON.parse(storedUser);
+    // Check for active session on mount
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      if (session) {
+        const userData: UserData = {
+          id: session.user.id,
+          email: session.user.email!,
+          name: session.user.user_metadata?.name || 'User',
+          role: 'user'
+        };
+        
+        const roles = await fetchUserRoles(session.user.id);
+        setUserRoles(roles);
         setUser(userData);
         setIsAuthenticated(true);
-        fetchUserRoles(userData.id).then(setUserRoles);
-      } catch (error) {
-        console.error('Failed to parse stored user:', error);
-        localStorage.removeItem('user');
+        localStorage.setItem('user', JSON.stringify(userData));
       }
-    }
+    };
+    
+    checkSession();
+    
+    // Set up auth state listener
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      async (event, session) => {
+        if (event === 'SIGNED_IN' && session) {
+          const userData: UserData = {
+            id: session.user.id,
+            email: session.user.email!,
+            name: session.user.user_metadata?.name || 'User',
+            role: 'user'
+          };
+          
+          const roles = await fetchUserRoles(session.user.id);
+          setUserRoles(roles);
+          setUser(userData);
+          setIsAuthenticated(true);
+          localStorage.setItem('user', JSON.stringify(userData));
+        } else if (event === 'SIGNED_OUT') {
+          setUser(null);
+          setIsAuthenticated(false);
+          setUserRoles([]);
+          localStorage.removeItem('user');
+        }
+      }
+    );
+    
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
   const login = async (email: string, password: string): Promise<boolean> => {
