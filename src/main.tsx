@@ -16,6 +16,23 @@ const queryClient = new QueryClient({
   },
 });
 
+// Set up global error handling
+queryClient.getQueryCache().subscribe({
+  onSettled: (data, error) => {
+    if (error) {
+      console.error('Query error:', error);
+    }
+  }
+});
+
+queryClient.getMutationCache().subscribe({
+  onSettled: (data, error) => {
+    if (error) {
+      console.error('Mutation error:', error);
+    }
+  }
+});
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
